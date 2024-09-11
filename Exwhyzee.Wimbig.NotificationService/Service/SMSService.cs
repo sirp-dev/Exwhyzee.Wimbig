@@ -127,8 +127,8 @@ namespace Exwhyzee.Wimbig.NotificationService.Service
 
 
                 //twillo
-                //const string accountSid = "AC06d4de856b4a83b0fa924de5c10f5886";
-                //const string authToken = "847fe0e788e359e8d1bd4dd4213186b2";
+                //const string accountSid = " ";
+                //const string authToken = " ";
 
                 //TwilioClient.Init(accountSid, authToken);
                 ////formatr numbers
