@@ -1,0 +1,37 @@
+﻿<div class="row">
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="tile-stats" style="background-color:#00cd9b;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-gamepad" style="color:#fff;"></i>
+            </div>
+            <div class="count">@await Component.InvokeAsync("TotalTicketOverall")</div>
+
+            <h3 style="color:#fff !important;">Total Ticket</h3>
+            <p class="text-center">
+                <a asp-area="LotteryCommision" asp-page="/Dashboard/Tickets" class="btn btn-success btn-xs">View All Tickets</a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+    </div>
+
+
+
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="tile-stats" style="background-color:#39478f;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-clipboard" style="color:#fff;"></i>
+            </div>
+            <div class="count">@await Component.InvokeAsync("WinnersCount")</div>
+
+            <h3 style="color:#fff !important;">Total Winners</h3>
+            <p class="text-center">
+                <a asp-area="LotteryCommision" asp-page="/Dashboard/Winners" class="btn btn-success btn-xs">Winners</a>
+
+            </p>
+        </div>
+    </div>
+
+</div>

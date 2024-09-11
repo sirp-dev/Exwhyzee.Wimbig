@@ -1,0 +1,46 @@
+﻿
+
+<section class="dashboard-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="dashboard-menu-container" style="background-color:#5cb85c;">
+                    <ul>
+                        <li class="@ManageNavPages.IndexNavClass(ViewContext)">
+                            <a asp-page="./Index">
+                                <div class="icon"><i class="fa fa-dashboard"></i></div>
+                                <div class="menue-name">My Account @*(@await Component.InvokeAsync("UserId"))*@</div>
+                            </a>
+                        </li>
+
+                        <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)">
+                            <a id="change-password" asp-page="./ChangePassword">
+                                <div class="icon"><i class="fa fa-edit"></i></div>
+                                <div class="menue-name">Password</div>
+                            </a>
+                        </li>
+                        <li class="@ManageNavPages.RaffleHistoryClass(ViewContext)">
+                            <a asp-page="./RaffleHistory">
+                                <div class="icon"><i class="fa fa-ticket"></i></div>
+                                <div class="menue-name">My Raffles</div>
+                            </a>
+                        </li>
+                        <li class="@ManageNavPages.ArchievedClass(ViewContext)">
+                            <a asp-page="/Raffles/Archieved" asp-area="Raffles">
+                                <div class="icon"><i class="fa  fa-money"></i></div>
+                                <div class="menue-name">Archived </div>
+                            </a>
+                        </li>
+                        <li class="@ManageNavPages.UpdateProfileClass(ViewContext)">
+                            <a asp-page="./UpdateProfile">
+                                <div class="icon"><i class="fa  fa-user"></i></div>
+                                <div class="menue-name">Update Profile</div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

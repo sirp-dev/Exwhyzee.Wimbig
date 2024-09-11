@@ -1,0 +1,212 @@
+﻿@page "{Id:long}"
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+@model WinnerDetailsModel
+@{
+   
+}
+
+@section styles{
+    <!-- SLICK SLIDER CSS -->
+    <link rel="stylesheet" href="~/main/css/slick.css" />
+
+    <style>
+        .ad-detail-title h3 {
+            padding: 5px 10px !important;
+        }
+
+        .ad-listing-single .ad-detail ul li {
+            padding: 5px 0 !important;
+        }
+
+        #change {
+            -webkit-animation: background 5s cubic-bezier(1,0,0,1) infinite;
+            animation: background 5s cubic-bezier(1,0,0,1) infinite;
+        }
+
+
+        @@-webkit-keyframes background {
+            0% {
+                background-color: #f99;
+            }
+
+            33% {
+                background-color: #9f9;
+            }
+
+            67% {
+                background-color: #99f;
+            }
+
+            100% {
+                background-color: #f99;
+            }
+        }
+
+        @@keyframes background {
+            0% {
+                background-color: #f99;
+            }
+
+            33% {
+                background-color: #9f9;
+            }
+
+            67% {
+                background-color: #99f;
+            }
+
+            100% {
+                background-color: #f99;
+            }
+        }
+    </style>
+   
+}
+
+<section class="ad-listing-single section-edit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="detail-titile light-blue">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-7">
+
+                            <div class="ad-name">
+                                <h3 class=""> @Model.Ticket.RaffleName </h3>
+                               
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <div class="price"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-sm-12 col-xs-12 nopaddingright">
+                   
+                        @await Component.InvokeAsync("RaffleImage", new { RaffleId = Model.Ticket.RaffleId })
+
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 nopaddingleft">
+                        <div class="ad-detail">
+                            <div class="ad-detail-title">
+                                <h3><i class=" icon-layers"></i> Ticket Detail</h3>
+                            </div>
+                            <div class="ad-detail-desc light-blue ">
+                                <ul>
+                                    <li>
+                                        <span class="pull-left">Date Created</span>
+                                        <span class="pull-right">&#8358 @Model.Ticket.Date</span>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Ticket Price</span>
+                                        <span class="pull-right">@Model.Ticket.Price</span>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">winner</span>
+                                        <span class="pull-right">@Model.Ticket.PlayerName</span>
+                                    </li>
+                                  
+                                </ul>
+                            </div>
+                            @*@if (total == 0)
+                            {
+                                <a>
+                                    <div class="ad-detail-title">
+                                        <h3 style="background-color:#f99;">
+                                            No Ticket Available <i class="fa fa-angle-double-right"></i>
+                                        </h3>
+                                    </div>
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-area="Tickets" asp-page="Confirm" asp-route-id="@Model.Ticket.Id">
+                                    <div class="ad-detail-title">
+                                        <h3>
+                                            Play Now <i class="fa fa-angle-double-right"></i>
+                                        </h3>
+                                    </div>
+                                </a>
+                            }*@
+
+
+                            @*<div class="business-card light-blue ">
+            <div class="media">
+                <div class="media-left">
+                    <img class="media-object img-circle profile-img" alt="" src="images/default-avatar.png">
+                </div>
+                <div class="media-body">
+                    <div class="mail"><a href="mailto:admin@scriptsbundle.com">@Model.Ticket.Username</a> </div>
+                </div>
+            </div>
+        </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+@section Scripts{
+    <!-- SLICK CAROUSEL -->
+    <script type="text/javascript" src="~/main/js/slick.min.js"></script>
+    <script>
+        $('.gallery-slideshow-not-tab').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 500,
+            arrows: true,
+            fade: true,
+            asNavFor: '.gallery-nav-not-tab',
+            adaptiveHeight: true,
+        });
+        $('.gallery-nav-not-tab').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            speed: 500,
+            asNavFor: '.gallery-slideshow-not-tab',
+            dots: false,
+            centerMode: true,
+            focusOnSelect: true,
+            infinite: true,
+            responsive: [{
+                breakpoint: 1199,
+                settings: {
+                    slidesToShow: 5,
+                }
+            }, {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 4,
+                }
+            }, {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 3,
+                }
+            }, {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                }
+            }]
+        });
+
+    </script>
+    <script>
+        var colors = ['green', 'orange']; // Define Your colors here, can be html name of color, hex, rgb or anything what You can use in CSS
+        var active = 0;
+        setInterval(function () {
+            document.getElementById('change').style.background = colors[active];
+            active++;
+            if (active == colors.length) active = 0;
+        }, 30000);
+
+
+    </script>
+    
+}

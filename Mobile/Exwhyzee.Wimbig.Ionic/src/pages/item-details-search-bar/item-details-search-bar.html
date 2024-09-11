@@ -1,0 +1,22 @@
+<!--Search bar components-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title text-left text-uppercase>{{params.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- Content -->
+
+<!-- PAGE SEARCH BAR - Simple -->
+<search-bar-layout-1 has-header *ngIf="params.searchBarsLayout1" [data]="params.data | async" [events]="params.events">
+</search-bar-layout-1>
+
+<!-- PAGE SEARCH BAR - Field + header -->
+<search-bar-layout-2  has-header *ngIf="params.searchBarsLayout2" [data]="params.data | async" [events]="params.events">
+</search-bar-layout-2>
+
+<!-- PAGE SEARCH BAR - Field + header 2 -->
+<search-bar-layout-3 has-header *ngIf="params.searchBarsLayout3" [data]="params.data | async" [events]="params.events">
+</search-bar-layout-3>

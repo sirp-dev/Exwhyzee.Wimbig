@@ -1,0 +1,115 @@
+﻿@page
+@model FundingModel
+@{
+    ViewData["Title"] = "Complete";
+}
+
+<style>
+    .how-it .panel-title a {
+        display: block;
+        position: relative;
+        padding: 5px 10px 5px 10px;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 1.6;
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+    .how-it .panel-heading {
+        padding: 5px 8px;
+        background-color:#5cb85c;
+    }
+</style>
+
+<section class="ad-breadcrumb parallex">
+    <div class="container page-banner">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <h1>Wallet Funding</h1>
+            </div>
+            <div class="col-sm-6 col-md-6 hidden-sm hidden-xs">
+                <ol class="breadcrumb pull-right flip flip">
+                    <li><a href="#">Play Small... WinBig...</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="how-it" style="padding:10px;color:black;">
+    <div class="container ">
+        <div class="panel-group" id="faqAccordion">
+            <div class="panel panel-default ">
+                <div class="panel-heading accordion-toggle question-toggle collapsed active" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
+                    <h4 class="panel-title">
+                        <a class="ing">Online Payment &nbsp;&nbsp; <i class="fa fa-angle-down"></i></a>
+                    </h4>
+                </div>
+                <div id="question0" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                        <a asp-page="./Payment">
+                            <h5><span class="label label-success">Click to continue</span></h5>
+
+                            <p>
+                                <img src="~/main/wimbig/pay.PNG" class="img-responsive" />
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default ">
+                <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
+                    <h4 class="panel-title">
+                        <a class="ing">Bank Deposite/Transfer <i class="fa fa-angle-down"></i></a>
+                    </h4>
+                </div>
+                <div id="question1" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                       
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-6" style="border-bottom:1px solid #5cb85c;padding-bottom:5px;">
+                                    <h6>Account Name: <strong>WIMBIG.COM SERVICES LIMITED</strong></h6>
+                                    <h6>Account Number: <strong>0448746376 </strong></h6>
+                                    <h6>Bank Name: <strong>GT Bank </strong></h6>
+                                    <h6>Depositor name: <strong>Wimbig Username </strong></h6>
+                                    <h6>Phone: <strong>Wimbig Phone Number </strong></h6>
+                                    <img src="~/main/wimbig/Guaranty_Trust_Bank.jpg" class="img-responsive" style="height:60px;" />
+                               
+                                </div>
+                                <div class="col-md-6" style="border-bottom:1px solid #5cb85c;padding-bottom:5px;">
+                                    <h6>Account Name: <strong>WIMBIG.COM SERVICES LIMITED</strong></h6>
+                                    <h6>Account Number: <strong>0030873198  </strong></h6>
+                                    <h6>Bank Name: <strong>Stanbic IBTC Bank </strong></h6>
+                                    <h6>Depositor name: <strong>Wimbig Username </strong></h6>
+                                    <h6>Phone: <strong>Wimbig Phone Number </strong></h6>
+                                    <img src="~/main/wimbig/StanbicIBTCLogo.jpg" class="img-responsive" style="height:60px;" />
+                                </div>
+                            </div>
+                            <p>Note: Forward your <strong>Name, username,phone number on our wimbig platform</strong> to <strong style="font-size:19px;">07060530000</strong> </p>
+                           
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default ">
+                <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question2">
+                    <h4 class="panel-title">
+                        <a class="ing">Nearest Agent &nbsp;&nbsp; <i class="fa fa-angle-down"></i></a>
+                    </h4>
+                </div>
+                <div id="question2" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                        
+<p>Fund your account through any Wimbig Agent nearby
+    </p>                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+        <!--/panel-group-->
+    </div>
+</section>
+

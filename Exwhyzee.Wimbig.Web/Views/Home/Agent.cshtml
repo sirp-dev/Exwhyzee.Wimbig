@@ -1,0 +1,148 @@
+﻿
+@{
+    //ViewData["Title"] = "Career";
+    Layout = "~/Views/Shared/_LayoutAgent.cshtml";
+}
+
+<section class="how-it-work" style="padding:10px;color:black;">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @if (TempData["output"] != null)
+                {
+
+
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @TempData["output"]
+                    </div>
+                }
+                <h3 style="color:#589f36;font-weight:900;">BECOME AN AGENT</h3>
+
+                <h3 style="font-weight:300;"> <a asp-area="" asp-controller="Home" asp-action="AgentNationwide">
+    Locate Nearest Agent Near You.
+</a>
+                </h3>
+
+
+                <p style="color:black;" class="text-justify">
+
+                    You can join the wimbig team as a sales agent, this avails you the opportunity to earn big while running your lottery/raffle business on the wimbig franchise and earning huge commissions as your teller reflects.
+                    As a wimbig agent, you will become one of our sales points and also promote our products.
+                    You will be provided with every needed training and technical assistance by our ever ready support team once you access any of our contact centres nationwide or put a call across to our front desk unit.
+                    Wimbig is a huge income generator for any willing and motivated person who wishes to raise his/her revenue base to access and earn huge income through commisions.
+                    We have got you covered as we bear liabilities for winnings and claims.
+                    We will keep you active by providing thousands of opportunities for customers to stake for winnings, with other great bonuses as well.
+                    To sign up or make further enquiries please call******(7 days a week, 8:00 am to 21:00 pm) or fill in and submit the registration form.
+                    Upon indication of interest, a wimbig representative will be in touch.
+                    <br />
+
+                    <blockquote>
+                        GOING BIG!
+                        Wimbig presents a very good opportunity for entrepreneurs who are interested in operating an independent lottery/raffle business.
+
+                    </blockquote>
+                </p>
+                <h3 style="color:#589f36;font-weight:900;">DO YOU KNOW?</h3>
+                <ul style="list-style-type:circle;">
+                    <li>
+                        Are you entrepreneur interested in a beneficial alliance with a big brand? Then this is your chance to forge one.
+                    </li>
+                    <li>
+                        Wimbig parades the best in online lottery/raffle and is supported by a team of smart and experienced personnel.
+                    </li>
+                    <li>
+                        We keep business as professional as possible.
+                    </li>
+                    <li>
+                        Our reliability is not in question as organizations of high repute already partner or seek to partner with wimbig.
+                    </li>
+                    <li>
+                        Payments of Winnings and Earnings of Commission are timely and hassle free.
+                    </li>
+                    <li>
+                        What you stand to gain from our unique competitive advantages:
+                    </li>
+                    <li>
+                        Commission rates based on turnover. You earn for every stake made from your account/teller.
+                    </li>
+                    <li>
+                        Commissions for all stakes that emanate from your account/teller irrespective of  online or mobile play.
+                    </li>
+                    <li>
+                        You are not liable for payment of winnings that emanate from your account/teller.
+                    </li>
+                    <li>
+                        You are not liable for delivery of winnings to winners.
+                    </li>
+                    <li>
+                        You are not to spend extra on printers or thermal papers as wimbig deploys a paperless technology.
+                    </li>
+                    <li>
+                        Thousands of items to be staked for and won on weekly basis.
+                    </li>
+                    <li>
+                        Steady technical support.
+                    </li>
+                    <li>
+                        Wimbig operates on topnotch software.
+                    </li>
+                    <li>
+                        Constant development of new and exciting products.
+                    </li>
+                    <li>
+                        Technical Support:
+                    </li>
+                    <li>
+                        Technical support on-site and via telephone.
+                    </li>
+                    <li>
+                        On-site support from ever ready and  competent wimbig staff.
+                    </li>
+                    <li>
+                        Free training course to prepare you and your staff for the opening of wimbig spot.
+                    </li>
+
+                </ul>
+                <h3 style="color:#589f36;font-weight:900;">EASY STEPS TO START</h3>
+
+                <ul style="list-style-type:circle;">
+                    <li>
+                        Submission of documentation to wimbig
+                    </li>
+                    <li>
+                        Vetting of documents and location
+                    </li>
+                    <li>
+                        Introductory conversation in person with wimbig staff.
+                    </li>
+                    <li>
+                        Signing of the agent contract.
+                    </li>
+                    <li>
+                        Get your shop ready to go with help from our professional support.
+                    </li>
+                    <li>
+                        Come onboard as a wimbig agent today!
+                    </li>
+                    <li>
+                        Contact us via our registration form, e-mail us contact@wimbig.com or call us on ******* (7 days a week, 8:00 am to 21:00 pm).
+                    </li>
+                </ul>
+
+                <div class="text-center">
+                    <h5 style="color:#589f36;font-weight:900;">Dont be left out!!!</h5>
+                    <a asp-area="Identity" asp-page="/Account/Manage/WimbigAgent">
+                        <button class="btn" style="background-color:#589f36;color:#ffffff;padding:30px 50px;">
+                            <span style="font-size:20px;"> Register Now</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

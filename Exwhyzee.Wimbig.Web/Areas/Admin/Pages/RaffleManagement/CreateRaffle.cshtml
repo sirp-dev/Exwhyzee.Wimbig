@@ -1,0 +1,259 @@
+﻿
+@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.RaffleManagement.CreateRaffleModel
+@{
+    var user = Model.LoggedInUser;
+ 
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+   
+}
+
+@using Exwhyzee.Wimbig.Web.Extensions.Enums
+
+<!-- page content -->
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel table-responsive">
+                                    <div class="x_title">
+                                        <h2>Create Raffle <small></small></h2>
+
+                                        <ul class="nav navbar-right panel_toolbox"></ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content table-responsive">
+                                        <form class="form-horizontal form-label-left" enctype="multipart/form-data" method="post">
+
+                                            <span class="section">Raffle Info</span>
+                                            <input asp-for="CreateRaffleVm.CreateRaffleDto.HostedBy" value="@Model.LoggedInUser" type="hidden" id="HostedBy" name="CreateRaffleVm.CreateRaffleDto.HostedBy">
+
+                                            <div class="row">
+                                                <!--Raffle Properties-->
+                                                <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                                            Name <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input id="name" class="form-control col-md-7 col-xs-12" asp-for="CreateRaffleVm.CreateRaffleDto.Name" name="CreateRaffleVm.CreateRaffleDto.Name" placeholder="Enter name of Raffle" autofocus required="required" type="text">
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">
+                                                            Category <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <select class="form-control" asp-for="CreateRaffleVm.CreateRaffleDto.CategoryId" asp-items="@(new SelectList(Model.Catgeories, "CategoryId", "Name"))">
+                                                                <option value="" disabled selected>Select a Category</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                                            Start Date <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input id="startDate" type="datetime-local" name="CreateRaffleVm.CreateRaffleDto.StartDate" asp-for="CreateRaffleVm.CreateRaffleDto.StartDate" required="required" class="form-control col-md-7 col-xs-12">
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                                            End Date <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="datetime-local" id="endDate" name="CreateRaffleVm.CreateRaffleDto.EndDate" required="required" asp-for="CreateRaffleVm.CreateRaffleDto.EndDate" class="form-control col-md-7 col-xs-12">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                                                            Price Per Ticket <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input id="pricePerTicket" asp-for="CreateRaffleVm.CreateRaffleDto.PricePerTicket" name="CreateRaffleVm.CreateRaffleDto.PricePerTicket" placeholder="Enter Price per ticket" class="optional form-control col-md-7 col-xs-12">
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label for="numberOfTickets" class="control-label col-md-3">Number Of Ticket to Sell</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input id="numberOfTickets" type="number" asp-for="CreateRaffleVm.CreateRaffleDto.NumberOfTickets" name="CreateRaffleVm.CreateRaffleDto.NumberOfTickets" placeholder="Number of Tickets to Sell" class="form-control col-md-7 col-xs-12" required="required">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item form-group">
+                                                        <label for="sortOrder" class="control-label col-md-3">Sort Order</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input id="sortOrder" type="number" asp-for="CreateRaffleVm.CreateRaffleDto.SortOrder" name="CreateRaffleVm.CreateRaffleDto.SortOrder" placeholder="sort order" class="form-control col-md-7 col-xs-12" required="required">
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">
+                                                            Delivery Type <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            @Html.DropDownListFor(model => model.CreateRaffleVm.CreateRaffleDto.DeliveryType, new SelectList(Enum.GetValues(typeof(Exwhyzee.Enums.DeliveryTypeEnum))), new { @class = "form-control col-md-7 col-xs-12" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">
+                                                            Description <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <textarea rows="5" id="description" placeholder="Provide a description about this raffle" asp-for="CreateRaffleVm.CreateRaffleDto.Description" required="required" name="CreateRaffleVm.CreateRaffleDto.Description" class="form-control col-md-7 col-xs-12"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                               
+
+                                                    <div class="form-group item">
+                                                        <label class="col-form-label col-md-3">City</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                                            <select asp-for="CreateRaffleVm.CreateRaffleDto.Location" asp-items="Model.CityDtoList" id="CityOfOrigin" class="form-control col-md-7 col-xs-12" required="required">
+                                                                <option>Select City</option>
+
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group item">
+                                                        <label class="col-form-label col-md-3">Area In City</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                                            <select name="CreateRaffleVm.CreateRaffleDto.AreaInCity" id="AreaCity" class="form-control col-md-7 col-xs-12" required="required"></select>
+
+                                                        </div>
+                                                    </div>
+                                                    <!--Images of Raffle-->
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="file">
+                                                            Upload one or more images, Note! Not more than 5 images <span class="required"></span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input class="form-control" type="file" name="files" id="gallery-photo-add" multiple />
+                                                            <div class="gallery"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="ln_solid"></div>
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-md-offset-3">
+                                                    <button type="button" class="btn btn-primary" asp-route="/RaffleManagement/Index">Cancel</button>
+                                                    <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    </div>
+</div>
+<!-- /page content -->
+@section scripts{
+    <!---->
+    <script type="text/javascript">
+        $(function () {
+            // multiple images prevuiew in browser
+            var imagesPreview = function (input, placeToInsertImagePreview) {
+                if (input.files) {
+                    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                    var filesAmount = input.files.length;
+                    if (filesAmount <= 5) {
+                        for (i = 0; i < filesAmount; i++) {
+                            var reader = new FileReader();
+                            reader.onload = function (event) {
+                                $($.parseHTML('<img>')).attr('src', event.target.result).attr('width', '100px').attr('height', '100px').attr('margin', '10px').attr('padding', '10px').appendTo(placeToInsertImagePreview);
+                            }
+                            reader.readAsDataURL(input.files[i]);
+                        }
+                    } else {
+                        window.alert("You cant upload more than 5 images");
+                    }
+                }
+            };
+            $('#gallery-photo-add').on('change', function () {
+                imagesPreview(this, 'div.gallery');
+            });
+        });
+
+            //window.onload = function () {
+            //    var fileUpload = document.getElementById("gallery-photo-add");
+            //    fileUpload.onchange = function () {
+            //        if (typeof (FileReader) != "undefined") {
+            //            var gallery = document.getElementById("gallery");
+            //            gallery.innerHTML = "";
+            //            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+            //            for (var i = 0; i < fileUpload.files.length; i++) {
+            //                var file = fileUpload.files[i];
+            //                if (regex.test(file.name.toLowerCase())) {
+            //                    var reader = new FileReader();
+            //                    reader.onload = function (e) {
+
+            //                        var img = document.createElement("IMG");
+            //                        var textbox = document.createElement('input');
+            //                        textbox.type = 'text';
+            //                        textbox.name = 'tag_line[]';
+            //                        textbox.placeholder = 'Enter image tag line';
+            //                        img.height = "100";
+            //                        img.width = "100";
+            //                        img.src = e.target.result;
+            //                        gallery.appendChild(img);
+            //                        gallery.appendChild(textbox);
+            //                    }
+            //                    reader.readAsDataURL(file);
+            //                } else {
+            //                    alert(file.name + " is not a valid image file.");
+            //                    gallery.innerHTML = "";
+            //                    return false;
+            //                }
+            //            }
+            //        } else {
+            //            alert("This browser does not support HTML5 FileReader.");
+            //        }
+            //    }
+            //};
+    </script>
+
+    <script type="text/jscript">
+        $(function () {
+            $('#CityOfOrigin').change(function () {
+
+                var fruits = ["apple", "orange", "cherry"];
+                fruits.forEach(myFunction);
+                var res = "";
+                function myFunction(item, index) {
+                    res += index + ":" + item + "<br>";
+                }
+                console.log(res);
+                $.getJSON('/Home/AreaCityList/' + $('#CityOfOrigin').val(), function (data) {
+
+                    var items = '<option>Choose Area in the city</option>';
+                    $.each(jQuery.map(data, function (i, local) {
+                        items += "<option value='" + i.value + "'>" + i.text + "</option>";
+
+                    }));
+
+
+                    console.log(data);
+                    console.log("jd");
+                    console.log(data.data);
+
+                    console.log(items);
+                    $('#AreaCity').html(items);
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,22 @@
+<!-- Toggle component-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-left text-uppercase>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!--Content-->
+
+<!-- PAGE TOGGLE - With avatars -->
+<toggle-layout-1 has-header *ngIf="params.toggleLayout1" [data]="params.data | async" [events]="params.events">
+</toggle-layout-1>
+
+<!-- PAGE TOGGLE - Simple 2 -->
+<toggle-layout-2 has-header *ngIf="params.toggleLayout2" [data]="params.data | async" [events]="params.events">
+</toggle-layout-2>
+
+<!-- PAGE TOGGLE - Simple -->
+<toggle-layout-3 has-header *ngIf="params.toggleLayout3" [data]="params.data | async" [events]="params.events">
+</toggle-layout-3>

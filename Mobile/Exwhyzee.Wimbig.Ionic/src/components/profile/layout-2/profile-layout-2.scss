@@ -1,0 +1,45 @@
+/*  #Style Profile- Profile With Slider + Comments
+================================================*/
+
+profile-layout-2 {
+  ion-grid,
+  ion-row {
+    height: 100%;
+  }
+
+  [profile] {
+    img {
+      border-radius: 50%;
+      height: 120px;
+      width: 120px;
+      margin: 0 auto;
+    }
+
+    .button-inner {
+      display: block;
+    }
+
+    [small-font] {
+      clear: both;
+      display: block;
+    }
+  }
+
+  .swiper-container {
+    padding-bottom: 20px;
+  }
+
+  .swiper-container-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    bottom: 0 !important;
+  }
+
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: theme-colors('mainColors', 'primary') !important;
+  }
+
+  .active {
+    color: theme-colors('textColors', 'primary') !important;
+  }
+}

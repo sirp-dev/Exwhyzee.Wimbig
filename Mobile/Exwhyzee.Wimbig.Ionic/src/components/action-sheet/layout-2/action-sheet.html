@@ -1,0 +1,31 @@
+<!--- Theme Action Sheet - News -->
+<ion-content elastic-header>
+    <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + headerImage + ')'}">
+        <div title-block *ngIf="data != null">
+            <!-- New-category -->
+            <span new-category>{{data.category}}</span>
+            <!-- Parallax-title -->
+            <h1 parallax-title text-wrap>{{data.title}}</h1>
+        </div>
+    </ion-item>
+    <ion-item-group *ngIf="data != null">
+        <ion-item-divider border no-lines>
+            <!-- Avatar-->
+            <ion-avatar item-start>
+                <img [src]="data.avatar" />
+            </ion-avatar>
+            <!-- Item-subtitle -->
+            <h2 item-subtitle>{{data.subtitle}}</h2>
+            <!-- Action Sheet Button-->
+            <button item-end ion-button clear button-action-shit (click)="presentActionSheet(data)">
+                <ion-icon [name]="data.shareIcon"></ion-icon>
+            </button>
+        </ion-item-divider>
+        <ion-item no-margin no-lines>
+          <!-- Parallax-description -->
+          <div parallax-description *ngFor="let item of data.items;let i = index">
+            <p parallax-description text-wrap>{{item.subtitle}}</p>
+          </div>
+        </ion-item>
+    </ion-item-group>
+</ion-content>

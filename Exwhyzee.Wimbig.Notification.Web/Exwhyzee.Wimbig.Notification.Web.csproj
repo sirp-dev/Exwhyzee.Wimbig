@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-Exwhyzee.Wimbig.Notification.Web-AB1AEE91-9374-4C6C-A006-4ECB79E65B4B</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\EmailSample.html" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire" Version="1.7.7" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.7" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.7" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Owin" Version="4.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.1.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Exwhyzee.Wimbig.Application\Exwhyzee.Wimbig.Application.csproj" />
+    <ProjectReference Include="..\Exwhyzee.Wimbig.Data\Exwhyzee.Wimbig.Data.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\html\" />
+  </ItemGroup>
+
+</Project>

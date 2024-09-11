@@ -1,0 +1,15 @@
+<!--Themes Toggle - Simple -->
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-12>
+        <ion-list *ngIf="data != null">
+          <ion-item *ngFor="let item of data.items; let i= index">
+            <ion-label item-title>{{item.title}}</ion-label>
+            <ion-toggle [value]="item.id" (ionChange)="onEvent('onSelect',item)" [checked]="item.isChecked"></ion-toggle>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

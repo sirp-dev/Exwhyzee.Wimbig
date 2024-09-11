@@ -1,0 +1,22 @@
+<!-- RADIO BUTTON Components -->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+        <ion-title text-left text-uppercase>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!--Content-->
+
+<!-- PAGE RADIO BUTTON - Simple -->
+<radio-button-layout-1 has-header *ngIf="params.radioButtonLayout1" [data]="params.data | async" [events]="params.events">
+</radio-button-layout-1>
+
+<!-- PAGE RADIO BUTTON - With avatars -->
+<radio-button-layout-2 has-header *ngIf="params.radioButtonLayout2" [data]="params.data | async" [events]="params.events">
+</radio-button-layout-2>
+
+<!-- PAGE RADIO BUTTON - Simple 2 -->
+<radio-button-layout-3 has-header *ngIf="params.radioButtonLayout3" [data]="params.data | async" [events]="params.events">
+</radio-button-layout-3>

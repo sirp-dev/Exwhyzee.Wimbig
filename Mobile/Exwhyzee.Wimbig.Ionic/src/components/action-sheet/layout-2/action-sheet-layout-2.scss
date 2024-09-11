@@ -1,0 +1,72 @@
+// /*  #Action Sheet News
+// ===========================================*/
+
+action-sheet-layout-2 {
+    [background-size] {
+        height: 250px;
+        position: relative;
+        @include darkening-blend-mode;
+    }
+    ion-avatar {
+        min-width: 48px !important;
+        min-height: 48px !important;
+        img {
+            width: 48px !important;
+            height: 48px !important;
+        }
+    }
+    [title-block] {
+        position: absolute;
+        bottom: 0;
+        padding: 16px 25px 16px 0;
+        [new-category] {
+            color: theme-colors('textColors', 'secondary');
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+    }
+    // Parallax Title
+    [parallax-title] {
+        color: theme-colors('textColors', 'secondary');
+        font-size: $h2-font-size !important;
+        font-weight: 400;
+        line-height: normal;
+    }
+    // Parallax Description
+    [parallax-description] {
+      margin-bottom: 5px;
+    }
+    [parallax-subtitle] {
+        color: theme-colors('textColors', 'primary');
+        font-size: $h4-font-size !important;
+        line-height: 20px;
+    }
+    [parallax-description] {
+        font-size: $h5-font-size !important;
+        color: theme-colors('textColors', 'secondary') !important;
+        line-height: 20px;
+    }
+
+    [button-action-shit] {
+      z-index: 99999;
+      background-color: transparent !important;
+      border-radius: 100%;
+      top: 0px;
+      right: 0px;
+      height: 50px !important;
+      width: 50px;
+      border-radius: 50%;
+      padding: 20px 11px !important;
+
+      ion-icon {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        display: inline-block;
+        color: theme-colors('mainColors', 'secondary');
+        font-size: 30px;
+      }
+    }
+}

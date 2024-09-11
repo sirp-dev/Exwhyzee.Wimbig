@@ -1,0 +1,40 @@
+<!--  Theme Form - Form add Photo Or Video -->
+  <ion-content>
+    <ion-grid *ngIf="data != null">
+      <ion-row padding>
+        <ion-col col-12 text-center>
+          <span span-small>{{data.rateTitle}}</span>
+        </ion-col>
+        <ion-col col-12 text-center>
+            <ion-icon
+              *ngFor="let item of data.iconsStars;let i = index"
+              color="accentLight"
+              [name]="item.icon"
+              [ngClass]="{'active':item.isActive}"
+              (click)="onStarClass(data.iconsStars, i, $event)">
+            </ion-icon>
+        </ion-col>
+        <ion-col col-12 text-center>
+          <span span-small>{{data.title}}</span>
+        </ion-col>
+        <ion-col col-12 textarea>
+          <ion-item no-lines>
+            <ion-textarea [placeholder]="data.descriptionPlaceholder" [(ngModel)]="description"></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12>
+          <div *ngIf="item.imageUrl" background-size [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}"></div>
+        </ion-col>
+        <ion-col col-12>
+          <button ion-button default-button full text-capitalize (click)="onAddVideoPhoto()">
+            {{data.btnAddPhotoOrVideo}}
+          </button>
+        </ion-col>
+        <ion-col col-12>
+          <button ion-button default-button full text-capitalize (click)="onEvent('onSubmit', $event)">
+            {{data.btnSubmit}}
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>

@@ -1,0 +1,33 @@
+<!-- Themes Medium item with image-->
+<ion-content>
+  <ion-grid no-padding *ngIf="data != null">
+    <ion-row no-padding>
+      <ion-col col-12 no-padding>
+        <!-- Content List -->
+        <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+          <ion-item no-padding *ngFor="let item of data.items"
+          (click)="onEvent('onItemClick', item.title, $event)">
+            <!-- Images -->
+            <ion-thumbnail no-margin item-start>
+              <img images-filter [src]="item.image">
+            </ion-thumbnail>
+            <!-- Title -->
+            <h2 padding-left item-title>{{item.title}}</h2>
+            <!-- Subtitle -->
+            <p padding-left >{{item.description}}</p>
+            <!-- Rating -->
+            <h3 margin-top item-title float-right>{{item.mark}}</h3>
+            <ion-icon margin-top icon-small float-right [name]="item.icon">
+            </ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<!-- Fab Button -->
+<ion-fab #fab bottom right>
+    <button button-ion-fab ion-fab (click)="onEvent('onFab', data, $event)">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>

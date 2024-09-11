@@ -1,0 +1,96 @@
+﻿@page
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents;
+
+
+@model Exwhyzee.Wimbig.Web.Areas.StakeHolders.Pages.UserData.TicketUserSummaryModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Registered Users Ticket History for (@Model.Tickes.Count() tickets) </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a href="javascript: history.back()"><button class="btn btn-xs btn-warning">Cancel</button> </a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table border="1" class="table dataTable table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">Id </th>
+                            <th class="column-title">Username </th>
+                            <th class="column-title">Date </th>
+                            <th class="column-title">Raffle Name </th>
+                            <th class="column-title">Raffle Id </th>
+                            <th class="column-title">Ticket Number </th>
+                            <th class="column-title">Transaction Id </th>
+
+                            <th class="column-title">Price </th>
+                            <th class="column-title">Status </th>
+                            <th class="column-title">Paid Out </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Tickes)
+                        {
+                        <tr class="even pointer">
+                            <td>
+                                @item.Id
+
+                            </td>
+                            <td>@item.Date</td>
+                            <td>@item.UserName</td>
+                            <td>@item.RaffleName</td>
+                            <td>@item.RaffleId</td>
+                            <td>@item.TicketNumber</td>
+                            <td>@item.TransactionId</td>
+
+                            <td>@item.Price</td>
+                            <td>
+                                @if (item.Status == 1)
+        {
+            <span>Active</span>
+        }
+        else if (item.Status == 2)
+        {
+            <span>Drawn</span>
+        }
+                               
+                                   @if (item.IsWinner == true)
+                                   {
+                                <span class="btn-success">Won</span>
+                                }
+
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(model => item.PaidOut)
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable();
+        });
+
+    </script>
+}
+

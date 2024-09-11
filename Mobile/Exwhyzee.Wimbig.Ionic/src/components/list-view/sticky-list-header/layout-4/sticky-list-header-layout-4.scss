@@ -1,0 +1,30 @@
+// /*  #Style Sticky List Header - Small header + large item
+// ==============================================================*/
+
+sticky-list-header-layout-4 {
+  ion-list-header {
+    &[ion-affix] {
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      border-top: none !important;
+      background-color: theme-colors('mainColors', 'secondary');
+      color: theme-colors('mainColors', 'accent');
+
+      h2 {
+        font-weight: 500 !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    [icon-small],
+    [span-small] {
+      color: theme-colors('mainColors', 'accent') !important;
+    }
+  }
+
+  [subitem-title] {
+    color: theme-colors('textColors', 'primary');
+  }
+}

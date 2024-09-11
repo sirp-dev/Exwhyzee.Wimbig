@@ -1,0 +1,32 @@
+/* #Style -- Comment - Commnets With Timeline
+================================================*/
+comment-layout-2 {
+  ion-label {
+    background-color: theme-colors('mainColors', 'primary');
+    padding: 10px;
+    margin: 10px !important;
+  }
+
+  ion-list {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      background: theme-colors('mainColors', 'secondary');
+      top: 0;
+      bottom: 0;
+      left: 54px;
+      height: 100%;
+    }
+  }
+
+  ion-avatar {
+    border: 2px solid theme-colors('mainColors', 'accentLight');
+    border-radius: 50%;
+  }
+  ion-avatar img {
+    height: 70px !important;
+    width: 70px !important;
+  }
+}

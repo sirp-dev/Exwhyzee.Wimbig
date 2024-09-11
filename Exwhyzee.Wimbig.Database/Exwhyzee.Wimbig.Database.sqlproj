@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Exwhyzee.Wimbig.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{7493dc23-2bf6-4db2-8764-a73338e9ff82}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Exwhyzee.Wimbig.Database</RootNamespace>
+    <AssemblyName>Exwhyzee.Wimbig.Database</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <CompatibilityMode>110</CompatibilityMode>
+    <RecursiveTriggersEnabled>True</RecursiveTriggersEnabled>
+    <AutoUpdateStatisticsAsynchronously>True</AutoUpdateStatisticsAsynchronously>
+    <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
+    <GenerateCreateScript>True</GenerateCreateScript>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Stored Procedures\Raffles" />
+    <Folder Include="dbo\Stored Procedures\ImageFile" />
+    <Folder Include="dbo\Stored Procedures\MapImageToRaffle" />
+    <Folder Include="dbo\Stored Procedures\Category" />
+    <Folder Include="dbo\Stored Procedures\Section" />
+    <Folder Include="dbo\Stored Procedures\MapRaffleToCategory" />
+    <Folder Include="dbo\Stored Procedures\Tickets" />
+    <Folder Include="dbo\Stored Procedures\Transactions" />
+    <Folder Include="dbo\Stored Procedures\MessageStore" />
+    <Folder Include="dbo\Stored Procedures\WimBank" />
+    <Folder Include="dbo\Stored Procedures\BarnerImage" />
+    <Folder Include="dbo\Stored Procedures\SideBarner" />
+    <Folder Include="dbo\Stored Procedures\Counts" />
+    <Folder Include="dbo\Stored Procedures\DailyStatistics" />
+    <Folder Include="dbo\Stored Procedures\Agent" />
+    <Folder Include="dbo\Stored Procedures\WinnerReport" />
+    <Folder Include="dbo\Stored Procedures\PayOutReport" />
+    <Folder Include="dbo\Stored Procedures\PayOutDetails" />
+    <Folder Include="dbo\Stored Procedures\YoutubeLink" />
+    <Folder Include="dbo\Stored Procedures\SmsMessage" />
+    <Folder Include="dbo\Stored Procedures\City" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserTokens.sql" />
+    <Build Include="dbo\Tables\Raffle.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleInsert.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleGetById.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleDelete.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleGetAllRaffles.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleGetRafflesByHostedBy.sql" />
+    <Build Include="dbo\Tables\MapImageToRaffle.sql" />
+    <Build Include="dbo\Tables\ImageFile.sql" />
+    <Build Include="dbo\Stored Procedures\ImageFile\spImageFileDelete.sql" />
+    <Build Include="dbo\Stored Procedures\ImageFile\spImageFileGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\ImageFile\spImageFileGetById.sql" />
+    <Build Include="dbo\Stored Procedures\ImageFile\spImageFileInsert.sql" />
+    <Build Include="dbo\Tables\Section.sql" />
+    <Build Include="dbo\Tables\Category.sql" />
+    <Build Include="dbo\Stored Procedures\Category\spCategoryInsert.sql" />
+    <Build Include="dbo\Stored Procedures\Category\spCategoryUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\Category\spCategoryDelete.sql" />
+    <Build Include="dbo\Stored Procedures\Category\spCategoryGetById.sql" />
+    <Build Include="dbo\Stored Procedures\Category\spCategoryGetAllBySectionId.sql" />
+    <Build Include="dbo\Stored Procedures\Category\spCategoryGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\Section\spSectionInsert.sql" />
+    <Build Include="dbo\Stored Procedures\Section\spSectionUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\Section\spSectionDelete.sql" />
+    <Build Include="dbo\Stored Procedures\Section\spSectionGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\MapRaffleToCategory\spMapRaffleToCategoryInsert.sql" />
+    <Build Include="dbo\Stored Procedures\MapRaffleToCategory\spMapRaffleToCategoryGetRafflesByCategoryId.sql" />
+    <Build Include="dbo\Stored Procedures\MapRaffleToCategory\spMapRaffleToCategoryGetById.sql" />
+    <Build Include="dbo\Stored Procedures\MapRaffleToCategory\spMapRaffleToCategoryDelete.sql" />
+    <Build Include="dbo\Stored Procedures\Section\spSectionGetById.sql" />
+    <Build Include="dbo\Stored Procedures\MapRaffleToCategory\spMapRaffleToCategoryGetAll.sql" />
+    <Build Include="dbo\Tables\Ticket.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spInsertTicket.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketsReadAll.sql" />
+    <Build Include="dbo\Tables\Wallet.sql" />
+    <Build Include="dbo\Tables\Transaction.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spWalletInsert.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spTransactionInsert.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spWalletReadByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spWalletReadAll.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spTransactionsGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spTransactionUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spWalletUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spTransactionGetById.sql" />
+    <Build Include="dbo\Tables\MapRaffleToCategory.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\MapRaffleToCategory.sql" />
+    <Build Include="dbo\Stored Procedures\MapImageToRaffle\spMapImageToRaffleInsert.sql" />
+    <Build Include="dbo\Stored Procedures\MapImageToRaffle\spMapImageToRaffleDelete.sql" />
+    <Build Include="dbo\Stored Procedures\MapImageToRaffle\spMapImageToRaffleGetById.sql" />
+    <Build Include="dbo\Stored Procedures\MapImageToRaffle\spMapImageToRaffleGetImagesOfARaffle.sql" />
+    <Build Include="dbo\Stored Procedures\MapImageToRaffle\spMapImageToRaffleUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\MessageStore\spFetchNotificationsToBeSent.sql" />
+    <Build Include="dbo\Stored Procedures\MessageStore\spUpdateNotificationStatus.sql" />
+    <Build Include="dbo\Tables\MessageStore.sql" />
+    <Build Include="dbo\Stored Procedures\MessageStore\spMessageStoreInsert.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleGetStatusUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketUpdate.sql" />
+    <Build Include="dbo\Tables\Wimbank.sql" />
+    <Build Include="dbo\Tables\WimbankTransfer.sql" />
+    <Build Include="dbo\Tables\WimPayHistory.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spWimbankGetById.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spWimbankInsert.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spWimbankReadAll.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spWimbankUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spTransferWimbankGetById.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spTransferWimbankInsert.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spTransferWimbankReadAll.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spTransferWimbankUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spWimbankGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\WimBank\spWimbankLastBalance.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\TicketUpdateSentGameStat.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketByTransactionId.sql" />
+    <Build Include="dbo\Tables\BarnerImage.sql" />
+    <Build Include="dbo\Tables\SideBarner.sql" />
+    <Build Include="dbo\Stored Procedures\BarnerImage\spBarnerImageFileDelete.sql" />
+    <Build Include="dbo\Stored Procedures\BarnerImage\spBarnerImageFileGetById.sql" />
+    <Build Include="dbo\Stored Procedures\BarnerImage\spBarnerImageFileInsert.sql" />
+    <Build Include="dbo\Stored Procedures\SideBarner\spSideBarnerFileDelete.sql" />
+    <Build Include="dbo\Stored Procedures\SideBarner\spSideBarnerFileGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\SideBarner\spSideBarnerFileGetById.sql" />
+    <Build Include="dbo\Stored Procedures\SideBarner\spSideBarnerFileInsert.sql" />
+    <Build Include="dbo\Stored Procedures\BarnerImage\spBarnerImageFileGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\Counts\spTotalTicketByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\Counts\spTotalRaffle.sql" />
+    <Build Include="dbo\Stored Procedures\Counts\spTotalUserByRole.sql" />
+    <Build Include="dbo\Stored Procedures\Counts\spTotalUser.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketGetById.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketsReadAllOrderByDateWon.sql" />
+    <Build Include="dbo\Stored Procedures\Counts\spTotalWimbankDeposite.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleBySortOrder.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketsReadAllTicket.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketsReadAllWinners.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketsReadAllByUsername.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketUpdateStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketGetByRaffleIdTicketNumber.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketsReadAllByReferenceId.sql" />
+    <Build Include="dbo\Stored Procedures\Transactions\spTransactionsGetAllByReferenceId.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleSendArchieved.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleRemoveArchieved.sql" />
+    <Build Include="dbo\Stored Procedures\Counts\spUserAndRoleGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleByArchieved.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketsReadAllByReferenceIdUsers.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets\spTicketGetWinnerById.sql" />
+    <Build Include="dbo\Tables\TicketTableUpdate.sql" />
+    <Build Include="dbo\Tables\DailyStatistics.sql" />
+    <Build Include="dbo\Stored Procedures\DailyStatistics\spDailyStatisticsDelete.sql" />
+    <Build Include="dbo\Stored Procedures\DailyStatistics\spDailyStatisticsGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\DailyStatistics\spDailyStatisticsGetById.sql" />
+    <Build Include="dbo\Stored Procedures\DailyStatistics\spDailyStatisticsInsert.sql" />
+    <Build Include="dbo\Stored Procedures\DailyStatistics\spDailyStatisticsUpdate.sql" />
+    <Build Include="dbo\Tables\Agent.sql" />
+    <Build Include="dbo\Stored Procedures\Agent\spAgentDelete.sql" />
+    <Build Include="dbo\Stored Procedures\Agent\spAgentGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\Agent\spAgentGetById.sql" />
+    <Build Include="dbo\Stored Procedures\Agent\spAgentInsert.sql" />
+    <Build Include="dbo\Stored Procedures\Agent\spAgentUpdate.sql" />
+    <Build Include="dbo\Tables\WinnerReport.sql" />
+    <Build Include="dbo\Stored Procedures\WinnerReport\spWinnerReportDelete.sql" />
+    <Build Include="dbo\Stored Procedures\WinnerReport\spWinnerReportGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\WinnerReport\spWinnerReportGetById.sql" />
+    <Build Include="dbo\Stored Procedures\WinnerReport\spWinnerReportInsert.sql" />
+    <Build Include="dbo\Stored Procedures\WinnerReport\spWinnerReportUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\MapImageToRaffle\spMapImageToRaffleGetByRaffleId.sql" />
+    <Build Include="dbo\Tables\PayOutReport.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportDelete.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportGetById.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportInsert.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportUpdate.sql" />
+    <Build Include="dbo\Tables\PayOutDetails.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutDetails\spPayOutDetailsDelete.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutDetails\spPayOutDetailsGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutDetails\spPayOutDetailsGetById.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutDetails\spPayOutDetailsInsert.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutDetails\spPayOutReportUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportGetByUserIdAndDate.sql" />
+    <Build Include="dbo\Tables\YoutubeLinks.sql" />
+    <Build Include="dbo\Stored Procedures\YoutubeLink\spYoutubeLinkDelete.sql" />
+    <Build Include="dbo\Stored Procedures\YoutubeLink\spYoutubeLinkGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\YoutubeLink\spYoutubeLinkGetById.sql" />
+    <Build Include="dbo\Stored Procedures\YoutubeLink\spYoutubeLinkInsert.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportGetLastRecordByUserId.sql" />
+    <Build Include="dbo\Tables\SmsMessage.sql" />
+    <Build Include="dbo\Stored Procedures\SmsMessage\spSmsMessageDelete.sql" />
+    <Build Include="dbo\Stored Procedures\SmsMessage\spSmsMessageGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\SmsMessage\spSmsMessageGetById.sql" />
+    <Build Include="dbo\Stored Procedures\SmsMessage\spSmsMessageInsert.sql" />
+    <Build Include="dbo\Stored Procedures\SmsMessage\spSmsMessageUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportGetLastRecord.sql" />
+    <Build Include="dbo\Stored Procedures\PayOutReport\spPayOutReportGetByDate.sql" />
+    <Build Include="dbo\Stored Procedures\MessageStore\spMessageStoreGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\MessageStore\spMessageStoreGetById.sql" />
+    <Build Include="dbo\Tables\City.sql" />
+    <Build Include="dbo\Tables\AreaInCity.sql" />
+    <Build Include="dbo\Stored Procedures\City\spCityDelete.sql" />
+    <Build Include="dbo\Stored Procedures\City\spCityGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\City\spCityGetById.sql" />
+    <Build Include="dbo\Stored Procedures\City\spCityInsert.sql" />
+    <Build Include="dbo\Stored Procedures\City\spCityUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\City\spAreaInCityDelete.sql" />
+    <Build Include="dbo\Stored Procedures\City\spAreaInCityGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\City\spAreaInCityGetById.sql" />
+    <Build Include="dbo\Stored Procedures\City\spAreaInCityInsert.sql" />
+    <Build Include="dbo\Stored Procedures\City\spAreaInCityUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\City\spAreaCityByCityName.sql" />
+    <Build Include="dbo\Stored Procedures\MapRaffleToCategory\spMapRaffleToCategoryGetByRaffleId.sql" />
+    <Build Include="dbo\Stored Procedures\Raffles\spRaffleByLocation.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Exwhyzee.Wimbig.Database.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Exwhyzee.Wimbig.Database.refactorlog" />
+  </ItemGroup>
+</Project>

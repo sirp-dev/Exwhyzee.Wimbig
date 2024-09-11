@@ -1,0 +1,162 @@
+﻿@page "{id:int?}"
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.WinnerReport.EditReportModel
+@{
+  
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+   
+}
+
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Edit Winner Report <small></small></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                <form class="form-horizontal form-label-left" method="post" novalidate>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Winner Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="name" class="form-control col-md-7 col-xs-12" asp-for="ReportDto.WinnerName" autofocus required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">
+                            Winner Phone Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" asp-for="ReportDto.WinnerPhoneNumber" name="ReportDto.WinnerPhoneNumber" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                            Winner Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="endDate" required="required" asp-for="ReportDto.WinnerEmail" name="ReportDto.Email" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                            Winner Location <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="endDate" required="required" asp-for="ReportDto.WinnerLocation" name="ReportDto.WinnerLocation" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Amount Played <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.AmountPlayed" name="ReportDto.AmountPlayed" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                  
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Raffle Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.RaffleName" name="ReportDto.RaffleName" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Raffle Id <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.RaffleId" name="ReportDto.RaffleId" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Ticket Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.TicketNumber" name="ReportDto.TicketNumber" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Item Cost <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.ItemCost" name="ReportDto.ItemCost" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Delivered By <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.DeliveredBy" name="ReportDto.DeliveredBy" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Delivery Phone Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.DeliveredPhone" name="ReportDto.DeliveredPhone" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Delivery Addrress <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.DeliveryAddress" name="ReportDto.DeliveryAddress" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Total Amount <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="ReportDto.TotalAmountPlayed" name="ReportDto.TotalAmountPlayed" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Total Amount <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.DropDownListFor(model => model.ReportDto.Status, new SelectList(Enum.GetValues(typeof(Exwhyzee.Enums.WinnerReportEnum))), new { @class = "form-control col-md-7 col-xs-12" })
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="button" class="btn btn-primary" asp-route="/WinnerReport/Index">Cancel</button>
+                            <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!-- /page content -->

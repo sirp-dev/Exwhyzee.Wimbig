@@ -1,0 +1,90 @@
+﻿@page
+@model NewSliderModel
+@{
+}
+@{
+
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+ 
+}
+
+@using Exwhyzee.Wimbig.Web.Extensions.Enums
+
+<!-- page content -->
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Create Barnes <small></small></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                <form class="form-horizontal form-label-left" enctype="multipart/form-data" method="post">
+
+
+                    <div class="row">
+                        <!--Raffle Properties-->
+                        <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
+
+                            <!--Images of Raffle-->
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="file">
+                                    Upload one or more images, Note! Not more than 5 images <span class="required"></span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input class="form-control" type="file" name="files" id="gallery-photo-add" multiple />
+                                    <div class="gallery"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="button" class="btn btn-primary" asp-route="/RaffleManagement/Index">Cancel</button>
+                            <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+@section scripts{
+    <!---->
+    <script type="text/javascript">
+        $(function () {
+            // multiple images prevuiew in browser
+            var imagesPreview = function (input, placeToInsertImagePreview) {
+                if (input.files) {
+                    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                    var filesAmount = input.files.length;
+                    if (filesAmount <= 5) {
+                        for (i = 0; i < filesAmount; i++) {
+                            var reader = new FileReader();
+                            reader.onload = function (event) {
+                                $($.parseHTML('<img>')).attr('src', event.target.result).attr('width', '100px').attr('height', '100px').attr('margin', '10px').attr('padding', '10px').appendTo(placeToInsertImagePreview);
+                            }
+                            reader.readAsDataURL(input.files[i]);
+                        }
+                    } else {
+                        window.alert("You cant upload more than 1 images");
+                    }
+                }
+            };
+            $('#gallery-photo-add').on('change', function () {
+                imagesPreview(this, 'div.gallery');
+            });
+        });
+
+         
+    </script>
+}

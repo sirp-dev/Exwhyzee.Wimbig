@@ -1,0 +1,60 @@
+@using Microsoft.AspNetCore.Identity
+@using Exwhyzee.Wimbig.Core.Authorization.Users
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+<form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm">
+
+    <ul>
+
+
+        <li class="btn btn-success"><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Logout</a></li>
+
+        &nbsp;&nbsp;
+
+        @if (User.IsInRole("DGAs"))
+        {
+            <li><a asp-area="StakeHolders" asp-page="/DGAs/Index"> <i class="fa fa-dashboard"></i> Dash Board</a></li>
+        }
+        else if (User.IsInRole("Supervisors"))
+        {
+            <li><a asp-area="StakeHolders" asp-page="/Supervisors/Index"> <i class="fa fa-dashboard"></i> Dash Board</a></li>
+        }
+        else if (User.IsInRole("Agent"))
+        {
+            <li><a asp-area="StakeHolders" asp-page="/Agents/Index"> <i class="fa fa-dashboard"></i> Dash Board</a></li>
+        }
+        else if (User.IsInRole("Admin"))
+        {
+            <li><a asp-area="Admin" asp-page="/Home/Index"> <i class="fa fa-dashboard"></i> Dash Board</a></li>
+        }
+
+        else if (User.IsInRole("LotteryCommision"))
+        {
+            <li><a asp-area="LotteryCommision" asp-page="/Dashboard/Index"> <i class="fa fa-dashboard"></i> Dash Board</a></li>
+        }
+        else if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin"))
+        {
+            <li><a asp-area="SuperAdmin" asp-page="/Dashboard/Index"> <i class="fa fa-dashboard"></i> Dash Board</a></li>
+        }
+        else
+        {
+            <li><a asp-area="Identity" asp-page="/Account/Manage/Index"> <i class="fa fa-user"></i> Dashboard</a></li>
+
+        }
+
+
+
+    </ul>
+</form>
+}
+else
+{
+    <ul>
+        <li><a asp-area="Identity" asp-page="/Account/Register"> <i class="fa fa-user"></i> Register</a></li>&nbsp; &nbsp;&nbsp; &nbsp;
+        <li><a asp-area="Identity" asp-page="/Account/Login"> <i class="fa fa-sign-in"></i> Login</a></li>
+    </ul>
+}

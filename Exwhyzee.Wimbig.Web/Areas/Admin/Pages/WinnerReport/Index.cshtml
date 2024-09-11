@@ -1,0 +1,80 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.WinnerReport.IndexModel
+@{
+}
+@{
+    int sn = 0;
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    }
+
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Winner Report Management &nbsp; <a class="btn btn-sm btn-primary" asp-page="/WinnerReport/NewReport"> New Report</a></h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+               
+                <table class="table dataTable table-striped jambo_table bulk_action" id="table">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">Id </th>
+                            <th class="column-title">Raffle Name </th>
+                            <th class="column-title">RaffleId</th>
+                            <th class="column-title">TicketNumber </th>
+                            <th class="column-title">Winner Name </th>
+                            <th class="column-title">Location </th>
+                            <th class="column-title">Delivered By </th>
+                            <th class="column-title">Delivery Location </th>
+                            <th class="column-title">Date </th>
+                            <th class="column-title">Status </th>
+                            <th class="column-title">More </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Report.Source.OrderByDescending(x=>x.DateCreated))
+                        {
+                        <tr class="even pointer">
+                            @{ 
+                                sn++;
+                            }
+                            <td>@sn</td>
+                            <td>@item.RaffleName</td>
+                            <td>@item.RaffleId</td>
+                            <td>@item.TicketNumber</td>
+                            <td>@item.WinnerName</td>
+                            <td>@item.WinnerLocation</td>
+                            <td>@item.DeliveredBy</td>
+                            <td>@item.DeliveryAddress</td>
+                            <td>@item.DateCreated</td>
+                            <td>@item.Status</td>
+
+                            <td>
+                                <a asp-page="./Details" class="btn btn-warning btn-xs" asp-route-id="@item.Id">Details</a>
+                                <a asp-page="./EditReport" class="btn btn-warning btn-xs" asp-route-id="@item.Id">Edit</a>
+                            </td>
+
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- /page content -->
+@section scripts{
+    <script type="text/javascript">
+                        $("table").DataTable();
+    </script>
+}

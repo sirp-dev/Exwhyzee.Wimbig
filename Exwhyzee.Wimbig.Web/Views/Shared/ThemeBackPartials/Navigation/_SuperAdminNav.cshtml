@@ -1,0 +1,101 @@
+﻿<ul class="nav side-menu">
+    <li><a asp-area="SuperAdmin" asp-page="/Dashboard/Index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a asp-area="Identity" asp-page="/Account/Manage/WimRegistration"><i class="fa fa-users"></i> Registrations </a></li>
+    <li><a asp-area="Identity" asp-page="/Account/Manage/WinnerList"><i class="fa fa-user"></i> Winner </a></li>
+    <li><a asp-area="Admin" asp-page="/Transactions/Index"><i class="fa fa-transgender"></i> Transactions </a></li>
+    @if (User.IsInRole("mSuperAdmin"))
+    {
+        <li>
+            <a><i class="fa fa-envelope"></i> sms <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a asp-area="Admin" asp-page="/Sms/Index"><i class="fa fa-envelope-o"></i> SMS </a></li>
+                <li><a asp-area="Admin" asp-page="/Sms/NewMessage"><i class="fa fa-envelope"></i> New SMS </a></li>
+
+                <li><a asp-area="Admin" asp-page="/Sms/MessageHistory"><i class="fa fa-history"></i> History </a></li>
+                <li><a asp-area="Admin" asp-page="/Sms/PassiveUsers"><i class="fa fa-history"></i> Passive Users </a></li>
+                <li><a asp-area="Admin" asp-page="/Sms/MessageStore"><i class="fa fa-envelope"></i> Message Store </a></li>
+            </ul>
+        </li>
+    }
+    <li>
+        <a><i class="fa fa-home"></i> Cities <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a asp-area="Admin" asp-page="/Cities/AllCities"> Cities </a></li>
+            <li><a asp-area="Admin" asp-page="/Cities/AllAreaInCities"> Cities Areas </a></li>
+        </ul>
+    </li>
+    <li><a asp-area="Admin" asp-page="/Agent/Index"><i class="fa fa-transgender"></i> Agents Application </a></li>
+    <li>
+        <a><i class="fa fa-book"></i> Report Analysis <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a asp-area="Admin" asp-page="/WinnerReport/Index">Winner Report</a></li>
+            <li><a asp-area="Admin" asp-page="/Report/Index">Daily Report</a></li>
+            <li><a asp-area="Admin" asp-page="/PayOutReport/Index">PayOut Report</a></li>
+
+
+        </ul>
+    </li>
+    <li><a asp-area="Admin" asp-page="/YoutubeLink/Index"><i class="fa fa-viadeo"></i> Video </a></li>
+
+    <li>
+        <a><i class="fa fa-home"></i> Stake Holders <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a asp-area="SuperAdmin" asp-page="/Dashboard/Agents">View Agents</a> </li>
+            <li> <a asp-area="SuperAdmin" asp-page="/Dashboard/Supervisors">View Supervisors</a> </li>
+            <li><a asp-area="SuperAdmin" asp-page="/Dashboard/DGAs">View DGAs</a></li>
+            <li>   <a asp-area="SuperAdmin" asp-page="/Dashboard/Users">View Users</a></li>
+        </ul>
+    </li>
+    <li><a asp-area="SuperAdmin" asp-page="/WimBank/Index"><i class="fa fa-money"></i> Wim Bank</a></li>
+    <li>
+        <a><i class="fa fa-home"></i> Reference <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a asp-area="StakeHolders" asp-page="/UserData/Index"> My Reference</a></li>
+
+        </ul>
+    </li>
+    <li>
+        <a><i class="fa fa-home"></i> My Account <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+
+            <li><a asp-area="Identity" asp-page="/Account/Manage/Index"> My Wallet</a></li>
+            <li><a asp-area="Identity" asp-page="/Account/Manage/RaffleHistory"> Raffle History</a></li>
+            <li><a asp-area="Identity" asp-page="/Account/Manage/ChangePassword"> ChangePassword</a></li>
+            <li><a asp-area="Identity" asp-page="/Account/Manage/UpdateProfile"> UpdateProfile</a></li>
+            <li><a asp-area="Raffles" asp-page="/Raffles/Archieved">Archieved</a></li>
+
+        </ul>
+    </li>
+    <li>
+        <a><i class="fa fa-home"></i> User Management <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a asp-area="UserManagement" asp-page="/Users/Index">Users with Role</a></li>
+            <li><a asp-area="UserManagement" asp-page="/Users/Users">Users Only</a></li>
+            <li><a asp-area="Identity" asp-page="/Account/Manage/Roles">Roles</a></li>
+        </ul>
+    </li>
+    <li>
+        <a><i class="fa fa-home"></i> Raffle Management <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a asp-area="Admin" asp-page="/RaffleManagement/Index">Raffles</a></li>
+            <li><a asp-area="Admin" asp-page="/RaffleManagement/Images">Images</a></li>
+
+        </ul>
+    </li>
+    <li>
+        <a><i class="fa fa-home"></i> Lottery Commision <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a asp-area="LotteryCommision" asp-page="/Dashboard/Index"> Raffles </a> </li>
+            <li><a asp-area="LotteryCommision" asp-page="/Dashboard/Tickets">Tickets</a> </li>
+            <li><a asp-area="LotteryCommision" asp-page="/Dashboard/Winners">Winners</a> </li>
+
+        </ul>
+    </li>
+    <li>
+        <a><i class="fa fa-home"></i> Slider and Side Bar Management <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+            <li><a asp-area="Admin" asp-page="/Slider/Index">Images</a></li>
+
+        </ul>
+    </li>
+</ul>

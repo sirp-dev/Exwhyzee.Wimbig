@@ -1,0 +1,129 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.StakeHolders.Pages.Agents.PrintModel
+@{
+   // Layout = "/Views/Shared/_AgentThemeBackLayout.cshtml";
+
+}
+
+
+<link href="~/css/posprint.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel table-responsive">
+
+            <div class="x_content">
+
+                <div class="all-ads-list-box2">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div id="test">
+                                    <section class="invoice">
+
+                                        <!-- title row -->
+                                        <div class="row" style="font-size:12px;">
+
+                                            <span>Wimbig Raffles</span><br />
+                                            <span>POS - RECIEPT</span><br />
+                                            <div class="pull-left">
+
+
+                                                Invoice # : @Model.Print.TransactionId <br /> Agent Name: @Model.Print.AgentName<br />
+                                                Customer Phone Number : @Model.Print.Phone<br />
+                                                Date: @Model.Print.TransactionDate  <br />
+                                            </div>
+                                        </div>
+                                        <!-- info row -->
+
+                                        <br />
+                                        <!-- Table row -->
+                                        <div>
+
+
+                                            <table class="table-responsive table">
+
+                                                <tr style="font-size:10px;">
+                                                    <th class="text-center" style="border-bottom:dotted 1px black;">Raffle Information</th>
+
+                                                </tr>
+
+                                                <tbody>
+
+                                                    <tr style="font-size:11px;border-top:dotted 1px black;">
+                                                        <th>Raffle Name</th>
+                                                        <td>@Model.Print.RaffleName</td>
+
+
+                                                    </tr>
+                                                    <tr style="font-size:11px;border-top:dotted 1px black;">
+                                                        <th>Raffle Id</th>
+                                                        <td>@Model.Print.RaffleNumber</td>
+
+                                                    </tr>
+                                                    <tr style="font-size:11px;border-top:dotted 1px black;">
+
+                                                        <th>Ticket Number(s)</th>
+                                                        <td>@Model.Print.Tickets</td>
+                                                    </tr>
+                                                    <tr style="font-size:11px;border-top:dotted 1px black;">
+
+                                                        <th>Amount </th>
+                                                        <td>N @Model.Print.Amount.ToString().TrimStart('-')</td>
+
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p style="font-size:11px;">
+                                                Thanks for you patronage. <br />
+                                                Play Small... WInbig... @@ https://www.wimbig.com
+                                            </p>
+                                            <div class="row no-print">
+                                                <div class="col-xs-12">
+                                                    <button onclick="PrintElem('#test');" class="btn btn-success pull-left"><i class="fa fa-print"></i> Print</button>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.row -->
+                                        <!-- this row will not appear when printing -->
+                                    </section><!-- /.content -->
+                                </div>
+
+                               
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<script type="text/javascript">
+
+    function PrintElem(elem) {
+        Popup($(elem).html());
+    }
+
+    function Popup(data) {
+        var mywindow = window.open('', 'test', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>Print Invoice</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+
+</script>
+}

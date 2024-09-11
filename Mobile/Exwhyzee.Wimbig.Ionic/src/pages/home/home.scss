@@ -1,0 +1,59 @@
+/*  #Style First Screen (Home)
+================================================*/
+page-home {
+  [default-background] {
+    background-image: url("../assets/images/background/29.jpg");
+    height: 100%;
+    width: 100%;
+    display: table;
+
+    .ionic-description {
+      display: table-cell;
+      vertical-align: middle;
+
+      h2[item-title] {
+        margin: 0;
+      }
+
+      p[item-subtitle] {
+        color: theme-colors('mainColors', 'secondary') !important;
+      }
+    }
+
+    a {
+      color: theme-colors('textColors', 'accent') !important;
+      text-decoration: underline;
+      visibility: visible !important;
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+    }
+  }
+
+  ion-header {
+    .toolbar-content-ios {
+      .title-ios {
+        width: 85%;
+        left: 10px;
+      }
+
+      .button-ios {
+        height: 3rem;
+        position: absolute;
+        right: 5px;
+        top: 20px;
+      }
+    }
+
+    ion-title {
+      width: 70%;
+    }
+
+    [defoult-button] {
+      background: #0bb1af;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<!--  Theme Form - Form Write Address -->
+<ion-content>
+  <ion-grid *ngIf="data != null">
+    <ion-row padding>
+      <!-- Full Name -->
+      <ion-col col-12 align-self-start>
+        <ion-item no-lines box-shadow margin-bottom>
+          <ion-input type="text" [placeholder]="data.firstName" [(ngModel)]="firstName"></ion-input>
+       </ion-item>   
+       <!-- Last Name -->   
+       <ion-item no-lines box-shadow margin-bottom>
+          <ion-input type="text" [placeholder]="data.lastName" [(ngModel)]="lastName"></ion-input>
+       </ion-item>      
+       <!-- Address Line 1 -->  
+       <ion-item no-lines box-shadow margin-bottom>
+          <ion-input type="text" [placeholder]="data.addressLine1" [(ngModel)]="address1"></ion-input>
+       </ion-item>
+       <!-- Address Line 2 -->
+       <ion-item no-lines box-shadow margin-bottom>
+          <ion-input type="text" [placeholder]="data.addressLine2" [(ngModel)]="address2"></ion-input>
+       </ion-item> 
+       <!-- City -->
+       <ion-item no-lines  box-shadow half-col>
+          <ion-input type="text" [placeholder]="data.city" [(ngModel)]="city"></ion-input>
+       </ion-item>
+       <!-- Zip Code -->
+       <ion-item no-lines box-shadow half-col margin-left>
+          <ion-input type="number" [placeholder]="data.zipCode" [(ngModel)]="zipCode"></ion-input>
+       </ion-item>
+     </ion-col>
+      <!-- Button Write Comment -->
+      <ion-col col-12  align-self-end>
+      <button ion-button default-button block text-capitalize (click)="onEvent('onSubmit', $event)">
+        {{data.button}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

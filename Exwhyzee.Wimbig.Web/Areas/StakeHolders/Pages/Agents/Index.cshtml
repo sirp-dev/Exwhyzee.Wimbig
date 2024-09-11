@@ -1,0 +1,97 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.StakeHolders.Pages.Agents.IndexModel
+@{
+   // Layout = "/Views/Shared/_AgentThemeBackLayout.cshtml";
+}
+
+<!-- top tiles -->
+
+<!-- /top tiles -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel table-responsive">
+
+            <div class="x_content">
+
+                <div class="all-ads-list-box2">
+                    <div>
+                        <div class="row">
+                            @foreach (var item in Model.Raffles)
+                            {
+                               
+                                    
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="blog-post">
+                                                <div class="post-img">
+                                                    <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+                                                        @await Component.InvokeAsync("RaffleImage", new { raffleId = item.Id })
+                                                        </a>
+                                                </div>
+
+                                                <div class="post-info" style="border-top:1px solid #aeabab;">
+                                                    <div class="play-info">
+                                                        <p>
+                                                            <b id="pricePerTickets">#@item.PricePerTicket</b><br /> per ticket
+                                                        </p>
+                                                        <p>
+                                                            <b>Raffle Id</b><br /> @item.Id
+                                                        </p>
+                                                        <p>
+                                                            <b>When</b><br /> Stake Finish
+                                                        </p>
+                                                    </div>
+
+
+
+
+                                                </div>
+
+                                                <h3 class="post-title"> 
+                                                    <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+                                                        @item.Name
+                                                    </a> </h3>
+                                               
+
+                                                <a asp-area="StakeHolders" asp-page="/Agents/TicketConfirm" asp-route-id="@item.Id" class="">
+                                                    @if (item.Location != null)
+                                                    {
+                                                        <div class="ad-bottom-area" style="background-color:#ff6a00">
+                                                            <span class="btn btn-default flip"> Play Now <i class="fa fa-angle-double-right"></i></span>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="ad-bottom-area">
+                                                            <span class="btn btn-default flip"> Play Now <i class="fa fa-angle-double-right"></i></span>
+                                                        </div>
+                                                    }
+                                                    <div class="ad-bottom-area" style="background-color:transparent;">
+                                                        @await Component.InvokeAsync("RaffleProgress", new { raffleId = item.Id })
+
+                                                    </div>
+                                                </a>
+                                               
+                                            </div>
+                                        </div>
+                                    
+                                
+                            }
+
+
+                        </div>
+                        <div class="clearfix"></div>
+                        
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

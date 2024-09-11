@@ -1,0 +1,30 @@
+<!--Google card components-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!--Content-->
+
+<!--PAGE GOOGLE CARDS - Full image cards-->
+<profile-layout-1 has-header *ngIf="params.profileLayout1" [data]="params.data | async" [events]="params.events">
+</profile-layout-1>
+
+<!--PAGE GOOGLE CARDS - Styled cards 2-->
+<profile-layout-2 has-header *ngIf="params.profileLayout2" [data]="params.data | async" [events]="params.events">
+</profile-layout-2>
+
+<!--PAGE GOOGLE CARDS - Styled cards-->
+<profile-layout-3 has-header *ngIf="params.profileLayout3" [data]="params.data | async" [events]="params.events">
+</profile-layout-3>
+
+<!--PAGE GOOGLE CARDS - Styled cards-->
+<profile-layout-4 has-header *ngIf="params.profileLayout4" [data]="params.data | async" [events]="params.events">
+</profile-layout-4>
+
+<!--PAGE GOOGLE CARDS - Styled cards-->
+<profile-layout-5 has-header *ngIf="params.profileLayout5" [data]="params.data | async" [events]="params.events">
+</profile-layout-5>

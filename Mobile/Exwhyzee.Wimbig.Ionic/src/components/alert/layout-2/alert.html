@@ -1,0 +1,27 @@
+<!--Theme Alert - Alert Warning-->
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row *ngIf="data != null">
+      <ion-col col-12 col-lg-6 col-xl-4 *ngFor="let item of data.items;let i = index" (click)="presentAlert(item)">
+        <!-- Card -->
+        <ion-card padding>
+          <img [src]="item.image" />
+          <ion-card-content text-center no-padding margin-top>
+            <span span-small text-capitalize>{{item.category}}</span>
+            <h2 card-title text-capitalize>{{item.title}}</h2>
+            <!-- Button LIke -->
+            <button transparent ion-button button-icon-clear icon-start clear>
+              <ion-icon ion-text color="accentLight" [name]="item.iconLike"></ion-icon>
+              <p ion-text color="accentLight">{{item.numberLike}}</p>
+            </button>
+            <!-- Button Comment -->
+            <button transparent ion-button button-icon-clear icon-start clear>
+              <ion-icon ion-text color="accentLight" [name]="item.iconComment"></ion-icon>
+              <p ion-text color="accentLight">{{item.numberCommnet}}</p>
+            </button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

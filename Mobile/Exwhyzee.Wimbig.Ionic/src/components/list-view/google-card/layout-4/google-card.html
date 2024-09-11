@@ -1,0 +1,47 @@
+<!--Theme Post Card -->
+<ion-content>
+<ion-grid no-padding *ngIf="data != null">
+<ion-row no-padding>
+  <ion-col no-padding col-sm-12 col-md-6 col-lg-4 *ngFor="let item of data">
+    <ion-list>
+    <ion-card (click)="onEvent('onItemClick', item.title, $event)">
+      <!--Card-header-->
+      <ion-card-header>
+        <ion-item no-padding>
+          <!--Avatar-->
+          <ion-avatar item-start>
+            <img [src]="item.avatar">
+          </ion-avatar>
+          <!--Card-title-->
+          <h1 card-title>{{item.title}}</h1>
+          <!--Card-subtitle-->
+          <h2 card-subtitle>{{item.shortDescription}}</h2>
+        </ion-item>
+      </ion-card-header>
+      <!--Card-content-->
+      <ion-card-content no-padding>
+        <!--Card-image-->
+        <img margin-bottom [src]="item.image">
+        <!--Description-->
+        <p border margin card-body-text padding-bottom text-wrap>{{item.description}}</p>
+        <ion-item no-padding margin-bottom>
+          <!--Button Like-->
+          <button ion-button clear button-clear item-end
+            (click)="onEvent('onLike', item.title, $event)">{{item.firstButton}}</button>
+            <!--Button Share-->
+          <button ion-button clear button-clear item-end
+            (click)="onEvent('onShare', item.title, $event)">{{item.secondButton}}</button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+<!--Fab Button-->
+<ion-fab #fab bottom right>
+  <button button-ion-fab ion-fab (click)="onEvent('onFab', data, $event)">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>

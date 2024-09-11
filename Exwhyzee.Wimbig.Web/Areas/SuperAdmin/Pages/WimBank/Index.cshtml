@@ -1,0 +1,68 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.WimBank.IndexModel
+@{
+    ViewData["Title"] = "WimBank Management";
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+
+                <h2>
+                    WIM BANK (#@Model.Balance) &nbsp; &nbsp;
+
+                </h2>
+                @if (User.IsInRole("mSuperAdmin"))
+                {
+                    <a class="btn btn-sm btn-primary" asp-page="/WimBank/TopUp"> TopUp</a> <a class="btn btn-sm btn-primary" asp-page="/WimBank/Transfer"> Transfer</a>
+                }
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table id="" class="table table-striped table-bordered">
+                   <thead>
+                       <tr class="headings">
+                           <th class="column-title">Date </th>
+                           <th class="column-title">Amount </th>
+
+                           <th class="column-title">Balance </th>
+                           <th class="column-title">Receiver Name </th>
+                           <th class="column-title">Phone Number </th>
+                           <th class="column-title">Comment </th>
+
+                           <th class="column-title">Status </th>
+
+                       </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model.Results.Source)
+                                                        {
+                                                        <tr class="even pointer">
+
+
+                                                            <td>@item.DateOfTransaction.ToShortDateString()</td>
+                                                            <td>@item.Amount</td>
+                                                            <td>@item.Balance</td>
+                                                            <td>@item.Username</td>
+                                                            <td>@item.PhoneNumber</td>
+                                                            <td>@item.Note</td>
+
+                                                            <td>@item.TransactionStatus</td>
+
+                                                        </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                    <!-- /page content -->
+                    @section scripts{
+                        
+                    }

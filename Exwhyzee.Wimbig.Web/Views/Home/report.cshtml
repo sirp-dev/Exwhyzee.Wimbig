@@ -1,0 +1,132 @@
+﻿@model Exwhyzee.Wimbig.Application.WinnerReports.Dto.WinnerReportDto
+
+@{
+    ViewData["Title"] = "report";
+}
+
+<h2>report</h2>
+
+<div>
+    <h4>WinnerReportDto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WinnerName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WinnerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WinnerPhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WinnerPhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WinnerEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WinnerEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WinnerLocation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WinnerLocation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountPlayed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AmountPlayed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RaffleName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RaffleName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RaffleId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RaffleId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemCost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemCost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateWon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateWon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDelivered)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateDelivered)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveredBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeliveredBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveredPhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeliveredPhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmountPlayed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmountPlayed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

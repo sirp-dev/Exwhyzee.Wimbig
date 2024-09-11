@@ -1,0 +1,64 @@
+﻿<div class="row">
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon icon1">
+                <i class="fa fa-gamepad"></i>
+            </div>
+            <div class="count count1"> @await Component.InvokeAsync("SupervisorA_D_") Accounts</div>
+            <div class="count count1"> @await Component.InvokeAsync("SupervisorA_D_Tickets") Tickets</div>
+
+            <h3 class="dd">A & D Summary</h3>
+            <p class="text-center">
+                <a asp-area="StakeHolders" asp-page="/UserData/Index" class="btn btn-success btn-xs"><i class="fa fa-history"></i> Account History </a>
+                <a asp-area="StakeHolders" asp-page="/UserData/TicketAgentDgaSummary" class="btn btn-success btn-xs"><i class="fa fa-history"></i> Ticket History </a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon icon1">
+                <i class="fa fa-gamepad"></i>
+            </div>
+            <div class="count count1"> @await Component.InvokeAsync("SupervisorUsers") Accounts</div>
+            <div class="count count1"> @await Component.InvokeAsync("SupervisorUsersTickets") Tickets</div>
+
+            <h3 class="dd">User Summary</h3>
+            <p class="text-center">
+
+                <a asp-area="StakeHolders" asp-page="/UserData/ReferencedUser" class="btn btn-success btn-xs"><i class="fa fa-history"></i> Account History </a>
+                <a asp-area="StakeHolders" asp-page="/UserData/TicketUserSummary" class="btn btn-success btn-xs"><i class="fa fa-history"></i> Ticket History </a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon">
+                <i class="fa fa-money"></i>
+            </div>
+            <div class="count"> N0.00</div>
+
+            <h3>Next Payout</h3>
+            <p class="text-center">
+                <a class="btn btn-success btn-xs">Payout History</a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon">
+                <i class="fa fa-money"></i>
+            </div>
+            <div class="count">N @await Component.InvokeAsync("Balance")</div>
+
+            <h3>Balance</h3>
+            <p class="text-center">
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-success btn-xs"><i class="fa fa-money"></i> Wallet </a>
+
+            </p>
+        </div>
+    </div>
+
+</div>

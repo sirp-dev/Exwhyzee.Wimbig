@@ -1,0 +1,14 @@
+﻿@model ICollection<Exwhyzee.Wimbig.Application.Tickets.Dtos.TicketDto>
+
+<marquee>
+    <p style="margin-bottom:0px;font-weight:600;color:#000000;"><span style="color:#6bc242;font-weight:900;">*wim winner*</span>
+        @foreach (var item in Model)
+        {
+          <text>   @item.DateWon | @item.PlayerName | @item.PhoneNumber | Raffle Name: @item.RaffleName  | Id: @item.RaffleId| Ticket @item.TicketNumber <span style="color:#6bc242;font-weight:900;">*wim winner*</span>
+
+
+        </text>
+}
+
+    </p>
+    </marquee>

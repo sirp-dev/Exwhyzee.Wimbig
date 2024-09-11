@@ -1,0 +1,55 @@
+/*  #Style Login + logo
+================================================*/
+
+login-layout-2 {
+  img {
+    margin-top: 10px;
+    max-width: 50px;
+    max-height: 50px;
+  }
+
+  ion-item {
+    padding: 0 !important;
+    padding-bottom: 15px !important;
+
+    [error-field] {
+      margin: 0 !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      right: 0 !important;
+      font-size: 12px;
+      color: theme-colors('textColors', 'primary') !important;
+    }
+
+    ion-label {
+      color: theme-colors('textColors', 'primary') !important;
+      margin-top: 0 !important;
+    }
+
+    .item-inner {
+      border-bottom-color: theme-colors('mainColors', 'secondary') !important;
+      box-shadow: none !important;
+    }
+  }
+
+  [button-clear] {
+    margin-top: 15px;
+  }
+  // Socila Button
+
+  [social] {
+    margin: 20px auto 10px;
+    overflow: hidden;
+
+    button {
+      margin: 1%;
+      width: 48.5%;
+      display: block;
+      float: left;
+    }
+
+    > button:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+}

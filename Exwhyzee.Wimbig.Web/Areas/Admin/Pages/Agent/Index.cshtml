@@ -1,0 +1,74 @@
+@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Agent.IndexModel
+@{
+    ViewData["Title"] = "Agent";
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+<h2>Agents/DGA</h2>
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">Fullname</th>
+                            <th class="column-title">Email </th>
+                            <th class="column-title">Phone </th>
+                            <th class="column-title">State </th>
+                            <th class="column-title">Shop Location </th>
+                            <th class="column-title">Gender </th>
+                            <th class="column-title">Status </th>
+                            <th class="column-title"> </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Agents.Source)
+                        {
+                        <tr class="even pointer">
+
+                            <td>@item.Fullname</td>
+                            <td>@item.EmailAddress</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.State</td>
+                            <td>@item.ShopLocation</td>
+                            <td>@item.Gender</td>
+                            <td>@item.Status</td>
+                            <td>button</td>
+
+
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0]]
+                }
+            );
+        });
+
+    </script>
+}

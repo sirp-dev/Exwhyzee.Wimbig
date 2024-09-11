@@ -1,0 +1,71 @@
+﻿
+@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Cities.CreateAreaInCitiesModel
+@{
+    var user = Model.LoggedInUser;
+ 
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+   
+}
+
+@using Exwhyzee.Wimbig.Web.Extensions.Enums
+
+<!-- page content -->
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel table-responsive">
+                                    <div class="x_title">
+                                        <h2>Create City <small></small></h2>
+
+                                        <ul class="nav navbar-right panel_toolbox"></ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content table-responsive">
+                                        <form class="form-horizontal form-label-left" enctype="multipart/form-data" method="post">
+
+                                            <span class="section">Raffle Info</span>
+                                          
+                                            <div class="row">
+                                                <!--Raffle Properties-->
+                                                <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                                            Name <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input id="name" class="form-control col-md-7 col-xs-12" asp-for="AreaInCityModelDto.Name" name="AreaInCityModelDto.Name" placeholder="Enter name of city" autofocus required="required" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">
+                                                            City <span class="required">*</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <select name="AreaInCityModelDto.CityId" asp-items="Model.CityDtoList"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="ln_solid"></div>
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-md-offset-3">
+                                                    <button type="button" class="btn btn-primary" asp-route="/RaffleManagement/Index">Cancel</button>
+                                                    <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+   
+<!-- /page content -->
+@section scripts{
+    <!---->
+    
+}

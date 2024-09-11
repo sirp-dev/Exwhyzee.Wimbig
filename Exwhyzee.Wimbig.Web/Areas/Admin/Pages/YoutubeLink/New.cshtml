@@ -1,0 +1,70 @@
+﻿@page
+@model NewModel
+@{
+}
+@{
+
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+ 
+}
+
+@using Exwhyzee.Wimbig.Web.Extensions.Enums
+
+<!-- page content -->
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Add New Video <small></small></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                <form class="form-horizontal form-label-left" enctype="multipart/form-data" method="post">
+
+
+                    <div class="row">
+                        <!--Raffle Properties-->
+                        <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Title <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="name" class="form-control col-md-7 col-xs-12" asp-for="YoutubeLinkDto.Title" name="YoutubeLinkDto.Title" placeholder="Enter title" autofocus required="required" type="text">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Url <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="name" class="form-control col-md-7 col-xs-12" asp-for="YoutubeLinkDto.Url" name="YoutubeLinkDto.Url" placeholder="Enter url" autofocus required="required" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="button" class="btn btn-primary" asp-route="/YoutubeLink/Index">Cancel</button>
+                            <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+@section scripts{
+    <!---->
+    
+}

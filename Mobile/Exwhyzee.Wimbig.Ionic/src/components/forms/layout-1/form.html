@@ -1,0 +1,27 @@
+<!--  Theme Form - Form + Write Comment -->
+<ion-content>
+  <ion-grid *ngIf="data != null">
+    <ion-row padding>
+      <ion-col col-12>
+        <ion-item no-lines>
+         <ion-input type="text" [placeholder]="data.yourName" [(ngModel)]="name"></ion-input>
+      </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <ion-item no-lines>
+           <ion-input type="text" [placeholder]="data.title" [(ngModel)]="title"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12 textarea>
+        <ion-item no-lines>
+          <ion-textarea [placeholder]="data.description" [(ngModel)]="description"></ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <button ion-button default-button block text-capitalize (click)="onEvent('onSubmit', $event)">
+        {{data.button}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,23 @@
+<!--Themes Line - Timeline With Comments -->
+<!--Themes Simple -->
+<ion-content>
+  <ion-grid *ngIf="data != null">
+    <ion-row>
+      <ion-col col-11 offset-1>
+        <ion-list margin-top>
+          <div item-block margin-bottom *ngFor="let item of data.items; let i= index" (click)="onEvent('onItemClick', item, $event)">
+            <span span-small>{{item.time}}</span>
+              <ion-item margin-top no-lines>
+                <ion-avatar item-start>
+                  <img [src]="item.avatar">
+                </ion-avatar>
+                <h2 item-title>{{item.title}}</h2>
+                <h3 item-subtitle>{{item.subtitle}}</h3>
+                <h3 padding-top text-wrap item-subtitle no-margin>{{item.description}}</h3>
+              </ion-item>
+            </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

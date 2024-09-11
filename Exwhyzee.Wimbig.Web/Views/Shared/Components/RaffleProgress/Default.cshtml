@@ -1,0 +1,42 @@
+﻿
+@{
+    string progress = TempData["percentage"].ToString();
+    decimal progressInt = Convert.ToDecimal(TempData["percentage"]);
+
+    string sold = TempData["sold"].ToString();
+}
+@if (progressInt <= 50)
+{
+    <div class="progress" style="margin-bottom:0px !important;border-radius:0px !important;">
+        <div class="progress-bar progress-bar-info progress-bar-striped text-center" role="progressbar"
+             aria-valuenow="@progress.ToString()" aria-valuemin="0" aria-valuemax="100" style="color:black;text-align:center !important;width:@progress.ToString()%">
+
+        </div>
+    </div>
+    <span style="text-align:center;color:black">
+        @progress.ToString()% Completed @sold tickets
+    </span>
+}
+else if (progressInt > 50 && progressInt <= 70)
+{
+    <div class="progress" style="margin-bottom:0px !important;border-radius:0px !important;">
+        <div class="progress-bar progress-bar-warning progress-bar-striped text-center" role="progressbar"
+             aria-valuenow="@progress.ToString()" aria-valuemin="0" aria-valuemax="100" style="color:black;text-align:center !important;width:@progress.ToString()%;">
+        </div>
+    </div>
+    <span style="text-align:center;color:black">
+        @progress.ToString()% Completed @sold tickets
+    </span>
+}
+else if (progressInt > 70 && progressInt <= 100)
+{
+    <div class="progress" style="margin-bottom:0px !important;border-radius:0px !important;">
+        <div class="progress-bar progress-bar-success progress-bar-striped text-center" role="progressbar"
+             aria-valuenow="@progress.ToString()" aria-valuemin="0" aria-valuemax="100" style="color:black;text-align:center !important;width:@progress.ToString()%">
+
+        </div>
+    </div>
+    <span style="text-align:center;color:black">
+        @progress.ToString()% Completed @sold tickets
+    </span>
+}

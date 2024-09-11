@@ -1,0 +1,18 @@
+<!--Themes Time Line - Timeline With Cards  -->
+<ion-content>
+    <ion-grid *ngIf="data != null">
+      <ion-row>
+        <ion-col col-11 offset-1>
+          <ion-list>
+          <ion-card padding margin-bottom *ngFor="let item of data.items; let i= index" (click)="onEvent('onItemClick', item, $event)">
+            <span span-small>{{item.time}}</span>
+            <ion-item transparent no-padding>
+              <h2 card-title text-wrap>{{item.title}}</h2>
+            </ion-item>
+            <img [src]="item.image">
+          </ion-card>
+      </ion-list>
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

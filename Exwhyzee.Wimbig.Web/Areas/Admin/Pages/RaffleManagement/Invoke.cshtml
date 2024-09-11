@@ -1,0 +1,90 @@
+﻿@page "{Id:long}"
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+@model InvokeModel
+
+<section class="ad-listing-single section-edit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="detail-titile light-blue">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-7">
+                            @TempData["winner"]
+
+                            <br />
+
+                            @TempData["error"] = e;
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                 
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+@section Scripts{
+    <!-- SLICK CAROUSEL -->
+    <script type="text/javascript" src="~/main/js/slick.min.js"></script>
+    <script>
+        $('.gallery-slideshow-not-tab').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 500,
+            arrows: true,
+            fade: true,
+            asNavFor: '.gallery-nav-not-tab',
+            adaptiveHeight: true,
+        });
+        $('.gallery-nav-not-tab').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            speed: 500,
+            asNavFor: '.gallery-slideshow-not-tab',
+            dots: false,
+            centerMode: true,
+            focusOnSelect: true,
+            infinite: true,
+            responsive: [{
+                breakpoint: 1199,
+                settings: {
+                    slidesToShow: 5,
+                }
+            }, {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 4,
+                }
+            }, {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 3,
+                }
+            }, {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                }
+            }]
+        });
+
+    </script>
+    <script>
+        var colors = ['green', 'orange']; // Define Your colors here, can be html name of color, hex, rgb or anything what You can use in CSS
+        var active = 0;
+        setInterval(function () {
+            document.getElementById('change').style.background = colors[active];
+            active++;
+            if (active == colors.length) active = 0;
+        }, 30000);
+
+
+    </script>
+    
+}

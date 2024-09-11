@@ -1,0 +1,31 @@
+<!-- Theme Sticky List Header - Product -->
+<ion-content no-padding>
+  <div *ngIf="data != null">
+    <ion-list *ngFor="let item of data.items" no-margin>
+      <!--Text Header Top-->
+      <ion-list-header no-margin no-lines header-title ion-affix [content]="content" style="background:light">
+        <h2 text-uppercase>{{item.groupName}}</h2>
+      </ion-list-header>
+      <ion-card padding [ngClass]="animateClass" *ngFor="let element of item.items,  let i = index;">
+        <!--Big Image -->
+        <img [src]="element.image1" [alt]="element.title">
+        <!--Gallery Card -->
+        <div list-images (click)="onEvent('onItemClick', element.title, $event)">
+          <div images background-size [ngStyle]="{'background-image': 'url(' + element.image2 + ')'}" [title]="element.title"></div>
+          <div images background-size [ngStyle]="{'background-image': 'url(' + element.image3 + ')'}" [title]="element.title"></div>
+          <div images background-size [ngStyle]="{'background-image': 'url(' + element.image4 + ')'}" [title]="element.title"></div>
+          <div images background-size [ngStyle]="{'background-image': 'url(' + element.image5 + ')'}" [title]="element.title"></div>
+        </div>
+        <!-- Content card -->
+        <ion-card-content no-padding>
+          <!-- Card Title -->
+          <h2 ion-text card-title item-start text-nowrap margin-top>{{element.title}}</h2>
+          <span span-medium float-left>{{element.price}}</span>
+          <span padding-left shipping text-uppercase text-wrap float-left>{{element.subtitle}}</span>
+          <!-- Button Buy Casd -->
+          <button ion-button default-button float-right  (click)="onEvent('onBuy', element, $event)">{{element.buy}}</button>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

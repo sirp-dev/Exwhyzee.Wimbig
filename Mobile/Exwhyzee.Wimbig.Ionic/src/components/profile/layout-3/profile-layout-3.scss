@@ -1,0 +1,22 @@
+/*  #Style Profile - Profile 1
+================================================*/
+profile-layout-3 {
+  [profile] {
+    ion-avatar img {
+      height: 70px !important;
+      width: 70px !important;
+    }
+    .button-inner {
+      display: block;
+    }
+
+    [small-font] {
+      clear: both;
+      display: block;
+    }
+  }
+
+  .active {
+    color: theme-colors('textColors', 'primary') !important;
+  }
+}

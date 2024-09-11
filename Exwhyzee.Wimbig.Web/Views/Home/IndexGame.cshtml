@@ -1,0 +1,323 @@
+﻿
+@model IEnumerable<Exwhyzee.Wimbig.Application.Raffles.Dto.RaffleDto>
+
+@{
+    ViewData["Title"] = "IndexGame";
+}
+
+<h2>IndexGame</h2>
+
+<p>
+    <a asp-action="Create">Main</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfTickets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalSold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePerTicket)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SortOrder)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+
+                <td>
+                    @item.NumberOfTickets
+                </td>
+                <td>
+                    @item.TotalSold
+                </td>
+                <td>
+                    @item.PricePerTicket
+                </td>
+
+                <td>
+                    @item.Status
+                </td>
+
+                <td>
+                    @item.SortOrder
+                </td>
+
+                <td>
+                    @item.Location
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<hr />
+
+<p>
+    <a asp-action="Create">Global</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfTickets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalSold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePerTicket)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SortOrder)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.global)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+
+                <td>
+                    @item.NumberOfTickets
+                </td>
+                <td>
+                    @item.TotalSold
+                </td>
+                <td>
+                    @item.PricePerTicket
+                </td>
+
+                <td>
+                    @item.Status
+                </td>
+
+                <td>
+                    @item.SortOrder
+                </td>
+
+                <td>
+                    @item.Location
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<hr />
+<hr />
+
+<p>
+    <a asp-action="Create">Non location</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfTickets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalSold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePerTicket)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SortOrder)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.nonglob)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+
+                <td>
+                    @item.NumberOfTickets
+                </td>
+                <td>
+                    @item.TotalSold
+                </td>
+                <td>
+                    @item.PricePerTicket
+                </td>
+
+                <td>
+                    @item.Status
+                </td>
+
+                <td>
+                    @item.SortOrder
+                </td>
+
+                <td>
+                    @item.Location
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<hr />
+<hr />
+
+<p>
+    <a asp-action="Create">ALl Active</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfTickets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalSold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePerTicket)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SortOrder)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.active)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+
+                <td>
+                    @item.NumberOfTickets
+                </td>
+                <td>
+                    @item.TotalSold
+                </td>
+                <td>
+                    @item.PricePerTicket
+                </td>
+
+                <td>
+                    @item.Status
+                </td>
+
+                <td>
+                    @item.SortOrder
+                </td>
+
+                <td>
+                    @item.Location
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

@@ -1,0 +1,52 @@
+<!-- Theme Sticky List Header - Small header + large item -->
+<ion-content no-padding>
+  <ion-grid no-padding *ngIf="data != null">
+    <ion-row no-padding>
+      <ion-col>
+        <ion-list no-margin *ngFor="let item of data.items">
+          <!-- Sticky list header -->
+          <ion-list-header no-margin ion-affix [content]="content">
+            <ion-item transparent no-margin no-padding no-lines>
+              <!---Header title-->
+              <h2 item-start no-margin text-uppercase>{{item.title}}</h2>
+              <div item-content>
+                <!---Header icon-->
+                <ion-icon>
+                    <i icon-small class="icon {{item.icon}}"></i>
+                </ion-icon>
+                <!---Header description-->
+                <span item-end span-small>{{item.description}}</span>
+              </div>
+            </ion-item>
+          </ion-list-header>
+          <ion-item text-right no-padding *ngFor="let element of item.items"
+          (click)="onEvent('onItemClick', element.title, $event)">
+          <ion-item-divider no-lines padding-left>
+            <!---Icon Like-->
+            <ion-icon float-left (click)="onEvent('onLike', element.title, $event)">
+              <i icon-small class="icon {{element.iconLike}}"></i>
+            </ion-icon>
+            <!---Icon Bookmark-->
+            <ion-icon float-left (click)="onEvent('onBookmark', element.title, $event)">
+              <i icon-small class="icon {{element.iconBookmark}}"></i>
+            </ion-icon>
+            <!---Icon Share-->
+            <ion-icon margin-right float-left (click)="onEvent('onShare', element.title, $event)">
+              <i icon-small class="icon {{element.iconShare}}"></i>
+            </ion-icon>
+            <!---Avatar-->
+            <ion-avatar item-end (click)="onEvent('onItemClick', element.title, $event)">
+              <img [src]="element.image">
+            </ion-avatar>
+            <!---Item-title-->
+            <h2 item-title>{{element.title}}</h2>
+          </ion-item-divider>
+            <!---Description-->
+            <p padding-left subitem-title text-left text-wrap>
+              {{element.description}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

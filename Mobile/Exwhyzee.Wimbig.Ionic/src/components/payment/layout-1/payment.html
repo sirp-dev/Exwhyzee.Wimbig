@@ -1,0 +1,38 @@
+<!--Theme Payment - Payment -->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <div *ngIf="data != null">
+      <ion-title>{{data.title}}</ion-title>
+    </div>
+  </ion-navbar>
+</ion-header>
+<!-- Content -->
+<ion-content>
+  <ion-grid padding>
+    <ion-row padding *ngIf="data != null">
+      <ion-col col-12>
+        <img [src]="data.images" alt="">
+      </ion-col>
+      <ion-col col-12>
+        <ion-item margin-top no-lines>
+          <ion-input type="number" [placeholder]="data.cardNumber" [(ngModel)]="cardItem.cardNumber"></ion-input>
+        </ion-item>
+        <ion-item margin-top no-lines>
+          <ion-input type="text" [placeholder]="data.cardHolder" [(ngModel)]="cardItem.cardHolder"></ion-input>
+        </ion-item>
+        <ion-item margin-top no-lines>
+          <ion-datetime [displayFormat]="data.dateFormat" [placeholder]="data.experienceDate" [(ngModel)]="birth" [ngModelOptions]="{standalone: true}"></ion-datetime>
+        </ion-item>
+        <ion-item margin-top no-lines>
+          <ion-input type="number" [placeholder]="data.code" [(ngModel)]="cardItem.code"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12 align-self-end>
+        <button ion-button block default-button *ngIf="data != null" (click)="onPay()">{{data.button}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

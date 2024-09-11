@@ -1,0 +1,22 @@
+/*  #Style -- Segment - Segment List
+===========================================*/
+segment-layout-1 {
+  [background-size] {
+    height: 250px;
+  }
+
+  ion-item {
+    ion-label {
+      margin: 0 !important;
+    }
+
+    ion-thumbnail img {
+      width: 100px !important;
+      height: 100px !important;
+    }
+
+    .input-wrapper {
+      padding-left: 16px;
+    }
+  }
+}

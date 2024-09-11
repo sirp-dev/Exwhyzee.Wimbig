@@ -1,0 +1,135 @@
+﻿
+@page "{userId}"
+@model Exwhyzee.Wimbig.Web.Areas.UserManagement.Pages.Users.DetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Details";
+  
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>User Info <span style="font-size:12px;"> @Model.Person.FirstName  @Model.Person.LastName </span></h2>
+
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>Username (@Model.Person.UserName)</li>
+                    <li> &nbsp; | &nbsp; </li>
+                    <li>
+                        Wallet Balance (@Model.Balance)
+
+
+                    </li>
+                    <li> &nbsp; | &nbsp; </li>
+                    <li>
+                        Role ( @await Component.InvokeAsync("Role", new { id = Model.Person.Id }) )
+
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+
+                <form class="form-horizontal form-label-left" novalidate asp-action="Update">
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            First Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="firstname" asp-for="Person.FirstName" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="both name(s) e.g Jon Doe" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Last Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="lastname" asp-for="Person.LastName" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="both name(s) e.g Jon Doe" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                            Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="email" id="email" asp-for="Person.Email" name="email" required="required" class="form-control col-md-7 col-xs-12" readonly>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">
+                            Phone Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" id="number" asp-for="Person.PhoneNumber" name="number" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">
+                            Date Of Birth <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="url" asp-for="Person.DateOfBirth" id="website" name="website" required="required" placeholder="www.website.com" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">
+                            Date Registered <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="occupation" type="text" asp-for="Person.DateRegistered" name="occupation" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">
+                            Unique Id <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="occupation" type="text" asp-for="Person.UniqueId" name="occupation" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">
+                            Code Verify <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="occupation" type="text" asp-for="Person.CodeVerify" name="occupation" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">
+                            Current City <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="occupation" type="text" asp-for="Person.CurrentCity" name="occupation" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">
+                            Area In CurrentCity <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="occupation" type="text" asp-for="Person.AreaInCurrentCity" name="occupation" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+   

@@ -1,0 +1,24 @@
+﻿@model Exwhyzee.Wimbig.Application.PayOutReports.Dto.PayOutReportDto
+
+@if (Model != null)
+{
+
+
+
+    <div class="count"> &#8358;@Model.PercentageAmount</div>
+
+    <h3 style="color:#fff !important;font-size:18px !important;">
+        Next Payout (@Model.EndDate.Value.ToString("dddd dd MMM, yyyy")
+        )
+    </h3>
+}
+else
+{
+
+    <div class="count"> &#8358;0</div>
+
+    <h3 style="color:#fff !important;">
+        Next Payout (null
+      nn  )
+    </h3>
+}

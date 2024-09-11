@@ -1,0 +1,26 @@
+ion-header {
+  .toolbar-content-ios {
+    .title-ios {
+      width: 85%;
+      left: 10px;
+    }
+
+    .button-ios {
+      height: 3rem;
+      position: absolute;
+      right: 5px;
+      top: 20px;
+    }
+  }
+
+  ion-title {
+    width: 70%;
+  }
+
+  [defoult-button] {
+    background: #0bb1af;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+}

@@ -1,0 +1,224 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.UserManagement.Pages.Users.EditUserModel
+
+@{
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+
+
+}
+
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Edit transaction for (@Model.Input.UserName) @Model.Input.FirstName @Model.Input.LastName @Model.Input.OtherNames</h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                <form class="form-horizontal form-label-left" method="post" novalidate>
+                    <input asp-for="Input.Id" hidden="hidden" type="text">
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Normalized UserName <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" asp-for="Input.NormalizedUserName" type="text">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" asp-for="Input.Email" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Normalized Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" asp-for="Input.NormalizedEmail" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            Email Confirmed <span class="required">*</span>  <input asp-for="Input.EmailConfirmed" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Phone Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" asp-for="Input.PhoneNumber" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            Phone Number Confirmed <span class="required">*</span>   <input asp-for="Input.PhoneNumberConfirmed" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            Two Factor Enabled <span class="required">*</span> <input asp-for="Input.TwoFactorEnabled" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Lockout End <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" asp-for="Input.LockoutEnd" type="datetime">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            Lockout Enabled <span class="required">*</span> <input asp-for="Input.LockoutEnabled" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            Phone Number Confirmed <span class="required">*</span>  <input asp-for="Input.PhoneNumberConfirmed" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Access Failed Count <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" asp-for="Input.AccessFailedCount" type="number">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Description <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" asp-for="Input.UserDescription" type="text">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            verification code <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" asp-for="Input.CodeVerify" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Current Location
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="form-control col-md-7 col-xs-12">
+                                City (@Model.CityName) and  Area In City (@Model.AreaCityName)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Input.CurrentCity" class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                            <select name="Input.CurrentCity" asp-items="Model.CityDtoList" id="CityOfOrigin" class="form-control col-md-7 col-xs-12" required="required">
+                                <option>Select City</option>
+
+                            </select>
+
+
+                            <span asp-validation-for="Input.CurrentCity" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label asp-for="Input.AreaInCurrentCity" class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                            <select name="Input.AreaInCurrentCity" id="AreaCity" class="form-control col-md-7 col-xs-12" required="required"></select>
+
+
+                            <span asp-validation-for="Input.AreaInCurrentCity" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+   
+    <script type="text/jscript">
+        $(function () {
+            $('#CityOfOrigin').change(function () {
+
+                var fruits = ["apple", "orange", "cherry"];
+                fruits.forEach(myFunction);
+                var res = "";
+                function myFunction(item, index) {
+                   res += index + ":" + item + "<br>";
+                }
+                console.log(res);
+                $.getJSON('/Home/AreaCityList/' + $('#CityOfOrigin').val(), function (data) {
+
+                    var items = '<option>Choose Area in the city</option>';
+                    $.each(jQuery.map(data, function (i, local) {
+                        items += "<option value='" + i.value + "'>" + i.text + "</option>";
+
+                    }));
+                    items += '<option value="11">Not Listed</option>';
+
+                    console.log(data);
+                    console.log("jd");
+                    console.log(data.data);
+
+                    console.log(items);
+                    $('#AreaCity').html(items);
+                });
+            });
+        });
+    </script>
+}

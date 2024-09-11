@@ -1,0 +1,82 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Transactions";
+  
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+   
+}
+
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Transactions </h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table class="table dataTable table-striped jambo_table bulk_action" id="table">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">Transaction Date </th>
+                            <th class="column-title">Id </th>
+                            <th class="column-title">Username </th>
+                            <th class="column-title">Transaction Type </th>
+                            <th class="column-title">Amount </th>
+
+                            <th class="column-title">Transaction Reference </th>
+                            <th class="column-title">Description </th>
+                            <th class="column-title">Status </th>
+                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin"))
+                            {
+                                <th></th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Transactions.Source)
+                        {
+                        <tr class="even pointer">
+                            <td>@item.DateOfTransaction</td>
+                            <td>@item.Id</td>
+                            <td>@item.Username </td>
+                            <td>@item.TransactionType</td>
+                            <td>@item.Amount</td>
+
+                            <td>@item.TransactionReference</td>
+                            <td>@item.Description</td>
+                            <td>@item.Status</td>
+                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin"))
+                            {
+                                <td>
+                                    <a asp-page="./EditTransaction" class="btn btn-warning btn-xs" asp-route-id="@item.Id">Edit</a>
+                                </td>
+                            }
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<!-- /page content -->
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#table").DataTable(
+            {
+                "order": [[0, 'desc']]
+            }
+        );
+    });
+
+</script>
+}

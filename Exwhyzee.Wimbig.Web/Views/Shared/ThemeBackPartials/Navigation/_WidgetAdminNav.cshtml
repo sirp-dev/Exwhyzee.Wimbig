@@ -1,0 +1,45 @@
+﻿<div class="row">
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="tile-stats" style="background-color:#00cd9b;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-users" style="color:#fff;"></i>
+            </div>
+            <div class="count"> @await Component.InvokeAsync("TotalUsers")</div>
+
+            <h3 style="color:#fff !important;">Users</h3>
+            <p class="text-center">
+                <a asp-area="UserManagement" asp-page="/Users/Index" class="btn btn-success btn-xs"><i class="fa fa-history"></i> User Summary </a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="tile-stats" style="background-color:#39478f;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-money" style="color:#fff;"></i>
+            </div>
+            <div class="count">
+                0 </div>
+
+                    <h3 style="color:#fff !important;">comming soon</h3>
+                    <p class="text-center">
+                        <a class="btn btn-success btn-xs">*****</a>
+
+                    </p>
+                </div>
+            </div>
+            <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="tile-stats" style="background-color:#f66c81;color:#fff;font-weight:400;">
+                    <div class="icon">
+                        <i class="fa fa-money" style="color:#fff;"></i>
+                    </div>
+                    <div class="count">N @await Component.InvokeAsync("Balance")</div>
+                    <h3 style="color:#fff !important;">Balance</h3>
+                    <p class="text-center">
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-success btn-xs"><i class="fa fa-money"></i> Wallet </a>
+
+                    </p>
+                </div>
+            </div>
+
+    </div>

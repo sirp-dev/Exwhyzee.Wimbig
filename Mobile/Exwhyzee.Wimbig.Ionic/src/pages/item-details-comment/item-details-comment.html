@@ -1,0 +1,15 @@
+<!--Theme Comment - Comments Basic -->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle *ngIf="data != null">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-left text-uppercase>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!-- Content -->
+<comment-layout-1 has-header *ngIf="params.commentLayout1" [data]="params.data | async" [events]="params.events">
+</comment-layout-1>
+
+<comment-layout-2 has-header *ngIf="params.commentLayout2" [data]="params.data | async" [events]="params.events">
+</comment-layout-2>

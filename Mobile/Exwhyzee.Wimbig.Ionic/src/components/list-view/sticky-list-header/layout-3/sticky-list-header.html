@@ -1,0 +1,34 @@
+<!-- Theme Sticky List Header - Post -->
+<ion-content no-padding>
+  <div *ngIf="data != null">
+    <ion-list *ngFor="let item of data.items">
+      <!--Text Header Top-->
+      <ion-list-header ion-affix [content]="content">
+        <ion-item transparent no-margin no-padding no-lines>
+          <h2 item-start no-margin text-uppercase>{{item.groupName}}</h2>
+            <div item-content>
+            <span item-end span-small>{{item.dateTime}}</span>
+          </div>
+        </ion-item>
+      </ion-list-header>
+      <!--Text Content List -->
+      <ion-card  *ngFor="let element of item.items" (click)="onEvent('onItemClick', element.title, $event)">
+        <ion-item>
+          <ion-avatar item-start border>
+            <img [src]="element.image" [alt]="element.title" />
+          </ion-avatar>
+          <h2 item-subtitle text-capitalize>{{element.name}}</h2>
+          <button item-end ion-button clear button-action-shit (click)="onEvent('onShare', element, $event)">
+            <ion-icon [name]="element.shareIcon"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-card-content>
+          <!--Content List Title -->
+          <h2 card-title margin-bottom>{{element.title}}</h2>
+          <!--Content List Subtitle -->
+          <p card-subtitle text-wrap>{{element.subtitle}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

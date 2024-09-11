@@ -1,0 +1,69 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.YoutubeLink.IndexModel
+@{
+}
+@{
+   
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    }
+
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Youtube Management &nbsp; &nbsp;  <a class="btn btn-sm btn-primary" asp-page="/YoutubeLink/New"> New Video</a></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+               
+                <table class="table dataTable table-striped jambo_table bulk_action" id="table">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">Name </th>
+                            <th class="column-title">Link </th>
+                            <th class="column-title">Date </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var img in Model.Youtube.Source)
+                        {
+                            <tr class="even pointer">
+                                <td>@img.Title</td>
+                                <td>
+                                     
+                                            <!-- Copy & Pasted from YouTube -->
+@img.Url                                       
+
+                                 
+                                </td>
+                                <td>@img.DateCreated
+                                </td>
+                                <td>
+                                    <a asp-page="./Delete" class="btn btn-warning btn-xs" asp-route-id="@img.Id">Delete</a>
+                                </td>
+
+                            </tr>
+                        }
+                       
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- /page content -->
+@section scripts{
+    <script type="text/javascript">
+                        $("table").DataTable();
+    </script>
+}

@@ -1,0 +1,344 @@
+﻿
+
+@page
+@model WimRegistrationModel
+@{
+    ViewData["Title"] = "Wimbig Register";
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("DGAs") || User.IsInRole("Supervisors") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+    {
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    }
+}
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Wimbig Registrations <span style="font-size:12px;"> Agents and Supervisors</span></h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <p>@TempData["error"]</p>
+                    </div>
+                }
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <p>This Account will be registered under your name. Thank you</p>
+                </div>
+
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="clearfix"></div>
+
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.FirstName" class="col-sm-3 col-form-label"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.FirstName" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.LastName" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.LastName" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.OtherNames" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.OtherNames" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.OtherNames" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.DateOfBirth" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.DateOfBirth" class=form-control col-md-7 col-xs-12 type="text" placeholder="mm/dd/yyyy" />
+                                <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.PhoneNumber" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.PhoneNumber" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.CurrentCity" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <select asp-for="Input.CurrentCity" class="form-control col-md-7 col-xs-12" required="required">
+                                    <option value="">none</option>
+                                    <option value="Aba">Aba </option>
+                                    <option value="Abakaliki"> Abakaliki</option>
+                                    <option value="Abeokuta">Abeokuta </option>
+                                    <option value="Abuja">Abuja </option>
+                                    <option value="Akure">Akure </option>
+                                    <option value="Ado-Ekiti"> Ado-Ekiti</option>
+                                    <option value="Asaba">Asaba</option>
+                                    <option value="Arochukwu">Arochukwu </option>
+                                    <option value="Argungu"> Argungu</option>
+                                    <option value="Awka"> Awka</option>
+                                    <option value="Azare">Azare </option>
+                                    <option value="Agaie"> Agaie</option>
+                                    <option value="Baro">Baro </option>
+                                    <option value="Bida">Bida </option>
+                                    <option value="Birnin Kebbi"> Birnin Kebbi</option>
+                                    <option value="Badagry">Badagry </option>
+                                    <option value="Bauchi"> Bauchi</option>
+                                    <option value="Benin City"> Benin City</option>
+                                    <option value="Birnin Kudu"> Birnin Kudu</option>
+                                    <option value="Brass"> Brass</option>
+                                    <option value="Burutu"> Burutu</option>
+                                    <option value="Biu"> Biu</option>
+                                    <option value="Bonny"> Bonny</option>
+                                    <option value="Bukuru">Bukuru </option>
+                                    <option value="Calabar"> Calabar</option>
+                                    <option value="Damaturu">Damaturu </option>
+                                    <option value="Deba Habe">Deba Habe </option>
+                                    <option value="Degema">Degema </option>
+                                    <option value="Dikwa"> Dikwa</option>
+                                    <option value="Daura"> Daura</option>
+                                    <option value="Dutse">Dutse </option>
+                                    <option value="Ebonyi"> Ebonyi</option>
+                                    <option value="Edo"> Edo</option>
+                                    <option value="Ekiti"> Ekiti</option>
+                                    <option value="Ede">Ede </option>
+                                    <option value="Effon-Alaiye"> Effon-Alaiye</option>
+                                    <option value="Epe">Epe </option>
+                                    <option value="Enugu"> Enugu</option>
+                                    <option value="Gwandu"> Gwandu</option>
+                                    <option value="Gombe"> Gombe</option>
+                                    <option value="Gumel">Gumel </option>
+                                    <option value="Gusau">Gusau </option>
+                                    <option value="Hadejia">Hadejia </option>
+                                    <option value="Ikere-Ekiti"> Ikere-Ekiti</option>
+                                    <option value="Ikot Abasi">Ikot Abasi </option>
+                                    <option value="Ikot Ekpene"> Ikot Ekpene</option>
+                                    <option value="Ibi">Ibi </option>
+                                    <option value="Ijebu-Ode">Ijebu-Ode </option>
+                                    <option value="Ilaro"> Ilaro</option>
+                                    <option value="Ikare"> Ikare</option>
+                                    <option value="Ikire">Ikire </option>
+                                    <option value="Ikirun"> Ikirun</option>
+                                    <option value="Ila">Ila </option>
+                                    <option value="Ikeja"> Ikeja</option>
+                                    <option value="Ikorodu"> Ikorodu</option>
+                                    <option value="Ile-Ife"> Ile-Ife</option>
+                                    <option value="Ilesha">Ilesha </option>
+                                    <option value="Ilobu"> Ilobu</option>
+                                    <option value="Inisa">Inisa </option>
+                                    <option value="Idah">Idah </option>
+                                    <option value="Ilorin">Ilorin </option>
+                                    <option value="Iwo">Iwo </option>
+                                    <option value="Ibadan">Ibadan </option>
+                                    <option value="Iseyin">Iseyin </option>
+                                    <option value="Jebba"> Jebba</option>
+                                    <option value="Jemaa">Jemaa </option>
+                                    <option value="Jalingo"> Jalingo</option>
+                                    <option value="Jama′are"> Jama′are</option>
+                                    <option value="Jimeta">Jimeta </option>
+                                    <option value="Jigawa"> Jigawa</option>
+                                    <option value="Jos">Jos </option>
+                                    <option value="Kano"> Kano</option>
+                                    <option value="Katsina">Katsina </option>
+                                    <option value="Katagum"> Katagum</option>
+                                    <option value="Kazaure">Kazaure </option>
+                                    <option value="Kaduna"> Kaduna</option>
+                                    <option value="Kaura Namoda">Kaura Namoda </option>
+                                    <option value="Kebbi"> Kebbi</option>
+                                    <option value="Kwara"> Kwara</option>
+                                    <option value="Kogi">Kogi </option>
+                                    <option value="Kontagora">Kontagora </option>
+                                    <option value="Kabba"> Kabba</option>
+                                    <option value="Keffi"> Keffi</option>
+                                    <option value="Koko"> Koko</option>
+                                    <option value="Kumo"> Kumo</option>
+                                    <option value="Lafia">Lafia </option>
+                                    <option value="Lokoja">Lokoja </option>
+                                    <option value="Lafiagi">Lafiagi </option>
+                                    <option value="Lagos">Lagos </option>
+                                    <option value="Lapai">Lapai </option>
+                                    <option value="Minna">Minna </option>
+                                    <option value="Mushin"> Mushin</option>
+                                    <option value="Mubi">Mubi </option>
+                                    <option value="Misau">Misau </option>
+                                    <option value="Makurdi"> Makurdi</option>
+                                    <option value="Maiduguri"> Maiduguri</option>
+                                    <option value="Nasarawa"> Nasarawa</option>
+                                    <option value="Niger">Niger </option>
+                                    <option value="Numan">Numan </option>
+                                    <option value="Muri"> Muri</option>
+                                    <option value="Nguru">Nguru </option>
+                                    <option value="Nsukka"> Nsukka</option>
+                                    <option value="Offa"> Offa</option>
+                                    <option value="Okene">Okene </option>
+                                    <option value="Oron"> Oron</option>
+                                    <option value="Onitsha">Onitsha </option>
+                                    <option value="Ogoja"> Ogoja</option>
+                                    <option value="Owerri"> Owerri</option>
+                                    <option value="Oka-Akoko">Oka-Akoko </option>
+                                    <option value="Ondo">Ondo </option>
+                                    <option value="Owo">Owo </option>
+                                    <option value="Ogun">Ogun </option>
+                                    <option value="Ondo">Ondo </option>
+                                    <option value="Oshogbo">Oshogbo </option>
+                                    <option value="Oyo"> Oyo</option>
+                                    <option value="Osun"> Osun</option>
+                                    <option value="Ogbomosho"> Ogbomosho</option>
+                                    <option value="Oyo">Oyo </option>
+                                    <option value="Okrika"> Okrika</option>
+                                    <option value="Pategi">Pategi </option>
+                                    <option value="Plateau"> Plateau</option>
+                                    <option value="Port Harcourt"> Port Harcourt </option>
+                                    <option value="Rivers"> Rivers</option>
+                                    <option value="Saki">Saki </option>
+                                    <option value="Shomolu"> Shomolu</option>
+                                    <option value="Sapele"> Sapele</option>
+                                    <option value="Shagamu"> Shagamu</option>
+                                    <option value="Sokoto">Sokoto </option>
+                                    <option value="Suleja">Suleja </option>
+                                    <option value="Taraba"> Taraba</option>
+                                    <option value="Ughelli"> Ughelli</option>
+                                    <option value="Umuahia">Umuahia </option>
+                                    <option value="Uyo"> Uyo</option>
+                                    <option value="Vom">Vom </option>
+                                    <option value="Wase">Wase </option>
+                                    <option value="Warri"> Warri</option>
+                                    <option value="Yelwa"> Yelwa</option>
+                                    <option value="Yobe">Yobe </option>
+                                    <option value="Yola"> Yola</option>
+                                    <option value="Zamfara">Zamfara </option>
+                                    <option value="Zaria">Zaria </option>
+                                </select>
+                                <span asp-validation-for="Input.CurrentCity" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.UserName" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.UserName" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.Email" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.Email" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.Password" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.Password" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label asp-for="Input.ConfirmPassword" class="col-form-label col-md-3"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.ConfirmPassword" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    @*<div class="">
+                        <div class="form-group">
+                            <label class="col-form-label col-md-3">Area of Operation</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input asp-for="Input.UserDescription" class=form-control col-md-7 col-xs-12 />
+                                <span asp-validation-for="Input.UserDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="">
+
+                        <div class="form-group">
+                            <label class="col-form-label col-md-3">Role</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select class=form-control col-md-7 col-xs-12 asp-for="Input.RoleId" required="required" asp-items="@(new SelectList(Model.Roles, "Name", "Name"))">
+                                    <option value="" disabled selected>Select a Role</option>
+
+                                </select>
+                                <span asp-validation-for="Input.RoleId" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin"))
+                    {
+                        <div class="">
+
+                            <div class="form-group">
+                                <label class="col-form-label col-md-3">Supervisor</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select class=form-control col-md-7 col-xs-12 asp-for="Input.ReferenceId" asp-items="@(new SelectList(Model.UserList, "Id", "NameDescription"))">
+                                        <option value="" disabled selected>Select a Supervisor</option>
+                                        <option value="None" selected>None</option>
+                                    </select>
+                                    <span asp-validation-for="Input.ReferenceId" class="text-danger"></span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+
+
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                            <button type="submit" class="btn btn-success">Create Account</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*</section>*@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

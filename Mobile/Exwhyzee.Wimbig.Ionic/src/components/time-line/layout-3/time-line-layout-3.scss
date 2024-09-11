@@ -1,0 +1,40 @@
+/*  # Time Line -- Timeline With Comments
+===========================================*/
+time-line-layout-3 {
+
+  [item-block] {
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 2px;
+      background: theme-colors('mainColors', 'primary') !important;
+      top:0;
+      left: -20px;
+      bottom: -16px;
+      position: absolute;
+    }
+
+    &:before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: theme-colors('mainColors', 'secondary') !important;
+      top:0;
+      left: -26px;
+      position: absolute;
+      z-index: 999;
+    }
+  }
+
+  ion-list > [item-block]:last-child {
+    &:after {
+      display: none;
+    }
+  }
+  ion-avatar img {
+    height: 72px !important;
+    width: 72px !important;
+  }
+}

@@ -1,0 +1,48 @@
+﻿@page "{id:int?}"
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.RaffleManagement.MailRaffleModel
+@{
+    var user = Model.LoggedInUser;
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <p>@TempData["error"]</p>
+    </div>
+}
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <p>@TempData["msg"]</p>
+    </div>
+}
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Email sending <small></small></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                <h1>Email sending</h1>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

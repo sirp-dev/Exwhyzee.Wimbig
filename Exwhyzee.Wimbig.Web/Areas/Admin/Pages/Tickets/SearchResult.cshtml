@@ -1,0 +1,121 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Tickets.SearchResultModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Total Ticket [@Model.Tickets.TotalCount] <small></small></h2>
+                <a asp-page="./Index"><button class="btn btn-success btn-sm" type="button">Today Tickets</button></a>
+
+                <div class="clearfix"></div>
+                <h3>Total Price: N @Model.Sumdata</h3>
+                <ul>
+                    <li>
+                        <span style="font-weight:900;">Start Date: </span>
+                        @if (Model.startdateData != null)
+                        {
+                            @Model.startdateData.Value.ToString("ddd dd MMM, yyyy")
+                        }
+                    </li>
+                    <li><span style="font-weight:900;">
+    End Date:</span>
+    @if (Model.enddateData != null)
+    {
+        @Model.enddateData.Value.ToString("ddd dd MMM, yyyy")
+
+    }
+</li>
+                    <li><span style="font-weight:900;"> Username:</span> @Model.usernameData</li>
+                </ul>
+                <form class="form-inline" method="get">
+                    <input name="username" type="text" class="form-control" placeholder="Enter Username" />
+                    <input name="startdate" type="date" class="form-control" placeholder="Enter start date" />
+                    <input name="enddate" type="date" class="form-control" placeholder="Enter end date" />
+
+
+                    <input type="submit" value="Sort" class="btn btn-success" style="margin-top:3px;" />
+
+                </form>
+            </div>
+            <div class="x_content">
+
+                <table id="userDatable" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">Id </th>
+                            <th class="column-title">Date </th>
+                            <th class="column-title">User </th>
+                            <th class="column-title">Raffle Name </th>
+                            <th class="column-title">Raffle Id </th>
+                            <th class="column-title">Ticket Number </th>
+                            <th class="column-title">Transaction Id </th>
+                            <th class="column-title">Phone Number</th>
+                            <th class="column-title">Player</th>
+                            <th class="column-title">Location</th>
+                            <th class="column-title">Price </th>
+                            <th class="column-title">Status </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Tickets.Source)
+                        {
+                            <tr class="even pointer">
+                                <td>
+                                    @item.Id
+
+                                </td>
+                                <td>@item.Date</td>
+                                <td> @await Component.InvokeAsync("UserName", new { userid = item.UserId })</td>
+
+                                <td>@item.RaffleName</td>
+                                <td>@item.RaffleId</td>
+                                <td>@item.TicketNumber</td>
+                                <td>@item.TransactionId</td>
+                                <td>@item.PhoneNumber</td>
+                                <td>@item.PlayerName</td>
+                                <td>@item.CurrentLocation</td>
+                                <td>@item.Price</td>
+
+                                <td>
+                                    @if (item.Status == 1)
+                                    {
+                                        <span>Active</span>
+                                    }
+                                    else if (item.Status == 2)
+                                    {
+                                        <span>Drawn</span>
+                                    }
+
+                                    @if (item.IsWinner == true)
+                                    {
+                                        <span class="btn-success">Won</span>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+   
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0, 'desc']]
+                }
+            );
+        });
+
+    </script>
+}

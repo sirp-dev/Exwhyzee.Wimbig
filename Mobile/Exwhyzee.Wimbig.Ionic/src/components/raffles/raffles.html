@@ -1,0 +1,32 @@
+<ion-grid no-padding *ngIf="data != null">
+  <!--- SETTINGS PAGE1 SCREEN -->
+  <ion-row>
+    <ion-col col-12 col-lg-6 col-xl-4 *ngFor="let item of data; let i= index" (click)="onEvent('onItemClick', item, $event)">
+      <!-- Card -->
+      <ion-card padding (click)="onEvent('onItemClick', item, $event)">
+        <img [src]="item.image" />
+        <ion-card-content no-padding margin-top>
+          <span span-small>{{item.time}}</span>
+          <h2 card-title text-capitalize>{{item.name}}</h2>
+          <p card-subtitle text-wrap padding-bottom>{{item.description}}</p>
+          <ion-row no-padding>
+            <ion-col col-auto no-padding>
+              <!-- Button Like -->
+              <button no-padding transparent ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onLike', item, $event)">
+                <ion-icon ion-text color="accentLight" no-padding [ngClass]="{'active' : item.like.isActive}" [name]="item.like.icon"></ion-icon>
+                <p ion-text color="accentLight">{{item.like.number}}</p>
+              </button>
+            </ion-col>
+            <ion-col col-auto no-padding>
+              <!-- Button Commets -->
+              <button no-padding margin-left transparent ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onComment', item, $event)">
+                <ion-icon ion-text color="accentLight" no-padding [ngClass]="{'active' : item.comment.isActive}" [name]="item.comment.icon"></ion-icon>
+                <p ion-text color="accentLight">{{item.comment.number}}</p>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

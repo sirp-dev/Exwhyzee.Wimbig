@@ -1,0 +1,17 @@
+﻿@using Exwhyzee.Wimbig.Core.Authorization.Users
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    Layout = "/Views/Shared/_MainLayout.cshtml";
+}
+
+@RenderSection("Styles", required: false)
+
+@*@section Styles {
+        @RenderSection("Styles", required: false)
+    }*@
+
+@RenderBody()
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

@@ -1,0 +1,388 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Sms.IndexModel
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+               <h2>
+                   <span class="pull-left" style="color:#100e0e;font-weight:bold;"> Bulk SMS Manager</span>
+               </h2>
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                @if (ViewData["message"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["message"]
+                    </div>
+                }
+                @if (ViewData["error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["error"]
+                    </div>
+                }
+                @if (ViewData["error 2"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["error 2"]
+                    </div>
+                }
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr>
+                            <th colspan="9" class="text-center">
+                                Send Message to Groups
+                            </th>
+                        </tr>
+                        <tr class="headings">
+
+                            <th class="column-title">S/N</th>
+                            <th class="column-title">Name </th>
+                            <th class="column-title">Total Numbers </th>
+
+                            <th class="column-title">Action </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="even pointer">
+                            <td>1</td>
+                            <td>All Users</td>
+                            <td>@Model.Users</td>
+                            <td>
+
+                                <a asp-page="./Compose" class="btn btn-warning btn-xs" asp-route-id="All">Send Message</a>
+                            </td>
+
+
+                        </tr>
+                        <tr class="even pointer">
+                            <td>2</td>
+                            <td>DGAs</td>
+                            <td>@Model.DGAs</td>
+                            <td>
+                                <a asp-page="./Compose" class="btn btn-warning btn-xs" asp-route-id="DGA">Send Message</a>
+
+                            </td>
+
+                        </tr>
+
+                        <tr class="even pointer">
+                            <td>3</td>
+                            <td>Agents</td>
+                            <td>@Model.Agents</td>
+                            <td>
+                                <a asp-page="./Compose" class="btn btn-warning btn-xs" asp-route-id="Agent">Send Message</a>
+
+                            </td>
+
+                        </tr>
+
+                        <tr class="even pointer">
+                            <td>4</td>
+                            <td>Supervisor</td>
+                            <td>@Model.Supervisors</td>
+                            <td>
+                                <a asp-page="./Compose" class="btn btn-warning btn-xs" asp-route-id="Supervisor">Send Message</a>
+
+                            </td>
+
+                        </tr>
+                        <tr class="even pointer">
+                            <td>5</td>
+                            <td>Admin</td>
+                            <td>@Model.Admin</td>
+                            <td>
+                                <a asp-page="./Compose" class="btn btn-warning btn-xs" asp-route-id="Admin">Send Message</a>
+
+                            </td>
+
+                        </tr>
+
+                        <tr class="even pointer">
+                            <td>6</td>
+                            <td>Stakeholders</td>
+                            <td>@Model.Stakeholders</td>
+                            <td>
+                                <a asp-page="./Compose" class="btn btn-warning btn-xs" asp-route-id="Stakeholders">Send Message</a>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <hr />
+                <hr />
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="text-center">
+                                Send Message By Location
+                            </th>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <select class="form-control" id="my-dropdown" required="required">
+
+                                    <option value="Aba">Aba </option>
+                                    <option value="Abakaliki"> Abakaliki</option>
+                                    <option value="Abeokuta">Abeokuta </option>
+                                    <option value="Abuja">Abuja </option>
+                                    <option value="Akure">Akure </option>
+                                    <option value="Ado-Ekiti"> Ado-Ekiti</option>
+                                    <option value="Asaba">Asaba</option>
+                                    <option value="Arochukwu">Arochukwu </option>
+                                    <option value="Argungu"> Argungu</option>
+                                    <option value="Awka"> Awka</option>
+                                    <option value="Azare">Azare </option>
+                                    <option value="Agaie"> Agaie</option>
+                                    <option value="Baro">Baro </option>
+                                    <option value="Bida">Bida </option>
+                                    <option value="Birnin Kebbi"> Birnin Kebbi</option>
+                                    <option value="Badagry">Badagry </option>
+                                    <option value="Bauchi"> Bauchi</option>
+                                    <option value="Benin City"> Benin City</option>
+                                    <option value="Birnin Kudu"> Birnin Kudu</option>
+                                    <option value="Brass"> Brass</option>
+                                    <option value="Burutu"> Burutu</option>
+                                    <option value="Biu"> Biu</option>
+                                    <option value="Bonny"> Bonny</option>
+                                    <option value="Bukuru">Bukuru </option>
+                                    <option value="Calabar"> Calabar</option>
+                                    <option value="Damaturu">Damaturu </option>
+                                    <option value="Deba Habe">Deba Habe </option>
+                                    <option value="Degema">Degema </option>
+                                    <option value="Dikwa"> Dikwa</option>
+                                    <option value="Daura"> Daura</option>
+                                    <option value="Dutse">Dutse </option>
+                                    <option value="Ebonyi"> Ebonyi</option>
+                                    <option value="Edo"> Edo</option>
+                                    <option value="Ekiti"> Ekiti</option>
+                                    <option value="Ede">Ede </option>
+                                    <option value="Effon-Alaiye"> Effon-Alaiye</option>
+                                    <option value="Epe">Epe </option>
+                                    <option value="Enugu"> Enugu</option>
+                                    <option value="Gwandu"> Gwandu</option>
+                                    <option value="Gombe"> Gombe</option>
+                                    <option value="Gumel">Gumel </option>
+                                    <option value="Gusau">Gusau </option>
+                                    <option value="Hadejia">Hadejia </option>
+                                    <option value="Ikere-Ekiti"> Ikere-Ekiti</option>
+                                    <option value="Ikot Abasi">Ikot Abasi </option>
+                                    <option value="Ikot Ekpene"> Ikot Ekpene</option>
+                                    <option value="Ibi">Ibi </option>
+                                    <option value="Ijebu-Ode">Ijebu-Ode </option>
+                                    <option value="Ilaro"> Ilaro</option>
+                                    <option value="Ikare"> Ikare</option>
+                                    <option value="Ikire">Ikire </option>
+                                    <option value="Ikirun"> Ikirun</option>
+                                    <option value="Ila">Ila </option>
+                                    <option value="Ikeja"> Ikeja</option>
+                                    <option value="Ikorodu"> Ikorodu</option>
+                                    <option value="Ile-Ife"> Ile-Ife</option>
+                                    <option value="Ilesha">Ilesha </option>
+                                    <option value="Ilobu"> Ilobu</option>
+                                    <option value="Inisa">Inisa </option>
+                                    <option value="Idah">Idah </option>
+                                    <option value="Ilorin">Ilorin </option>
+                                    <option value="Iwo">Iwo </option>
+                                    <option value="Ibadan">Ibadan </option>
+                                    <option value="Iseyin">Iseyin </option>
+                                    <option value="Jebba"> Jebba</option>
+                                    <option value="Jemaa">Jemaa </option>
+                                    <option value="Jalingo"> Jalingo</option>
+                                    <option value="Jama′are"> Jama′are</option>
+                                    <option value="Jimeta">Jimeta </option>
+                                    <option value="Jigawa"> Jigawa</option>
+                                    <option value="Jos">Jos </option>
+                                    <option value="Kano"> Kano</option>
+                                    <option value="Katsina">Katsina </option>
+                                    <option value="Katagum"> Katagum</option>
+                                    <option value="Kazaure">Kazaure </option>
+                                    <option value="Kaduna"> Kaduna</option>
+                                    <option value="Kaura Namoda">Kaura Namoda </option>
+                                    <option value="Kebbi"> Kebbi</option>
+                                    <option value="Kwara"> Kwara</option>
+                                    <option value="Kogi">Kogi </option>
+                                    <option value="Kontagora">Kontagora </option>
+                                    <option value="Kabba"> Kabba</option>
+                                    <option value="Keffi"> Keffi</option>
+                                    <option value="Koko"> Koko</option>
+                                    <option value="Kumo"> Kumo</option>
+                                    <option value="Lafia">Lafia </option>
+                                    <option value="Lokoja">Lokoja </option>
+                                    <option value="Lafiagi">Lafiagi </option>
+                                    <option value="Lagos">Lagos </option>
+                                    <option value="Lapai">Lapai </option>
+                                    <option value="Minna">Minna </option>
+                                    <option value="Mushin"> Mushin</option>
+                                    <option value="Mubi">Mubi </option>
+                                    <option value="Misau">Misau </option>
+                                    <option value="Makurdi"> Makurdi</option>
+                                    <option value="Maiduguri"> Maiduguri</option>
+                                    <option value="Nasarawa"> Nasarawa</option>
+                                    <option value="Niger">Niger </option>
+                                    <option value="Numan">Numan </option>
+                                    <option value="Muri"> Muri</option>
+                                    <option value="Nguru">Nguru </option>
+                                    <option value="Nsukka"> Nsukka</option>
+                                    <option value="Offa"> Offa</option>
+                                    <option value="Okene">Okene </option>
+                                    <option value="Oron"> Oron</option>
+                                    <option value="Onitsha">Onitsha </option>
+                                    <option value="Ogoja"> Ogoja</option>
+                                    <option value="Owerri"> Owerri</option>
+                                    <option value="Oka-Akoko">Oka-Akoko </option>
+                                    <option value="Ondo">Ondo </option>
+                                    <option value="Owo">Owo </option>
+                                    <option value="Ogun">Ogun </option>
+                                    <option value="Ondo">Ondo </option>
+                                    <option value="Oshogbo">Oshogbo </option>
+                                    <option value="Oyo"> Oyo</option>
+                                    <option value="Osun"> Osun</option>
+                                    <option value="Ogbomosho"> Ogbomosho</option>
+                                    <option value="Oyo">Oyo </option>
+                                    <option value="Okrika"> Okrika</option>
+                                    <option value="Pategi">Pategi </option>
+                                    <option value="Plateau"> Plateau</option>
+                                    <option value="Port Harcourt"> Port Harcourt </option>
+                                    <option value="Rivers"> Rivers</option>
+                                    <option value="Saki">Saki </option>
+                                    <option value="Shomolu"> Shomolu</option>
+                                    <option value="Sapele"> Sapele</option>
+                                    <option value="Shagamu"> Shagamu</option>
+                                    <option value="Sokoto">Sokoto </option>
+                                    <option value="Suleja">Suleja </option>
+                                    <option value="Taraba"> Taraba</option>
+                                    <option value="Ughelli"> Ughelli</option>
+                                    <option value="Umuahia">Umuahia </option>
+                                    <option value="Uyo"> Uyo</option>
+                                    <option value="Vom">Vom </option>
+                                    <option value="Wase">Wase </option>
+                                    <option value="Warri"> Warri</option>
+                                    <option value="Yelwa"> Yelwa</option>
+                                    <option value="Yobe">Yobe </option>
+                                    <option value="Yola"> Yola</option>
+                                    <option value="Zamfara">Zamfara </option>
+                                    <option value="Zaria">Zaria </option>
+                                </select>
+
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-warning form-control btn-xs go-btn">Send Message</button>
+                                @*<a asp-page="./Compose" >Send Message</a>*@
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr />
+                <hr />
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable1">
+                    <thead>
+                        <tr>
+                            <th colspan="9" class="text-center">
+                                Send Message to Individuals
+                            </th>
+                        </tr>
+                        <tr class="headings">
+
+                            <th class="column-title">S/N</th>
+                            <th class="column-title">Date</th>
+                            <th class="column-title">User Name </th>
+                            <th class="column-title">Fullname </th>
+                            <th class="column-title">Phone Number </th>
+                            <th class="column-title">city </th>
+                            <th class="column-title">Bal </th>
+
+                           @* <th class="column-title">Roles </th>*@
+
+                            <th class="column-title">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.UsersInRole.Source.Where(x => x.UserName != "mJinmcever").OrderByDescending(x => x.DateRegistered))
+                        {
+
+                            <tr class="even pointer">
+                                @{ sn++;}
+                                <td>@sn</td>
+                                <td>@user.DateRegistered</td>
+                                <td>@user.UserName </td>
+                                <td>@user.FullName</td>
+                                <td>@user.PhoneNumber</td>
+                                <td>@user.CurrentCity</td>
+
+                                <td>
+                                    &#8358;@user.Balance
+                                </td>
+
+                                @*<td>
+                                    @await Component.InvokeAsync("Role", new { id = user.Id })
+
+                                </td>*@
+
+
+                                <td>
+                                    <a asp-page="./Compose" class="btn btn-warning btn-xs" asp-route-id="@user.Id">Send Message</a>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0, 'asc']]
+                }
+            );
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable1").DataTable(
+                {
+                    "order": [[0, 'asc']]
+                }
+            );
+        });
+        $('.go-btn').click(function () {
+            window.location = window.location.href+"/Compose?id=Location"+$('#my-dropdown').val();
+        });
+
+      
+       
+    </script>
+}
+

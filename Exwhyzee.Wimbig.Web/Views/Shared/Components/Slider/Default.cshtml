@@ -1,0 +1,7 @@
+﻿@model ICollection<Exwhyzee.Wimbig.Core.BarnerImage.BarnerFile>
+
+@foreach (var img in Model)
+{
+    <img src="@img.Url" data-thumb="@img.Url" alt="" />
+
+}

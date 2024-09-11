@@ -1,0 +1,22 @@
+﻿@model ICollection<Exwhyzee.Wimbig.Core.SideBarner.SideBarnerFile>
+
+@foreach (var img in Model)
+{
+    <div class="ad-placement">
+        <a href="">
+            <img src="@img.Url" alt="ad image" class="img-responsive">
+        </a>
+    </div>
+    <br /><br />
+}
+@if (ViewBag.small != null)
+{
+    <div class="ad-placement">
+        <a href="">
+
+            <img src="@ViewBag.small" alt="ad image" class="img-responsive">
+
+        </a>
+    </div>
+    <br /><br />
+}

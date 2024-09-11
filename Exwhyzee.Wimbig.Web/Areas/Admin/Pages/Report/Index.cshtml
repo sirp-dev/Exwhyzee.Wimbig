@@ -1,0 +1,69 @@
+@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Report.IndexModel
+@{
+    ViewData["Title"] = "Report";
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+<h2>Report</h2>
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">Date</th>
+                            <th class="column-title">New Users </th>
+                            <th class="column-title">Total Ticket </th>
+                            <th class="column-title">Total Raffle </th>
+                            
+                            <th class="column-title">Total Cash </th>
+                            <th class="column-title">Wallet Balance </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Reports.Source)
+                        {
+                        <tr class="even pointer">
+                          
+                            <td>@user.Date.ToString("ddd dd MMM, yyyy")</td>
+                            <td>@user.TotalUsers</td>
+                            <td>@user.TotalTickets</td>
+                            <td>@user.TotalRaffle</td>
+                            
+                            <td> &#8358;@user.TotalCash</td>
+                            <td>&#8358;@user.TotalWalletCash</td>
+                            
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0]]
+                }
+            );
+        });
+
+    </script>
+}

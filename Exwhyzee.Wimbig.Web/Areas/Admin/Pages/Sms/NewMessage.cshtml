@@ -1,0 +1,139 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Sms.NewMessage
+@{
+    ViewData["Title"] = "Report";
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>New Message</h2>
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <div class="col-md-12">
+                    @if (ViewData["message"] != null)
+                    {
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["message"]
+                    </div>
+                    }
+                    @if (ViewData["error"] != null)
+                    {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["error"]
+                    </div>
+                    }
+                    @if (ViewData["error 2"] != null)
+                    {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["error 2"]
+                    </div>
+                    }
+
+                    <form class="form-horizontal form-label-left" method="post" nov>
+
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                Sender Id
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <input class="form-control" asp-for="Input.SenderId" autofocus required="required" type="text" placeholder="Sender Id">
+
+                            </div>
+                        </div>
+                       
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                Recipient
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+
+                                <textarea class="form-control" asp-for="Input.RecepientNumbers" placeholder="0800000000000,0900000000000,070 etc">
+                                   
+</textarea>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                Message
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <textarea class="form-control" asp-for="Input.Message" required="required">
+
+</textarea>
+
+                                <p id="count"></p>
+                                <p id="page"></p>
+                            </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <button id="submit" type="submit" class="btn btn-success">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/ThemeBack/vendors/moment/src/lib/moment/moment.js"></script>
+    <script>
+        $("#Content").keyup(function () {
+            // $("#count").text("Characters Type:" +$(this).val().length +"; Characters left: " + (320 - $(this).val().length));
+            //$("#count").text("Characters left: " + (500 - $(this).val().length));
+            if (($(this).val().length) <= 160) {
+                $("#page").text("Page(s): 1")
+                $("#count").text("Characters Type:" + $(this).val().length + "; Characters left: " + (160 - $(this).val().length));
+            }
+            else if (($(this).val().length) > 160 && ($(this).val().length) < 319) {
+                $("#page").text("Page(s): 2")
+                $("#count").text("Characters Type:" + $(this).val().length + "; Characters left: " + (320 - $(this).val().length));
+            }
+            else if (($(this).val().length) > 320 && ($(this).val().length) < 479) {
+                $("#page").text("Page(s): 3")
+                $("#count").text("Characters Type:" + $(this).val().length + "; Characters left: " + (480 - $(this).val().length));
+            }
+            else if (($(this).val().length) > 480 && ($(this).val().length) < 639) {
+                $("#page").text("Page(s): 4")
+                $("#count").text("Characters Type:" + $(this).val().length + "; Characters left: " + (640 - $(this).val().length));
+            }
+            else if (($(this).val().length) > 640 && ($(this).val().length) < 799) {
+                $("#page").text("Page(s): 5")
+                $("#count").text("Characters Type:" + $(this).val().length + "; Characters left: " + (800 - $(this).val().length));
+            }
+            else if (($(this).val().length) > 800 && ($(this).val().length) < 959) {
+                $("#page").text("Page(s): 6")
+                $("#count").text("Characters Type:" + $(this).val().length + "; Characters left: " + (960 - $(this).val().length));
+            }
+            else {
+                $("#page").text("Page(s): More than 6")
+                $("#count").text("Characters Type:" + $(this).val().length + "; Characters left: Text too long. Consider sending in batches.");
+
+            }
+        });
+
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                format: 'DD/MM/YYYY hh:mm'
+            });
+        });
+    </script>
+}

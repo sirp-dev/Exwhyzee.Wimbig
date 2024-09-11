@@ -1,0 +1,79 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.LotteryCommision.Pages.Dashboard.IndexModel
+@{
+    int sno = 0;
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin"))
+{
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+}
+else
+{
+    Layout = "~/Views/Shared/_LotteryThemeBackLayout.cshtml";
+
+}
+    }
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Wimbig Raffles (Total Raffles [@Model.Raffles.TotalCount] <small></small></h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table dataTable table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Date</th>
+                            <th>Raffle Name</th>
+                            <th> Number of Ticket</th>
+                            <th>Price (N)</th>
+                            <th>Total Sold</th>
+
+                            <th>Status</th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        @foreach (var item in Model.Raffles.Source)
+                        {
+                        <tr>
+                            <td>
+                                @{ sno++; }
+                                @sno
+                            </td>
+                            <td>@item.DateCreated</td>
+                            <td>@item.Name</td>
+                            <td>@item.NumberOfTickets</td>
+                            <td>@item.PricePerTicket</td>
+                            <td>@item.TotalSold</td>
+                            <td>@Html.DisplayFor(model => item.Status)</td>
+
+                            <td><a asp-page="./Tickets" class="btn btn-default flip" asp-route-id="@item.Id">Details</a></td>
+
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable();
+        });
+
+    </script>
+}
+

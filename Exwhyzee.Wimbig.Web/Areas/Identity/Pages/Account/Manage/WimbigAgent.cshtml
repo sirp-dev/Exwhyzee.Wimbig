@@ -1,0 +1,112 @@
+﻿
+@page
+@model WimbigAgentModel
+@{
+
+    Layout = "~/Views/Shared/_LayoutAgent.cshtml";
+
+}
+
+
+<section class="contact-us light-grey" style="padding:10px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="Heading-title black">
+                        <h1>Agent Registration</h1>
+                        <p style="color:#6bc242;">
+                            The way to get started is to quit talking and begin doing.” Join the Next Generation Multi-Millionaires... Become A Wimbig.com Agent...
+                        </p>
+                    </div>
+                </div>
+                <br />
+                <div class="col-md-2 col-sm-2"></div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <form class="row" method="post">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Name <span class="required">*</span></label>
+                                <input placeholder="" asp-for="AgentDto.Fullname" name="AgentDto.Fullname" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Email <span class="required">*</span></label>
+                                <input placeholder="" asp-for="AgentDto.EmailAddress" name="AgentDto.EmailAddress" class="form-control" type="email">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Phone <span class="required">*</span></label>
+                                <input placeholder="" asp-for="AgentDto.PhoneNumber" name="AgentDto.PhoneNumber" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Gender <span class="required">*</span></label>
+                                <select asp-for="AgentDto.Gender" class="form-control">
+                                    <option value="">Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                              
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>State <span class="required">*</span></label>
+                                <input placeholder="" asp-for="AgentDto.State" name="AgentDto.State" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>LGA <span class="required">*</span></label>
+                                <input placeholder="" asp-for="AgentDto.LGA" name="AgentDto.LGA" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Are You New To Wimbig <span class="required">*</span></label>
+                                <select asp-for="AgentDto.AreYouNewToWimbig" class="form-control">
+                                   
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Shop Location <span class="required">*</span></label>
+                                <input placeholder="" asp-for="AgentDto.ShopLocation" name="AgentDto.ShopLocation" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Contact Address <span class="required">*</span></label>
+                                <textarea cols="6" rows="8" asp-for="AgentDto.ContactAddress" name="AgentDto.ContactAddress" placeholder="" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <button id="submit" type="submit" class="btn btn-default"> Submit Form <i class="fa fa-angle-double-right"></i> </button>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2 col-sm-2"></div>
+            </div>
+            </div>
+    </div>
+</section>
+
+
+
+
+@section scripts{
+    <!---->
+    <script type="text/javascript">
+
+    </script>
+}

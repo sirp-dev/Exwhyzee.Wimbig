@@ -1,0 +1,14 @@
+/*  # Theme Two Columns
+===========================================*/
+
+check-box-layout-4 {
+  ion-row {
+    ion-item {
+      border-bottom: 1px solid theme-colors('mainColors', 'accent')!important;
+    }
+
+    > ion-col:nth-child(2n) ion-item {
+      border-left: 1px solid theme-colors('mainColors', 'accent') !important;
+    }
+  }
+}

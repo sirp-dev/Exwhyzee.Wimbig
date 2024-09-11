@@ -1,0 +1,88 @@
+﻿@page
+@model WinnerListModel
+@{
+    int sno = 0;
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("DGAs") || User.IsInRole("Supervisors") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+    {
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    }
+
+    else
+    {
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    }
+}
+@using Exwhyzee.Wimbig.Web.Extensions.Enums
+<!-- page content -->
+
+
+<section class="dashboard" style="background-color:#FFF;color:#000000;">
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>List Of Winners</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table class="table dataTable table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">SN </th>
+                            <th class="column-title">Date </th>
+                            <th class="column-title">Status </th>
+
+                            <th class="column-title">Raffle Name </th>
+                            <th class="column-title">Raffle Id </th>
+                            <th class="column-title">Ticket Number </th>
+                            <th class="column-title">Player Name </th>
+                            <th class="column-title">Email </th>
+                            <th class="column-title">Phone </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Tickets)
+                        {
+                            <tr class="even pointer">
+                                <td>
+                                    @{ sno++; }
+                                    @sno
+                                </td>
+                                <td>@user.DateWon</td>
+                                <td>Winner</td>
+
+                                <td>@user.RaffleName</td>
+                                <td>@user.RaffleId</td>
+                                <td>@user.TicketNumber</td>
+                                <td>@user.PlayerName</td>
+                                <td>@user.Email</td>
+                                <td>@user.PhoneNumber</td>
+
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable({
+
+                "order": [[0, 'asc']]
+            });
+        });
+
+    </script>
+}

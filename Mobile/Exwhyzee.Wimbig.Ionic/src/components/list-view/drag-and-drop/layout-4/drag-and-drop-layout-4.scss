@@ -1,0 +1,14 @@
+/*  # Theme Medium item with image
+===========================================*/
+drag-and-drop-layout-4 {
+  [margin-top] {
+    margin-top: 10px !important;
+  }
+
+  ion-thumbnail {
+    img {
+      height: 110px !important;
+      width: 160px !important;
+    }
+  }
+}

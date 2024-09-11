@@ -1,0 +1,19 @@
+<!--Action Sheet components-->
+<ion-header header-ios>
+    <ion-navbar>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title text-left text-uppercase>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!--Content-->
+
+<action-sheet-layout-1  has-header *ngIf="params.actionSheetLayout1" [data]="params.data | async" [events]="params.events">
+</action-sheet-layout-1>
+
+<action-sheet-layout-2 has-header  *ngIf="params.actionSheetLayout2" [data]="params.data | async" [events]="params.events">
+</action-sheet-layout-2>
+
+<action-sheet-layout-3 has-header  *ngIf="params.actionSheetLayout3" [data]="params.data | async" [events]="params.events">
+</action-sheet-layout-3>

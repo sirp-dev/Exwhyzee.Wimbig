@@ -1,0 +1,25 @@
+﻿@page
+@model SmsServiceModel
+@{
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Sms Service <small></small></h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <div>
+                    <h2>Balance: @await Component.InvokeAsync("SmsBalance")</h2>
+                    <a target="_blank" href="http://account.kudisms.net/">
+                        <strong>visit</strong> 
+                    </a> to view history
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>

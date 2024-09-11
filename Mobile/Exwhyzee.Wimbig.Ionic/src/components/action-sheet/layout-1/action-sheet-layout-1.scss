@@ -1,0 +1,47 @@
+//*  #Style Action Sheet - Basic
+// ===========================================*/
+action-sheet-layout-1 {
+  [background-size] {
+    height: 66%;
+    position: relative;
+  }
+  // New Category
+  [new-category] {
+    display: block;
+    font-size: 11px;
+    color: theme-colors('textColors', 'accent') !important;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+  }
+  // Parallax Title
+  [parallax-title] {
+    font-size: $h1-font-size !important;
+  }
+  // Parallax Description
+  [parallax-description] {
+    margin-bottom: 5px;
+  }
+  // Action sheet
+  [button-action-shit] {
+    z-index: 99999;
+    background-color: transparent !important;
+    border-radius: 100%;
+    top: 0;
+    right: 0;
+    height: 50px !important;
+    width: 50px;
+    border-radius: 50%;
+    padding: 20px 11px !important;
+
+    ion-icon {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      display: inline-block;
+      color: theme-colors('mainColors', 'secondary');
+      font-size: 30px;
+    }
+  }
+}

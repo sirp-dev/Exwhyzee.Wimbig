@@ -1,0 +1,256 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+
+}
+<style>
+    .register-wimbig input {
+        background-color: rgb(250, 255, 189) !important;
+        background-image: none !important;
+        color: rgb(0, 0, 0) !important;
+    }
+
+    .register-header {
+        background: #34495e;
+        color: #fff;
+        display: block;
+        padding: 5px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .register-wimbig input {
+        background-color: #fff !important;
+        border-color: #110e0e !important;
+    }
+</style>
+<section class="ad-breadcrumb parallex">
+    <div class="container page-banner">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <h1>Registration <span style="font-size:12px;font-weight:900;">All fields with axteris (*) are required.</span></h1>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <ol class="breadcrumb pull-right flip flip">
+                    <li><a href="#">Play Small... WinBig...</a></li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="dashboard" style="background-color:#ffffff;">
+
+
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="dashboard-main-disc register-wimbig" style="color:#FFF !important;background-color:#ffffff;padding:0px;">
+                @await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <p>@TempData["error"]</p>
+                    </div>
+                }
+                <div class="post-ad-box" style="background-color:#ffffff;color:#110e0e !important;">
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+
+                    </div>
+
+                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.FirstName" class="col-sm-3 col-form-label"></label>
+                                <div class="col-sm-9">
+                                    <input asp-for="Input.FirstName" class="form-control" />
+                                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.LastName" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+                                    <input asp-for="Input.LastName" class="form-control" />
+                                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.OtherNames" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+                                    <input asp-for="Input.OtherNames" class="form-control" />
+                                    <span asp-validation-for="Input.OtherNames" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.DateOfBirth" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+                                    <input asp-for="Input.DateOfBirth" class="form-control" type="text" placeholder="MM/DD/YYYY" />
+                                    <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.PhoneNumber" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+                                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.CurrentCity" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+
+                                    <select name="Input.CurrentCity" asp-items="Model.CityDtoList" id="CityOfOrigin" class="form-control" required="required">
+                                        <option>Select City</option>
+
+</select>
+
+
+                                    <span asp-validation-for="Input.CurrentCity" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.AreaInCurrentCity" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+
+                                    <select name="Input.AreaInCurrentCity" id="AreaCity" class="form-control" required="required"></select>
+
+
+                                    <span asp-validation-for="Input.AreaInCurrentCity" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.UserName" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+                                    <input asp-for="Input.UserName" class="form-control" />
+                                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.Email" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+                                    <input asp-for="Input.Email" class="form-control" />
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                                <div class="form-group">
+                                    <label class="col-form-label col-md-3"></label>
+                                    <div class="col-md-9">
+
+                                        <p>Password must containt number,alphabet and atleast 6 character e.g: John@123</p>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.Password" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+
+                                    <input asp-for="Input.Password" class="form-control" />
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label asp-for="Input.ConfirmPassword" class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="form-group">
+                                <label class="col-form-label col-md-3"></label>
+                                <div class="col-md-9">
+                                    <p class="term-condition">
+                                        <input type="checkbox" value="checkbox" id="chkBox" /> &nbsp;&nbsp; I HAVE READ AND ACCEPT THE <a asp-area="" asp-controller="Home" asp-action="TermandConditions">TERMS & CONDITIONS</a>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-11 col-sm-12 col-xs-12 nopadding">
+                            <div class="col-md-offset-6">
+                                <button disabled="disabled" type="submit" id="btnSubmit" class="button-grey btn">Register</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function checked(e) {
+            var submit = document.getElementById("btnSubmit");
+
+            submit.classList.toggle("button-grey");
+            submit.classList.toggle("button-orange");
+            submit.disabled = !submit.disabled;
+        }
+
+        var chkBox = document.getElementById("chkBox");
+
+        chkBox.addEventListener("change", checked);
+    </script>
+    @*/Index?OnPostGeoLocation*@
+    <script type="text/jscript">
+        $(function () {
+            $('#CityOfOrigin').change(function () {
+
+                var fruits = ["apple", "orange", "cherry"];
+                fruits.forEach(myFunction);
+                var res = "";
+                function myFunction(item, index) {
+                   res += index + ":" + item + "<br>";
+                }
+                console.log(res);
+                $.getJSON('/Home/AreaCityList/' + $('#CityOfOrigin').val(), function (data) {
+                  
+                    var items = '<option>Choose Area in the city</option>';
+                    $.each(jQuery.map(data, function (i, local) {
+                        items += "<option value='" + i.value + "'>" + i.text + "</option>";
+                      
+                    }));
+                    items += '<option value="11">Not Listed</option>';
+                 
+                    console.log(data);
+                    console.log("jd");
+                    console.log(data.data);
+
+                    console.log(items);
+                    $('#AreaCity').html(items);
+                });
+            });
+        });
+    </script>
+}

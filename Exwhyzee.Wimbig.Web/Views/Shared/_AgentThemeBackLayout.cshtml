@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="~/images/wimbig fav.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>WIMBIG | Play Small... WinBig...</title>
+
+    <!-- Bootstrap -->
+    <link href="~/ThemeBack/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/ThemeBack/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/ThemeBack/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/ThemeBack/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="~/ThemeBack/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="~/ThemeBack/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/ThemeBack/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <link href="~/ThemeBack/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="~/ThemeBack/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="~/ThemeBack/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/ThemeBack/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="~/ThemeBack/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    @RenderSection("styles", required: false)
+
+    <!-- Custom Theme Style -->
+    <link href="~/ThemeBack/build/css/custom.min.css" rel="stylesheet">
+    <style>
+        .blog-post {
+            color: #162532;
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            margin-bottom: 30px;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-img {
+            overflow: hidden;
+        }
+
+        .blog-post a {
+            color: inherit;
+            text-decoration: none;
+            text-transform: capitalize;
+            font-weight: bolder;
+            text-align: center !important;
+        }
+
+        .post-img img {
+            width: 100%;
+            height: auto;
+            -moz-transition: all 2s;
+            -o-transition: all 2s;
+            -webkit-transition: all 2s;
+            transition: all 2s;
+        }
+
+        .post-info {
+            background-color: #FFF;
+            font-size: 11px;
+            padding: 5px 3px;
+            position: relative;
+            text-transform: capitalize;
+            width: 100%;
+            padding-bottom: 0;
+        }
+
+        .post-info {
+            background-color: #FFF;
+            font-size: 11px;
+            padding: 5px 3px;
+            position: relative;
+            text-transform: capitalize;
+            width: 100%;
+            padding-bottom: 0;
+        }
+
+        .play-info p {
+            letter-spacing: 0px;
+            line-height: 1.4;
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+
+        .play-info p {
+            display: block;
+            float: left;
+            text-align: center;
+            width: 33.33333%;
+        }
+
+        .post-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            padding: 0 10px;
+            text-transform: capitalize;
+            text-align: center;
+            transition: all 0.4s ease 0s;
+        }
+
+        .ad-bottom-area {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            background-color: #6bc242;
+        }
+
+        .ad-listing .ad-bottom-area .btn-default, .all-ads-list-box2 .ad-bottom-area .btn-default {
+            border: none;
+            color: #242424;
+            font-weight: 600;
+            padding: 0;
+            line-height: 0px;
+            background-color: transparent;
+            text-shadow: none;
+            color: #FFF;
+        }
+
+        .blog-post .btn-default {
+            color: #FFF !important;
+            text-shadow: none !important;
+        }
+
+        .blog-post .btn {
+            margin: 10px;
+            margin-right: 0;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="#" class="site_title"> <span>Wimbig Agent</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <partial name="./ThemeBackPartials/_AdminProfilePartial.cshtml" />
+
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Navigation</h3>
+                            <ul class="nav side-menu">
+                                <li><a asp-area="StakeHolders" asp-page="/Agents/Index"><i class="fa fa-dashboard"></i> Dashboard <span class="label label-success pull-right">Play now</span></a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/RaffleHistory"><i class="fa fa-history"></i> Raffle History </a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><i class="fa fa-money"></i> Wallet </a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/UpdateProfile"><i class="fa fa-user"></i> Profile </a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/WinnerList"><i class="fa fa-user"></i> Winner </a></li>
+
+
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <partial name="./ThemeBackPartials/_AdminLogoutPartial.cshtml" />
+
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            <div class="icon">
+                                <i class="fa fa-gamepad"></i>
+                            </div>
+                            <div class="count"> @await Component.InvokeAsync("TotalTicket")</div>
+
+                            <h3>Tickets</h3>
+                            <p class="text-center">
+                                <a asp-area="Identity" asp-page="/Account/Manage/RaffleHistory" class="btn btn-success btn-xs"><i class="fa fa-history"></i> Ticket History </a>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            <div class="icon">
+                                <i class="fa fa-product-hunt"></i>
+                            </div>
+                            <div class="count"> @await Component.InvokeAsync("TotalRaffle")</div>
+
+                            <h3>Raffles</h3>
+                            <p class="text-center">
+                                <a asp-area="StakeHolders" asp-page="/Agents/Index" class="btn btn-success btn-xs">View Raffles</a>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            <div class="icon">
+                                <i class="fa fa-money"></i>
+                            </div>
+                            <div class="count">#@await Component.InvokeAsync("Balance")</div>
+
+                            <h3>Balance</h3>
+                            <p class="text-center">
+                                <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-success btn-xs"><i class="fa fa-money"></i> Wallet </a>
+
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                @RenderBody()
+            </div>
+
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Winmbig Service Ltd
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/ThemeBack/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/ThemeBack/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/ThemeBack/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/ThemeBack/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="~/ThemeBack/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="~/ThemeBack/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/ThemeBack/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/ThemeBack/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="~/ThemeBack/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="~/ThemeBack/vendors/Flot/jquery.flot.js"></script>
+    <script src="~/ThemeBack/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="~/ThemeBack/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="~/ThemeBack/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="~/ThemeBack/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="~/ThemeBack/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="~/ThemeBack/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="~/ThemeBack/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="~/ThemeBack/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="~/ThemeBack/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="~/ThemeBack/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/ThemeBack/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/ThemeBack/vendors/moment/min/moment.min.js"></script>
+    <script src="~/ThemeBack/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="~/ThemeBack/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/ThemeBack/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/ThemeBack/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/ThemeBack/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/ThemeBack/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+    <!-- Custom Theme Scripts -->
+    <script src="~/ThemeBack/build/js/custom.min.js"></script>
+
+</body>
+</html>

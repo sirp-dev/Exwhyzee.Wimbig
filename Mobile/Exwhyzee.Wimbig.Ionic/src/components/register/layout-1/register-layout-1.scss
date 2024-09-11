@@ -1,0 +1,52 @@
+/*  #Style Register + logo
+================================================*/
+register-layout-1 {
+  img {
+    max-width: 50px;
+    max-height: 50px;
+  }
+
+  .form {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-z2;
+    padding: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    ion-item {
+      padding: 0 !important;
+      padding-bottom: 15px !important;
+
+      [error-field] {
+        margin: 0 !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        font-size: 12px;
+        color: theme-colors('textColors', 'primary') !important;
+      }
+
+      ion-label {
+        color: theme-colors('textColors', 'primary') !important;
+        margin-top: 0 !important;
+      }
+
+      .item-inner {
+        border-bottom-color: theme-colors('mainColors', 'secondary') !important;
+        box-shadow: none !important;
+      }
+
+    }
+
+    [button-clear] {
+      margin-top: 15px;
+    }
+
+    [title] {
+      font-size: $h1-font-size;
+      color: theme-colors('textColors', 'primary');
+      text-transform: uppercase;
+      margin: 0 10px;
+    }
+  }
+}

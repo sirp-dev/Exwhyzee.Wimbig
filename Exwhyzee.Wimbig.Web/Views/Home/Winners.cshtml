@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Exwhyzee.Wimbig.Application.Tickets.Dtos.TicketDto>
+@{
+    ViewData["Title"] = "Winners";
+}
+
+<section class="ad-breadcrumb parallex">
+    <div class="container page-banner">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <h1>Winners</h1>
+            </div>
+            <div class="col-sm-6 col-md-6 hidden-sm hidden-xs">
+                <ol class="breadcrumb pull-right flip flip">
+                    <li><a href="#">Play Small... WinBig...</a></li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="dashboard light-blue">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7 col-sm-12 col-xs-12">
+                <div class="dashboard-main-disc" style="margin-left:10%;">
+
+                    <div class="ad-listing">
+                        <div class="all-ads-list-box2" style="padding-top:50px;">
+                            @foreach (var item in Model)
+                            {
+                                <div class="ad-box ad-box-2 light-grey" style="float:none;">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 nopadding">
+                                        <div class="comp-logo">
+                                            <a href="">  @await Component.InvokeAsync("RaffleImage", new { raffleId = item.RaffleId }) </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <div class="ad-box-2-detail">
+                                            <div class="ad-title-box">
+                                                <div class="ad-title"><a href="#">Name: @item.PlayerName (Ticket Number: @item.TicketNumber) </a></div>
+                                                <div class="ad-title-meta">
+                                                    <span>
+                                                        <i class="fa fa-map-marker"></i> @item.Email
+                                                    </span>
+                                                    <span>
+                                                        <i class="fa fa-calendar"></i> @item.DateWon
+                                                    </span>
+                                                    <span>
+                                                        <i class="fa fa-mobile"></i> @item.PhoneNumber
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="ad-bottom-area">
+                                                <span style="color:#ffffff;font-weight:700;">
+                                                    <i class="fa fa-history"></i> Winner <a style="color:#ffffff;font-weight:700;" href="">Raffle Info: @item.RaffleName (@item.RaffleId)</a>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                <div class="" style="padding-top:50px;">
+                    @await Component.InvokeAsync("WinnerSide")
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,119 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Sms.MessageStoreModel
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+               <h2>
+                   <span class="pull-left" style="color:#100e0e;font-weight:bold;"> Message Store</span>
+               </h2>
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                @if (TempData["success"] != null)
+                {
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @TempData["success"]
+                </div>
+                }
+                @if (TempData["fail"] != null)
+                {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @TempData["fail"]
+                </div>
+                }
+              
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable1">
+                    <thead>
+                        <tr>
+                            <th colspan="10" class="text-center">
+                                Send Message to Individuals
+                            </th>
+                        </tr>
+                        <tr class="headings">
+
+                            <th class="column-title">S/N</th>
+                            <th class="column-title">Id</th>
+                            <th class="column-title">Date Created</th>
+                            <th class="column-title">Date Sent</th>
+                            <th class="column-title">Response</th>
+                            <th class="column-title">Status</th>
+                            <th class="column-title">Retries</th>
+                            <th class="column-title">Phone </th>
+
+                            <th class="column-title">Message </th>
+                            <th class="column-title">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Message.Source.OrderByDescending(x => x.Id))
+                        {
+
+                        <tr class="even pointer">
+                            @{ sn++;}
+                            <td>@sn</td>
+                            <td>@user.Id</td>
+                            <td>@user.DateCreated</td>
+                            <td>@user.DateSent </td>
+                            <td>@user.Response</td>
+                            <td>@user.MessageStatus</td>
+                            <td>@user.Retries</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>@user.Message</td>
+
+                            <td>
+                                <form method="post" asp-route-id="@user.Id">
+
+
+                                    <button type="submit" class="btn btn-warning btn-xs">Resend</button>
+
+                                </form>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0, 'asc']]
+                }
+            );
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable1").DataTable(
+                {
+                    "order": [[0, 'asc']]
+                }
+            );
+        });
+     
+    </script>
+}
+

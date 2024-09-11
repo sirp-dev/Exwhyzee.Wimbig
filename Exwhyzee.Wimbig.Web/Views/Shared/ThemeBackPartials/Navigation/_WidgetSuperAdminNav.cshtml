@@ -1,0 +1,58 @@
+﻿<div class="row tile_count">
+    
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="tile-stats" style="background-color:#00cd9b;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-money" style="color:#fff;"></i>
+            </div>
+            <div class="count"> &#8358; <span style="font-size:15px;"> @await Component.InvokeAsync("WimbankSummary")</span></div>
+
+            <h3 class="wimbank" style="color:#fff !important;">Wimbank</h3>
+            <p class="text-center">
+                <a asp-area="SuperAdmin" asp-page="/WimBank/Index" class="btn btn-success btn-xs">Summary</a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="tile-stats" style="background-color:#39478f;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-gamepad" style="color:#fff;"></i>
+            </div>
+            <div class="count"> @await Component.InvokeAsync("TotalTicketOverall")</div>
+
+            <h3 style="color:#fff !important;">Total Ticket</h3>
+            <p class="text-center">
+               <a asp-area="SuperAdmin" asp-page="/Dashboard/Stakes" class="btn btn-success btn-xs">Tickets </a> 
+                @*<a asp-area="Admin" asp-page="/RaffleManagement/AllTickets" class="btn btn-success btn-xs">Tickets</a>*@
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="tile-stats" style="background-color:#f66c81;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-money" style="color:#fff;"></i>
+            </div>
+            @await Component.InvokeAsync("AdminPayoutActive")
+            <p class="text-center">
+                <a asp-area="Admin" asp-page="/PayOutReport/Index" class="btn btn-success btn-xs">Payout History</a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="tile-stats" style="background-color:#ffaf00;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-users" style="color:#fff;"></i>
+            </div>
+            <div class="count">  @await Component.InvokeAsync("TotalUsers")</div>
+
+            <h3 style="color:#fff !important;">Total Users </h3>
+            <p class="text-center">
+                <a asp-area="UserManagement" asp-page="/Users/Index" class="btn btn-success btn-xs">Users</a>
+
+            </p>
+        </div>
+    </div>
+</div>

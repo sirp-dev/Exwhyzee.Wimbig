@@ -1,0 +1,293 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.StakeHolders.Pages.DGAs.TicketConfirmModel
+
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+
+@{
+    ViewData["Title"] = "Buy Ticket(s)";
+   // Layout = "/Views/Shared/_DgaThemeBackLayout.cshtml";
+
+
+}
+
+
+@await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+
+@section styles{
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css" />
+    <style>
+        .ad-detail-title h3 {
+            padding: 5px 10px !important;
+        }
+
+        .ad-listing-single .ad-detail ul li {
+            padding: 5px 0 !important;
+        }
+        .ad-detail-title h3 {
+            padding: 5px 10px !important;
+        }
+
+        .ad-detail-title h3 {
+            background-color: #6bc242;
+        }
+
+        .ad-detail-title h3 {
+            margin: 0;
+            font-size: 20px;
+            padding: 11px 10px;
+            color: #FFF;
+            background-color: #6bc242;
+            text-transform: uppercase;
+            padding-left: 30px;
+        }
+
+        .ad-listing-single .ad-detail ul {
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .light-blue {
+            background-color: #f4f7fa !important;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="~/css/rafflestyle.css" />
+}
+
+<section class="ad-listing-single section-edit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="detail-titile light-blue">
+                    @if (TempData["checkaffle"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            @TempData["checkaffle"]
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-7">
+
+                            <div class="ad-name">
+                                <h3 class=""> Select Number(s) - @Model.Raffle.Name </h3>
+                                <div class="ad-title-meta">
+                                    <span>
+                                        <i class="fa fa-money"></i> &#8358 @Model.Raffle.PricePerTicket.ToString("0.00") per Stake
+                                    </span>
+                                    <span>
+                                        <i class="fa fa-ticket"></i> @Model.Raffle.NumberOfTickets Stakes
+                                    </span>
+                                    <span>
+                                        <i class="fa fa-clock-o"></i> @Model.Raffle.Status
+                                    </span>
+                                    <span>
+                                        <i class="fa fa-bus"></i> @Model.Raffle.DeliveryType
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <div class="price"> Balance: &#8358 @Model.Wallet?.Balance.ToString("0.00")</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-sm-12 col-xs-12 nopaddingright">
+
+                        <ol class="seats">
+
+                            @foreach (var item in Model.RaffleListDto)
+                            {
+                                if (item.Status == "checked")
+                                {
+                                    <li class="seat col-xs-1 col-sm-1">
+                                        <input type="checkbox" onchange="check(this)" disabled id="@item.RaffleNumber" />
+                                        <label for="@item.RaffleNumber">@item.RaffleNumber</label>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="seat col-xs-1 col-sm-1">
+                                        <input type="checkbox" onchange="check(this)" checked="@item.Status" id="@item.RaffleNumber" />
+                                        <label for="@item.RaffleNumber">@item.RaffleNumber</label>
+                                    </li>
+                                }
+
+                            }
+
+                        </ol>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 nopaddingleft">
+                        <div class="ad-detail">
+                            <div class="ad-detail-title">
+                                <h3><i class=" icon-layers"></i> Raffle Detail</h3>
+                            </div>
+                            <div class="ad-detail-desc light-blue ">
+                                <ul style="text-decoration:none !important;padding:0px 10px 0px 2px !important;">
+                                    <li>
+                                        <span class="pull-left">Price Per Ticket</span>
+                                        <span class="pull-right">&#8358 @Model.Raffle.PricePerTicket.ToString("0.00")</span>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Number of Tickets</span>
+                                        <span class="pull-right">@Model.Raffle.NumberOfTickets</span>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Total Sold</span>
+                                        <span class="pull-right">@Model.Raffle.TotalSold</span>
+                                    </li>
+                                    @{
+                                        int total = Model.Raffle.NumberOfTickets - Model.Raffle.TotalSold;
+                                    }
+                                    <li>
+                                        <span class="pull-left">Total Remaining</span>
+                                        <span class="pull-right">@total</span>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Date Started</span>
+                                        <span class="pull-right">@Model.Raffle.StartDate.ToString("dd MMM, yyyy hh:mm tt")</span>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Delivery Type</span>
+                                        <span class="pull-right">@Model.Raffle.DeliveryType</span>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Description</span>
+                                        <span class="pull-right">@Model.Raffle.Description</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="ad-detail-title" style="padding:5px 10px 10px 10px;background-color:#6bc242;color:#FFF;">
+                                @if (total == 0)
+                                {
+                                    <a>
+                                        <div class="ad-detail-title">
+                                            <h3 style="background-color:#f99;">
+                                                No Ticket Available <i class="fa fa-angle-double-right"></i>
+                                            </h3>
+                                        </div>
+                                    </a>
+                                    
+                                }
+                                else
+                                {
+                                    <form id="buy-ticket-form" method="post">
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label>Number Of Tickets</label>*
+                                            <input asp-for="NumberOfTickets" class="form-control" required="required" id="numberOfTickets" readonly style="border-radius:0px;" />
+                                            <span asp-validation-for="NumberOfTickets" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Phone Number</label>*
+                                            <input asp-for="PhoneNumber" class="form-control" required="required" id="phonenumber" style="border-radius:0px;" />
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input asp-for="Email" class="form-control" id="email" style="border-radius:0px;" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input asp-for="PlayerName" class="form-control" required="required" id="playerName" style="border-radius:0px;" />
+                                            <span asp-validation-for="PlayerName" class="text-danger"></span>
+                                        </div>
+
+                                        <input asp-for="TotalAmount" type="hidden" id="totalAmount" />
+
+                                        <button id="continue" onclick="checkform()" type="submit" class="btn btn-default" style="background-color:#FFF;color:#6bc242;border-radius:0px;text-shadow:none;">Continue</button>
+                                    </form>
+                                }
+                                <div id="confirm-dialog" title="Confirm" hidden>
+                                    <p>You are about to buy tickets with number(s) <strong> <span id="new-tickets"></span></strong> . A total of <strong>N <span id="new-total"></span></strong> will be deducted from your Wallet.<br /> <span>Phone Number: <span style="font-weight:900;" id="new-phone"></span></span> Click OK to continue. </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $('#continue').on('click', function (e) {
+                e.preventDefault();
+                var numberOfTickets = $('#numberOfTickets').val();
+                var phonenumber = $('#phonenumber').val();
+                var total = numberOfTickets.split(',').length * @Model.Raffle.PricePerTicket;
+                $('#new-tickets').text(numberOfTickets);
+                $('#new-total').text(total);
+                $('#new-phone').text(phonenumber);
+                $('#totalAmount').val(total);
+                $('#confirm-dialog').dialog('open');
+            });
+
+            $("#confirm-dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    "Ok": function () {
+                        $("#buy-ticket-form").submit();
+                        $(this).dialog("close");
+                    },
+                    "Cancel": function (e) {
+                        $(this).dialog("close");
+                    }
+                }
+            })
+        });
+    </script>
+    <script>
+        var selected = [];
+        var list = $("#selectedNumbers");
+        var parent = list.parent();
+        $("playButton").attr("disabled", "disabled");
+        // var status = $("#playButton").disabled;
+        function check(any) {
+
+            if (any.checked) {
+
+                selected.push(any.id);
+            }
+            else {
+
+                selected.splice($.inArray(any.id, selected), 1);
+            }
+
+            if (selected.length > 0) {
+                $("playButton").attr("disabled", "disabled");
+            }
+            else {
+                $("playButton").removeAttr("disabled");
+            }
+
+            $('#numberOfTickets').val(selected.toString());
+            //list.detach().empty().each(function (i) {
+            //    for (var x = 0; x < selected.length; x++) {
+            //        $(this).append('<li>' + selected[x] + '</li>');
+            //        if (x == selected.length - 1) {
+            //            $(this).appendTo(parent);
+            //        }
+            //    }
+            //});
+        }
+
+
+    </script>
+}

@@ -1,0 +1,101 @@
+﻿@page
+@model IndexModel
+@{
+}
+
+@*@section Styles {
+  
+}*@
+
+<section class="light-blue ad-listing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="Heading-title black">
+                    <h1>All Raffles</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-2 col-sm-2 col-xs-12 hidden-xs hidden-sm" id="sticky-ad">
+                @await Component.InvokeAsync("LeftBar")
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+
+
+                <div class="all-ads-list-box2">
+                    <div>
+                        @await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+
+                        <div class="row">
+                            @foreach (var item in Model.Raffles)
+                            {
+
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="blog-post">
+                                        <div class="post-img">
+                                            <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+                                                @await Component.InvokeAsync("RaffleImage", new { raffleId = item.Id })
+                                                </a>
+                                        </div>
+
+                                        <div class="post-info" style="border-top:1px solid #aeabab;">
+                                            <div class="play-info">
+                                                <p>
+                                                    <b>#@item.PricePerTicket</b><br /> per ticket
+                                                </p>
+                                                <p>
+
+                                                    <b>Raffle Id</b><br /> @item.Id
+                                                </p>
+                                                <p>
+                                                    <b>When</b><br /> Raffle Finish
+                                                </p>
+                                            </div>
+
+
+                                        </div>
+                                        <h3 class="post-title">
+                                            <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+                                                @item.Name
+                                            </a>
+                                        </h3>
+                                        <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+
+                                            <div class="ad-bottom-area">
+                                                <span class="btn btn-default flip"></span> Play Now<i class="fa fa-angle-double-right"></i>
+
+                                            </div>
+                                        </a>
+                                        @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin"))
+                                        {
+                                            <div class="ad-bottom-area" style="background-color:transparent;">
+                                                @await Component.InvokeAsync("RaffleProgress", new { raffleId = item.Id })
+
+                                            </div>
+                                        }
+
+                                    </div>
+
+                                </div>
+
+                            }
+
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12 hidden-xs hidden-sm" id="sticky-ad2">
+                @await Component.InvokeAsync("RightBar")
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+/*  #Style Profile - Profile With  Slider
+================================================*/
+profile-layout-4 {
+  [profile] {
+    margin-top: 30px !important;
+    overflow: visible;
+
+    ion-avatar {
+      img {
+        border-radius: 50%;
+        margin-top: -50px;
+        height: 70px;
+        width: 70px;
+        margin: 0 auto;
+      }
+    }
+    .button-inner {
+      display: block;
+    }
+  }
+  
+  .swiper-container {
+      padding-bottom: 10px;
+  }
+  .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 0 !important;
+  }
+
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: theme-colors('mainColors', 'primary') !important;;
+  }
+
+  .swiper-slide img {
+    width: 100%;
+  }
+
+  [category],
+  [small-font] {
+    clear: both;
+    display: block !important;
+  }
+  .active, [category] {
+    color: theme-colors('textColors', 'primary') !important;
+  }
+}

@@ -1,0 +1,59 @@
+<!-- Main Menu Header -->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon class="icon-menu" name="menu"></ion-icon>
+    </button>
+    <ion-title text-uppercase>{{toolbarTitle}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!-- Main Menu List -->
+<ion-content>
+  <!--<div *ngIf="data.background!=null" background-size default-background [ngStyle]="{'background-image': 'url(' + data.background + ')'}">
+      <div class="ionic-description" text-center>
+          <h2 item-title>{{data.title}}</h2>
+          <h2 item-title>{{data.subtitle}}</h2>
+          <p item-subtitle>{{data.subtitle2}}</p>
+      </div>
+      <a [href]="data.link">
+          {{data.description}}
+      </a>
+  </div>-->
+  <ion-grid no-padding *ngIf="data != null">
+    <!--- SETTINGS PAGE1 SCREEN -->
+    <ion-row>
+      <ion-col col-12 col-lg-6 col-xl-4 *ngFor="let item of raffles; let i= index">
+        <!-- Card -->
+        <ion-card padding>
+          <img *ngIf="item != null" [src]="'https://wimbig.com' + item.imageUrl" />
+          <ion-card-content no-padding margin-top>
+            <h3 card-title text-capitalize>{{item.name}}</h3>
+            <!--<span span-small>{{item.dateCreated}}</span>-->
+
+            <!--<p card-subtitle text-wrap padding-bottom>{{item.description}}</p>-->
+            <ion-row no-padding>
+              <ion-col col-auto no-padding>
+                <p ion-text color="accentLight">NGN{{item.pricePerTicket}} per Ticket   |</p>
+                <!-- Button Like -->
+                <!--<button no-padding transparent ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onLike', item, $event)">
+      <ion-icon ion-text color="accentLight" no-padding [ngClass]="{'active' : item.like.isActive}" [name]="item.like.icon"></ion-icon>
+      <p ion-text color="accentLight">{{item.numberOfTickets}}</p>
+    </button>-->
+              </ion-col>
+              <ion-col col-auto no-padding>
+                <p ion-text color="accentLight"> Raffle ID:{{item.id}}</p>
+                <!-- Button Commets -->
+                <!--<button no-padding margin-left transparent ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onComment', item, $event)">
+      <ion-icon ion-text color="accentLight" no-padding [ngClass]="{'active' : item.comment.isActive}" [name]="item.comment.icon"></ion-icon>
+      <p ion-text color="accentLight">{{item.numberOfTickets}}</p>
+    </button>-->
+              </ion-col>
+             
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

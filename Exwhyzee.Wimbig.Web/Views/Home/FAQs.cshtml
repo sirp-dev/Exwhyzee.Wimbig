@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewData["Title"] = "FAQs";
+}
+
+
+<section class="ad-breadcrumb parallex">
+    <div class="container page-banner">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <h1>FAQs</h1>
+            </div>
+            <div class="col-sm-6 col-md-6 hidden-sm hidden-xs">
+                <ol class="breadcrumb pull-right flip flip">
+                    <li><a href="#">Play Small... WinBig...</a></li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="row faqs">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+
+
+        <div class="">
+
+            <div class="" style="margin-top:10px;">
+
+                <div class="alert alert-warning alert-dismissible" role="alert" style="padding:5px 15px;margin-bottom:3px;">
+                    You must be <b>over 18 years </b> of age to play small and win big...
+                </div>
+
+                <div class="panel-group" id="accordion">
+                    <div class="faqHeader" style="margin:10px;font-size:20px;">General questions</div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Is account registration required?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                yes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">How do I play the raffle?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTen" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li>
+                                        Download Android version  from our website or play on the website loading.wimbig.com
+                                    </li>
+                                    <li>
+                                        Register with your Nigerian phone number
+                                    </li>
+                                    <li>
+                                        Select category to play.
+                                    </li>
+                                    <li>
+                                        Bid by entering your ticket numbers in the boxes provided. Each box must contain two digits (00).
+                                    </li>
+                                    <li>
+                                        Only one winner on each game played will emerge and all chances taken after a winner is randomly selected by the system becomes null and void. The system will award an auctioned item or cash to one customer whose ticket is randomly selected by the draw machine.
+                                    </li>
+                                    <li>
+                                        Please note: No two tickets are similar or arranged in the same order. The system will invalidate any attempt to enter two identical tickets twice in one game.
+                                    </li>
+                                    <li>
+                                        You can enter a valid bid by paying for your tickets through your funded Wallet. Your must be funded in order to play a valid ticket. You can top up your Wallet through Bank Transfer or Direct Debit Card Transactions, *737*, Visa QR Code.
+                                    </li>
+                                    <li>
+                                        When a bid is won, all users will recieve a push notification from the app.
+                                    </li>
+                                    <li>
+                                        Bid more to increase your chances of winning on WIMBIG (Online Raffle Auction).
+                                    </li>
+                                    <li>
+                                        Winners are automatically selected by the system based on best practices in random selection in order to entrench probity and accountability. No human interface.
+                                    </li>
+                                    <li>
+                                        Human interface is limited to a click of a button when a game is set to draw manually (semi auto).
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">WHAT ARE THE ACCEPTABLE MEANS OF PAYMENT?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseEleven" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                The acceptable means of setting your stakes to wimbig are:
+
+                                Payment using<span style="font-weight:900;">VISA,</span><span style="font-weight:900;"> Master card</span> and <span style="font-weight:900;">bank transfer.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faqHeader">Agents</div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Who is an Agent?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <style>
+                .faqs .panel-heading {
+                    background-color: #6bc242;
+                }
+
+                .faqs .panel-body {
+                    /*color:#000000 !important;*/
+                }
+
+                #accordion a {
+                    padding: 0 !important;
+                    font-size: 18px;
+                }
+
+                .faqHeader {
+                    font-size: 20px;
+                    margin: 10px;
+                    text-transform: capitalize;
+                }
+
+                .panel-heading [data-toggle="collapse"]:after {
+                    font-family: 'Glyphicons Halflings';
+                    content: "\e072"; /* "play" icon */
+                    float: right;
+                    color: #F58723;
+                    font-size: 18px;
+                    line-height: 22px;
+                    /* rotate "play" icon from > (right arrow) to down arrow */
+                    -webkit-transform: rotate(-90deg);
+                    -moz-transform: rotate(-90deg);
+                    -ms-transform: rotate(-90deg);
+                    -o-transform: rotate(-90deg);
+                    transform: rotate(-90deg);
+                }
+
+                .panel-heading [data-toggle="collapse"].collapsed:after {
+                    /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+                    -webkit-transform: rotate(90deg);
+                    -moz-transform: rotate(90deg);
+                    -ms-transform: rotate(90deg);
+                    -o-transform: rotate(90deg);
+                    transform: rotate(90deg);
+                    color: #454444;
+                }
+            </style>
+
+            <!-- Bootstrap FAQ - END -->
+
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>

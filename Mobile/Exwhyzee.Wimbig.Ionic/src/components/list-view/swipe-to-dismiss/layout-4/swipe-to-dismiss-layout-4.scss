@@ -1,0 +1,15 @@
+/*  #Style Large item with text
+===========================================*/
+
+swipe-to-dismiss-layout-4 {
+  ion-list {
+    [subitem-subtitle] {
+      color: theme-colors('textColors', 'accent', 'opacity50');
+      padding-left: 73px;
+    }
+
+    > .item-wrapper:last-child .item {
+      border-bottom: none !important;
+    }
+  }
+}

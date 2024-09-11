@@ -1,0 +1,95 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.RaffleManagement.ImageModel
+@{
+    ViewData["Title"] = "Raffle Management";
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+
+}
+
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Image Management  &nbsp; </h2>
+
+
+                <a class="btn btn-sm btn-primary" asp-page="/RaffleManagement/CreateImage"> Add an Image</a>
+
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+
+                <table class="table dataTable table-striped jambo_table bulk_action" border="1" id="table">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">Id </th>
+                            <th class="column-title">Image </th>
+                            <th class="column-title">Status </th>
+                            <th class="column-title">Is Default </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.ImageFiles.Source.OrderBy(x => x.Url))
+                        {
+                            <tr class="even pointer">
+                                <td>
+                                 
+                                    <input type="text" value="@user.Id" id="myInput">
+
+
+                            <button onclick="myFunction()">Copy text</button>
+                                </td>
+                                <td>
+                                    <img src="@user.Url" class="img-responsive" alt="wimbig_image" style="max-height:200px;" />
+                                </td>
+                                <td>@user.Status</td>
+                                <td>@user.IsDefault </td>
+                                <td>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                                            Action
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" style="max-width:none !important;"></ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+@section scripts{
+    <script type="text/javascript">
+        $("table").DataTable({
+            "order": [[0, "desc"]]
+        });
+
+        function myFunction() {
+            /* Get the text field */
+            var copyText = document.getElementById("myInput");
+
+            /* Select the text field */
+            copyText.select();
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+   
+}

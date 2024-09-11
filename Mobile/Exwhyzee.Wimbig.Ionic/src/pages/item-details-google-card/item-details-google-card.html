@@ -1,0 +1,26 @@
+<!--Google card components-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title text-left text-uppercase>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!--Content-->
+
+<!-- PAGE GOOGLE CARDS - Styled cards -->
+<google-card-layout-1 has-header *ngIf="params.googleCardsLayout1" [data]="params.data | async" [events]="params.events">
+</google-card-layout-1>
+
+<!-- PAGE GOOGLE CARDS - Styled cards 2 -->
+<google-card-layout-2 has-header *ngIf="params.googleCardsLayout2" [data]="params.data | async" [events]="params.events">
+</google-card-layout-2>
+
+<!-- PAGE GOOGLE CARDS - Full image cards -->
+<google-card-layout-3 has-header *ngIf="params.googleCardsLayout3" [data]="params.data | async" [events]="params.events">
+</google-card-layout-3>
+
+<!-- PAGE GOOGLE CARDS - Post card -->
+<google-card-layout-4 has-header *ngIf="params.googleCardsLayout4" [data]="params.data | async" [events]="params.events">
+</google-card-layout-4>

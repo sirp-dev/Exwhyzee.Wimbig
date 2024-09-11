@@ -1,0 +1,84 @@
+﻿
+@model IEnumerable<Exwhyzee.Wimbig.Core.Authorization.Users.ApplicationUser>
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+    //  Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+
+}
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel table-responsive">
+                <div class="x_title">
+                    <h2>Wimbig Users  <button class="btn btn-primary" id="movetoexcelbtn">Export current table to Excel</button></h2>
+                    <ul class="nav navbar-right panel_toolbox"></ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content table-responsive" id="movetoexcel">
+
+                    <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable">
+                        <thead>
+                            <tr class="headings">
+
+                                <th class="column-title">Date</th>
+                                <th class="column-title">User Name </th>
+                                <th class="column-title">Fullname </th>
+                                <th class="column-title">Phone Number </th>
+                                <th class="column-title">Email </th>
+                                <th class="column-title">city </th>
+                                <th class="column-title">Balance </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                                <tr class="even pointer">
+                                    <td>@user.DateRegistered</td>
+                                    <td>@user.UserName</td>
+                                    <td>@user.FirstName @user.LastName @user.OtherNames</td>
+                                    <td>@user.PhoneNumber</td>
+                                    <td>@user.Email</td>
+                                    <td>@user.CurrentCity</td>
+                                    <td>
+                                        &#8358;@await Component.InvokeAsync("WalletBalance", new { id = user.Id })
+                                    </td>
+
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0]]
+                }
+            );
+        });
+        $("[id$=movetoexcelbtn]").click(function (e) {
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('div[id$=movetoexcel]').html()));
+
+            this.download = name;
+            return true;
+            e.preventDefault();
+        });
+    </script>
+}
+

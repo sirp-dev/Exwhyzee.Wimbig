@@ -1,0 +1,83 @@
+﻿@page
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents;
+
+
+@model Exwhyzee.Wimbig.Web.Areas.StakeHolders.Pages.UserData.ReferencedUserModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>User References &nbsp; &nbsp; <a asp-area="Identity" asp-page="/Account/Manage/WimRegistration" class="btn btn-xs btn-success"><i class="fa fa-plus"></i> New Wimbig Account</a></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table class="table dataTable table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">S/N </th>
+                            <th class="column-title">Username </th>
+                            <th class="column-title">Total Ticket </th>
+                            <th class="column-title">Role </th>
+                            <th class="column-title">Email </th>
+                            <th class="column-title">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.userVM)
+                        {
+                            //var myHtmlString = Html.Raw(await Component.InvokeAsync("Role", new { id = user.Id })).ToString();
+                            //if (myHtmlString == "User")
+                            //{
+                                <tr class="even pointer">
+                                    <td>
+                                        @{ sn++;}
+                                        @sn
+                                    </td>
+
+                                    <td>@user.UserName</td>
+                                    <td>@user.Tickets</td>
+                                    <td>@await Component.InvokeAsync("Role", new { id = user.Id })</td>
+                                    <td>@user.Email</td>
+
+                                    <td>
+
+                                        <a asp-page="./TicketHistory" class="btn btn-warning btn-xs" asp-route-id="@user.Id">Ticket History</a>
+                                        <a asp-page="./Transactions" class="btn btn-warning btn-xs" asp-route-id="@user.Id">Transactions</a>
+                                        <a asp-area="UserManagement" asp-page="/Users/Details" asp-route-userId="@user.Id" class="btn btn-xs btn-warning">Details</a>
+
+
+                                    </td>
+                                </tr>
+
+                                                
+                                            }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable();
+        });
+
+    </script>
+}
+

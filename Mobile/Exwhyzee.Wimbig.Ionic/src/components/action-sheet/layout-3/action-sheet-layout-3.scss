@@ -1,0 +1,40 @@
+// /*  #Style Action Sheet - With Text Header
+// ================================================*/
+action-sheet-layout-3 {
+    [button-action-shit] {
+      z-index: 99999;
+      background-color: transparent !important;
+      border-radius: 100%;
+      top: 0px;
+      right: -15px;
+      height: 50px !important;
+      width: 50px;
+      border-radius: 50%;
+      padding: 20px 11px !important;
+
+      ion-icon {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        display: inline-block;
+        color: theme-colors('mainColors', 'secondary');
+        font-size: 30px;
+      }
+    }
+    // New Category
+    [new-category] {
+        display: block;
+        font-size: 11px;
+        color: theme-colors('textColors', 'accent') !important;
+        margin-bottom: 5px;
+        font-weight: 100;
+        letter-spacing: 1px;
+    }
+    // Card Subtitle
+    [card-subtitle] {
+        font-size: $h3-font-size !important;
+        padding-right: 70px;
+    }
+}

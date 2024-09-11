@@ -1,0 +1,204 @@
+﻿@page
+@model IndexModel
+@{
+}
+
+
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin"))
+{
+
+    <div class="row tile_count">
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="tile-stats" style="background-color:#00cd9b;color:#fff;font-weight:400;">
+                <div class="icon">
+                    <i class="fa fa-money" style="color:#fff;"></i>
+                </div>
+                <div class="count"> &#8358; <span style="font-size:15px;"> @await Component.InvokeAsync("WimbankSummary")</span></div>
+
+                <h3 class="wimbank" style="color:#fff !important;">Wimbank</h3>
+                <p class="text-center">
+                    <a asp-area="SuperAdmin" asp-page="/WimBank/Index" class="btn btn-success btn-xs">Summary</a>
+
+                </p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="tile-stats" style="background-color:#39478f;color:#fff;font-weight:400;">
+                <div class="icon">
+                    <i class="fa fa-gamepad" style="color:#fff;"></i>
+                </div>
+                <div class="count"> @await Component.InvokeAsync("TotalTicketOverall")</div>
+
+                <h3 style="color:#fff !important;">Total Ticket</h3>
+                <p class="text-center">
+                    <a asp-area="Admin" asp-page="/Tickets/Index" class="btn btn-success btn-xs">Tickets </a>
+                    @*<a asp-area="Admin" asp-page="/RaffleManagement/AllTickets" class="btn btn-success btn-xs">Tickets</a>*@
+
+                </p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="tile-stats" style="background-color:#f66c81;color:#fff;font-weight:400;">
+                <div class="icon">
+                    <i class="fa fa-money" style="color:#fff;"></i>
+                </div>
+                @await Component.InvokeAsync("AdminPayoutActive")
+                <p class="text-center">
+                    <a asp-area="Admin" asp-page="/PayOutReport/Index" class="btn btn-success btn-xs">Payout History</a>
+
+                </p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="tile-stats" style="background-color:#ffaf00;color:#fff;font-weight:400;">
+                <div class="icon">
+                    <i class="fa fa-users" style="color:#fff;"></i>
+                </div>
+                <div class="count">  @await Component.InvokeAsync("TotalUsers")</div>
+
+                <h3 style="color:#fff !important;">Total Users </h3>
+                <p class="text-center">
+                    <a asp-area="UserManagement" asp-page="/Users/Index" class="btn btn-success btn-xs">Users</a>
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph">
+
+            <div class="row x_title">
+                <div class="col-md-6">
+                    <h3>Wimbig Activities </h3>
+                </div>
+                <div class="col-md-6">
+                    <div class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                        @DateTime.UtcNow.ToString("dd MMM, yyyy hh:mm tt")
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-9 col-sm-12 col-xs-12">
+                <div class="demo-container" style="height:280px">
+                    <div id="barchart" style="height: 250px;"></div>
+                </div>
+                <div class="tiles">
+                    <div class="col-md-4 tile">
+                        <span>Total Sessions</span>
+                        <h2>231,809</h2>
+                        <span class="sparkline11 graph" style="height: 160px;">
+                            <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                        </span>
+                    </div>
+                    <div class="col-md-4 tile">
+                        <span>Total Revenue</span>
+                        <h2>$231,809</h2>
+                        <span class="sparkline22 graph" style="height: 160px;">
+                            <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                        </span>
+                    </div>
+                    <div class="col-md-4 tile">
+                        <span>Total Sessions</span>
+                        <h2>231,809</h2>
+                        <span class="sparkline11 graph" style="height: 160px;">
+                            <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                <div class="x_title">
+                    <h2>Top Five Raffle Status</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                @await Component.InvokeAsync("RaffleDashboard")
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph x_panel">
+            <div class="row x_title">
+                <div class="col-md-6">
+                    <h3>Top 10 City  <small>Ticket Summary</small></h3>
+                    @if (TempData["error"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            @TempData["error"]
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6">
+                    <div id="" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                        <span> @TempData["range"]</span> <b class="caret"></b>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content">
+                <div class="demo-container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            @TempData["days"]
+                        </div>
+                        <div class="col-md-5">
+                            <form class="form-inline" method="get">
+                                <input name="day" type="text" class="form-control" placeholder="Enter days search" />
+                                <input name="date" type="date" class="form-control" placeholder="Enter date" />
+
+
+                                <input type="submit" value="Sort" class="btn btn-success" style="margin-top:3px;" />
+                                <a asp-area="Admin" asp-page="/Tickets/All" style="margin-top:3px;" class="btn btn-success">All Tickets </a>
+
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <table id="userDatable" class="table table-striped table-bordered" style="width:100%">
+
+                        <tr>
+                            <th class="column-title">city </th>
+                            @foreach (var item in Model.Input)
+                            {
+
+                                <td>@item.City</td>
+
+
+                            }
+                        </tr>
+                        <tr>
+                            <th class="column-title">Total Ticket </th>
+                            @foreach (var item in Model.Input)
+                            {
+
+                                <td>@item.Count</td>
+
+
+                            }
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

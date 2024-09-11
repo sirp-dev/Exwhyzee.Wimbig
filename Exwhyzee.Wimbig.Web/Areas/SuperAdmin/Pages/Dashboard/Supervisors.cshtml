@@ -1,0 +1,67 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.SuperAdmin.Pages.Dashboard.SupervisorsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>List Of Supervisors (Total: @Model.Users.Count()) &nbsp; &nbsp; <a asp-area="Identity" asp-page="/Account/Manage/WimRegistration" class="btn btn-xs btn-success"><i class="fa fa-plus"></i> Add Wimbig User</a></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table class="table dataTable table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">User Name </th>
+                            <th class="column-title">Nams </th>
+                            <th class="column-title">Phone Number </th>
+                            <th class="column-title">Email </th>
+                            <th class="column-title">Role </th>
+                            <th class="column-title">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                        <tr class="even pointer">
+                            <td>@user.UserName</td>
+                            <td>@user.FirstName @user.LastName @user.OtherNames</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>@user.Email</td>
+                            <td>
+                                @await Component.InvokeAsync("Role", new { id = user.Id })
+                            </td>
+
+                            <td>
+                                <a asp-area="UserManagement" asp-page="/Users/Details" asp-route-userId="@user.Id" class="btn btn-sm btn-secondary">Details</a>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#userDatable").DataTable();
+                });
+
+    </script>
+}
+

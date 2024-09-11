@@ -1,0 +1,104 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Sms.MessageHistory
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+    int sn = 0;
+
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h4>
+                    Message History
+                </h4>
+
+                
+                <div class="clearfix"></div>
+            </div>
+            @if (ViewData["message"] != null)
+            {
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @ViewData["message"]
+                </div>
+            }
+            @if (ViewData["error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @ViewData["error"]
+                </div>
+            }
+            @if (ViewData["error 2"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @ViewData["error 2"]
+                </div>
+            }
+            <div class="x_content table-responsive">
+
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">S/N</th>
+                            <th class="column-title">Sender </th>
+                            <th class="column-title">Date </th>
+                            <th class="column-title">Message </th>
+
+                            <th class="column-title">Status </th>
+                            <th class="column-title">Action </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.SmsMessage.Source)
+                        {
+                            <tr class="even pointer">
+                                @{ sn++;}
+                                <td>@sn</td>
+                                <td>@item.SenderId</td>
+                                <td>@item.DateCreated</td>
+                                <td>@item.Message</td>
+                                <td>@Html.DisplayFor(model => item.Status)</td>
+
+                                <td>
+                                    <a asp-page="./Details" style="padding:3px 5px !important;" asp-route-id="@item.Id">Details</a>
+
+                                </td>
+
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0, 'asc']]
+                }
+            );
+        });
+
+    </script>
+}
+

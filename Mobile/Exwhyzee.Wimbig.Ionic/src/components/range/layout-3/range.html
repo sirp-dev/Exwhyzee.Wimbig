@@ -1,0 +1,12 @@
+<ion-list *ngIf="data != null">
+    <ion-list-header no-lines no-margin text-uppercase>
+        <p ion-text color="accentLight">{{data.title}}</p>
+        <p ion-text color="brown" item-end>{{data.value}}</p>
+    </ion-list-header>
+    <ion-item lines>
+        <ion-range [min]="data.min" [max]="data.max" [step]="data.step" snaps="true" (ionChange)="onEvent('onChange', data.value, $event)" [(ngModel)]="data.value">
+            <ion-label range-left span-small color="brown">{{data.textLeft}}</ion-label>
+            <ion-label range-right span-large color="brown">{{data.textRight}}</ion-label>
+        </ion-range>
+    </ion-item>
+</ion-list>

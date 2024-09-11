@@ -1,0 +1,10 @@
+<ion-list *ngIf="data != null">
+    <ion-list-header no-lines no-margin text-uppercase>
+        <p ion-text color="accentLight">{{data.title}}</p>
+        <p ion-text color="brown" item-end>{{data.value}}</p>
+    </ion-list-header>
+    <ion-item>
+        <ion-range [(ngModel)]="data.value" (ionChange)="onEvent('onChange', data.value, $event)">
+        </ion-range>
+    </ion-item>
+</ion-list>

@@ -1,0 +1,135 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.WinnerReport.NewReportModel
+@{
+}
+
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel table-responsive">
+                    <div class="x_title">
+                        <h2>Add New Winner Report</h2>
+                       
+                            <p>@ViewData["Error"]</p>
+                            <p>
+                                @TempData["status"]
+                            </p>
+                        
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+
+
+
+                        <form class="form-horizontal form-label-left" method="post" nov>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Raffle Id <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.RaffleId" autofocus required="required" type="text" placeholder="Raffle Id">
+
+
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Ticket Number <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.TicketNumber" autofocus required="required" type="text" placeholder="Ticket Number">
+
+
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Location Of Winner <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.WinnerLocation" autofocus required="required" type="text" placeholder="Winner Location">
+
+
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Delivered By <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.DeliveredBy" autofocus required="required" type="text" placeholder=" Delivered By">
+
+
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Item Cost <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.ItemCost" autofocus required="required" type="text" placeholder="Item Cost">
+
+
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Date Won <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.DateWon" autofocus required="required" type="date" placeholder="Item Cost">
+
+
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Delivered Date <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.DateDelivered" autofocus required="required" type="date" placeholder="Item Cost">
+
+
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Delivery Location <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.DeliveryAddress" autofocus required="required" type="text" placeholder="Delivery Address">
+
+
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                    Delivery Phone Number <span class="required">*</span>
+                                </label>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input class="form-control" asp-for="ReportDto.DeliveredPhone" autofocus required="required" type="text" placeholder="Delivery Phone number">
+
+
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button href="#" class="btn btn-primary" asp-route="/WinnerReport/Index">Cancel</button>
+                                    <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+   

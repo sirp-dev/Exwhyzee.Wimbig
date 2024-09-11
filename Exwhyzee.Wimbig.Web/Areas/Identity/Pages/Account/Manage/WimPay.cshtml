@@ -1,0 +1,108 @@
+﻿@page
+@model WimPayModel
+@{
+    var user = Model.LoggedInUser;
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("DGAs") || User.IsInRole("Supervisors") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+    {
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    }
+
+    else
+    {
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    }
+}
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("DGAs") || User.IsInRole("Supervisors") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+{
+
+}
+else
+
+{
+    <partial name="/Areas/Identity/Pages/Account/Manage/_ManageUserNav.cshtml" />
+
+}
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
+<link href="~/css/dist/css/ajax-bootstrap-select.css" rel="stylesheet" />
+
+@using Exwhyzee.Wimbig.Web.Extensions.Enums
+
+
+<section class="dashboard" style="background-color:#FFF;color:#000000;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="padding:10px 20px !important;">
+                <div class="dashboard-main-disc" style="color:#000000 !important;padding:10px 20px !important;background-color:#f4f4f4;box-shadow:1px 1px 1px #f5f5f5;padding:20px;">
+
+
+                    <div>
+                        @await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+                    </div>
+                    <h3>Wimpay (&#8358;@Model.Balance)</h3>
+                    <form class="form-horizontal form-label-left" enctype="multipart/form-data" method="post">
+
+                        <input asp-for="transferMoney.SenderId" value="@Model.LoggedInUser" type="hidden" id="HostedBy" name="transferMoney.SenderId">
+                        <div class="">
+                            <!--Raffle Properties-->
+                            <div class="">
+                                <div class="item form-group">
+                                    <label class="control-label" for="name">
+                                        Amount  <span class="required">*</span>
+                                    </label>
+                                    <div class="">
+                                        <input class="form-control" asp-for="transferMoney.Amount" name="transferMoney.Amount" placeholder="Enter Amount" autofocus required="required" type="number">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label" for="name">
+                                        Phone Number <span class="required">*</span>
+                                    </label>
+                                    <div class="">
+                                        <input class="form-control" asp-for="transferMoney.PhoneNumber" name="transferMoney.PhoneNumber" placeholder="Enter Phone Number" autofocus required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label" for="name">
+                                        Note
+                                    </label>
+                                    <div class="">
+                                        <input class="form-control" asp-for="transferMoney.Note" name="transferMoney.Note" placeholder="" autofocus required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label" for="category">
+                                        users  <span class="required">*</span>
+                                    </label>
+                                    <div class="">
+                                        <select class="form-control selectpicker" id="selectpicker" asp-for="transferMoney.ReceiverId" data-live-search="true" asp-items="@(new SelectList(Model.Users, "Id", "UserName"))">
+                                            <option value="" disabled selected>Select a receiver</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="">
+                                @*<button type="button" class="btn btn-primary" asp-route="/RaffleManagement/Index">Cancel</button>*@
+                                <button id="submit" type="submit" class="btn btn-success">WimPay</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+    
+</section>
+<!-- /page content -->
+@section scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script src="~/css/dist/js/ajax-bootstrap-select.min.js"></script><!---->
+}

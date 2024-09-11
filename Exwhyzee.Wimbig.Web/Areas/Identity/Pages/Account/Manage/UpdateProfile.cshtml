@@ -1,0 +1,336 @@
+﻿@page
+@model UpdateProfileModel
+@{
+    ViewData["Title"] = "Profile";
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Supervisors") || User.IsInRole("DGAs") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+    {
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    }
+
+    else
+    {
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    }
+}
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Supervisors") || User.IsInRole("DGAs") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+{
+
+}
+else
+
+{
+    <partial name="/Areas/Identity/Pages/Account/Manage/_ManageUserNav.cshtml" />
+
+}
+<section class="dashboard" style="background-color:#FFF;color:#000000;">
+    <div class="container">
+        @await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+        @if (TempData["update"] != null)
+        {
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+            </div>
+        }
+        <!--kindly update your contact-->
+        <div class="modal fade" id="nocontact">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <h3> Kindly Update your Profile and Gaming/Contact Address to enable customers reach you easily.</h3>
+                        <h5>Play Small... Win Big...</h5>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">OK!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="overlay">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <h3> @TempData["update"]</h3>
+                        <h5>Play Small... Win Big...</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">OK!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dashboard-main-disc" style="color: !important;">
+                    <h3 style="padding-left:20px;">Update Profile</h3>
+                    <div>
+                        <div class="dashboard-main-disc">
+
+                            <div class="row">
+                                <form method="post">
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="Input.FirstName"> First Name<span class="required">*</span> </label>
+                                            <input placeholder="" asp-for="Input.FirstName" class="form-control" type="text">
+                                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="Input.LastName"> Last Name<span class="required">*</span> </label>
+                                            <input placeholder="" asp-for="Input.LastName" class="form-control" type="text">
+                                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="Input.OtherNames"> Other Names<span class="required">*</span> </label>
+                                            <input placeholder="" asp-for="Input.OtherNames" class="form-control" type="text">
+                                            <span asp-validation-for="Input.OtherNames" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="Input.PhoneNumber"> Phone<span class="required">*</span> </label>
+                                            <input placeholder="" asp-for="Input.PhoneNumber" class="form-control" type="text">
+                                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="Input.DateOfBirth"></label>
+                                            <input placeholder="" asp-for="Input.DateOfBirth" class="form-control">
+                                            <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+
+                                            <label>Current City (@Model.City) </label>
+                                            <div class="">
+
+                                                <select name="Input.CurrentCity" asp-items="Model.CityDtoList" id="CityOfOrigin" class="form-control" required="required">
+                                                    <option>Select City</option>
+
+                                                </select>
+
+
+                                                <span asp-validation-for="Input.CurrentCity" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+
+                                            <label>Area In Current City (@Model.ACity) </label>
+                                            <div class="">
+                                                @if (TempData["Acity"] != null)
+                                                {
+                                                    <select name="Input.AreaInCurrentCity" id="AreaCity" class="form-control"></select>
+
+                                                }
+                                                else
+                                                {
+                                                    <select name="Input.AreaInCurrentCity" id="AreaCity" class="form-control"></select>
+
+                                                }
+
+
+                                                <span asp-validation-for="Input.AreaInCurrentCity" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Country </label>
+                                            <select class="select-general form-control">
+
+                                                <option value="NIGERIA">NIGERIA</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label>You are: <span class="required">*</span></label>
+                                            <select class="select-general form-control">
+                                                <option label="Select Option"></option>
+                                                <option value="0">Dealer</option>
+                                                <option value="1"> 	Individual</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Address </label>
+                                            <input placeholder="Contact Address" asp-for="Input.ContactAddress" class="form-control" type="text">
+                                            <span asp-validation-for="Input.ContactAddress" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Email Address </label>
+                                            <input placeholder="" asp-for="Input.Email" class="form-control" type="text">
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label>About yourself </label>
+                                            <textarea cols="6" rows="8" placeholder="" style="resize:none !important;" class="form-control"></textarea>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+
+                                        <div class="heading-inner">
+                                            <p class="title" style="background:none;">Social Media URL</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Facebook </label>
+                                            <input placeholder=" Enter Facbook Url" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Twitter </label>
+                                            <input placeholder="Enter Twitter Url" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Instagram <span class="required">*</span></label>
+                                            <input placeholder=" Enter Instagram Url" class="form-control" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-sm-12">
+                                        <button id="submit" class="btn btn-default pull-right"><i class="fa fa-save"></i> Save Profile </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@if (TempData["update"] != null)
+{
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+
+        <script>
+            $(document).ready(function () {
+                $('#overlay').modal('show');
+
+            });
+        </script>
+    }
+}
+else if (TempData["no conatctaddress"] != null)
+{
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+
+        <script>
+            $(document).ready(function () {
+                $('#nocontact').modal('show');
+
+            });
+        </script>
+        <script type="text/jscript">
+            $(function () {
+                $('#CityOfOrigin').change(function () {
+
+                    var fruits = ["apple", "orange", "cherry"];
+                    fruits.forEach(myFunction);
+                    var res = "";
+                    function myFunction(item, index) {
+                        res += index + ":" + item + "<br>";
+                    }
+                    console.log(res);
+                    $.getJSON('/Home/AreaCityList/' + $('#CityOfOrigin').val(), function (data) {
+
+                        var items = '<option value="">Choose Area in the city</option>';
+                        $.each(jQuery.map(data, function (i, local) {
+                            items += "<option value='" + i.value + "'>" + i.text + "</option>";
+
+                        }));
+                        items += '<option value="11">Not Listed</option>';
+
+                        console.log(data);
+                        console.log("jd");
+                        console.log(data.data);
+
+                        console.log(items);
+                        $('#AreaCity').html(items);
+                    });
+                });
+            });
+        </script>
+    }
+}
+else
+{
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+
+        <script type="text/jscript">
+            $(function () {
+                $('#CityOfOrigin').change(function () {
+
+                    var fruits = ["apple", "orange", "cherry"];
+                    fruits.forEach(myFunction);
+                    var res = "";
+                    function myFunction(item, index) {
+                        res += index + ":" + item + "<br>";
+                    }
+                    console.log(res);
+                    $.getJSON('/Home/AreaCityList/' + $('#CityOfOrigin').val(), function (data) {
+
+                        var items = '<option value="">Choose Area in the city</option>';
+                        $.each(jQuery.map(data, function (i, local) {
+                            items += "<option value='" + i.value + "'>" + i.text + "</option>";
+
+                        }));
+                        items += '<option value="11">Not Listed</option>';
+
+                        console.log(data);
+                        console.log("jd");
+                        console.log(data.data);
+
+                        console.log(items);
+                        $('#AreaCity').html(items);
+                    });
+                });
+            });
+        </script>
+    }
+}
+

@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Exwhyzee.Wimbig.Core.Authorization.Users.ApplicationUser>
+@{
+    ViewData["Title"] = "AgentNationwide";
+    Layout = "~/Views/Shared/_LayoutAgent.cshtml";
+}
+<style>
+    .faqs .panel-heading {
+        background-color: #2b4e1a;
+        border-bottom:3px solid #ffffff;
+    }
+
+    .faqs .panel-body {
+        /*color:#000000 !important;*/
+    }
+
+    #accordion a {
+        padding: 0 !important;
+        font-size: 18px;
+    }
+
+    .faqHeader {
+        font-size: 20px;
+        margin: 10px;
+        text-transform: capitalize;
+    }
+
+    .panel-heading [data-toggle="collapse"]:after {
+        font-family: 'Glyphicons Halflings';
+        content: "\e072"; /* "play" icon */
+        float: right;
+        color: #F58723;
+        font-size: 18px;
+        line-height: 22px;
+        /* rotate "play" icon from > (right arrow) to down arrow */
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+
+    .panel-heading [data-toggle="collapse"].collapsed:after {
+        /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+        color: #454444;
+    }
+    table tr, td, th {
+        padding: 3px 5px;
+        border: 1px solid #d5d2d2;
+       
+    }
+    table tr, td{
+     
+        width: 100%;
+    }
+    table th {
+        background-color: #2b4e1a;
+        color: #ffffff;
+    }
+    .panel-group .panel-heading + .panel-collapse > .list-group, .panel-group .panel-heading + .panel-collapse > .panel-body {
+         border-top: none !important; 
+    }
+    .panel {
+        border-top: none !important;
+    }
+        .table-responsive {
+        overflow-x: visible !important;
+    }
+    #accordion a {
+        font-size: 12px;
+    }
+</style>
+
+<section class="how-it-work" style="padding:10px;color:black;">
+    <div class="">
+        <div class="row faqs">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="panel-group" id="accordion">
+                        <div class="faqHeader" style="margin:10px;font-size:20px;">Locate Agents Nearby</div>
+                        <div class="panel panel-default">
+                            @foreach (var list in Model.Where(x=> !string.IsNullOrEmpty(x.CurrentCity)).GroupBy(x => x.CurrentCity))
+                            {
+
+
+
+
+
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#@list.Key">Wimbig @list.Key</a>
+                                    </h4>
+                                </div>
+                                <div id="@list.Key" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            @foreach (var item in list)
+                                            {
+                                                <div class="col-md-4">
+                                                    <table class="" style="margin-bottom:7px;">
+                                                        <tr>
+                                                            <th>Full Name</th>
+                                                            <td>@item.FullName</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Phone Number</th>
+                                                            <td>
+                                                                <a href="tel:@item.PhoneNumber">
+                                                                    @item.PhoneNumber
+                                                                    </a>
+</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Email Address</th>
+                                                            <td>
+                                                                <a href="mailto:@item.Email">
+                                                                    @item.Email
+                                                                    </a>
+</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Contact Address</th>
+                                                            <td>@item.ContactAddress</td>
+                                                        </tr>
+                                                    </table>
+                                                   
+
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

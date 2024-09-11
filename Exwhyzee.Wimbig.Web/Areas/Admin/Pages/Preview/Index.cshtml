@@ -1,0 +1,156 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Preview.IndexModel
+@{
+    // Layout = "/Views/Shared/_DgaThemeBackLayout.cshtml";
+}
+
+<!-- top tiles -->
+<!-- /top tiles -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <h2>
+                @await Component.InvokeAsync("Role", new { id = TempData["userid"] })
+                Dashboard Preview UserName: @TempData["username"]
+                <a href="javascript: history.back()" style="color:#ffffff;" class="btn btn-success pull-right">Back</a>
+            </h2>
+        </div>
+    </div>
+    </div>
+
+@if(TempData["amUser"].ToString() != "True")
+{
+<div class="row">
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="tile-stats" style="background-color:#00cd9b;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-gamepad" style="color:#fff;"></i>
+            </div>
+            <div class="count"> @await Component.InvokeAsync("PreviewTotalTicket", new { id = TempData["userid"] })</div>
+
+            <h3 style="color:#fff !important;">Tickets</h3>
+            <p class="text-center">
+                <a class="btn btn-success btn-xs"><i class="fa fa-history"></i> Ticket History </a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="tile-stats" style="background-color:#39478f;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-money" style="color:#fff;"></i>
+            </div>
+            @await Component.InvokeAsync("PayoutWeekly", new { id = TempData["userid"] })
+            <p class="text-center">
+                <a asp-area="Admin" asp-page="/PayOutReport/PayoutHistory" asp-route-id="@TempData["userid"]" class="btn btn-success btn-xs">Payout History</a>
+
+            </p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="tile-stats" style="background-color:#ffaf00;color:#fff;font-weight:400;">
+            <div class="icon">
+                <i class="fa fa-money" style="color:#fff;"></i>
+            </div>
+            <div class="count">&#8358;@await Component.InvokeAsync("PreviewBalance", new { id = TempData["userid"] })</div>
+
+            <h3 style="color:#fff !important;">Balance</h3>
+            <p class="text-center">
+                <a class="btn btn-success btn-xs"><i class="fa fa-money"></i> Wallet </a>
+
+            </p>
+        </div>
+    </div>
+
+</div>
+}
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel table-responsive">
+
+                    <div class="x_content">
+
+                        <div class="all-ads-list-box2">
+                            <div>
+                                <div class="row">
+                                    @foreach (var item in Model.Raffles)
+                                    {
+
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="blog-post">
+                                                <div class="post-img">
+                                                    <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+                                                        @await Component.InvokeAsync("RaffleImage", new { raffleId = item.Id })
+                                                    </a>
+                                                </div>
+
+                                                <div class="post-info" style="border-top:1px solid #aeabab;">
+                                                    <div class="play-info">
+                                                        <p>
+                                                            <b id="pricePerTickets">#@item.PricePerTicket</b><br /> per ticket
+                                                        </p>
+                                                        <p>
+                                                            <b>Raffle Id</b><br /> @item.Id
+
+                                                        </p>
+                                                        <p>
+                                                            <b>When</b><br /> Stake Finish
+                                                        </p>
+                                                    </div>
+
+
+
+
+                                                </div>
+
+                                                <h3 class="post-title">
+                                                    <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+                                                        @item.Name
+                                                    </a>
+                                                </h3>
+
+                                                @if (item.Location != null)
+                                                {
+                                                    <div class="ad-bottom-area" style="background-color:#ff6a00">
+
+                                                        <a class="btn btn-default flip"> Play Now <i class="fa fa-angle-double-right"></i> </a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="ad-bottom-area">
+
+                                                        <a class="btn btn-default flip"> Play Now <i class="fa fa-angle-double-right"></i> </a>
+                                                    </div>
+                                                }
+                                                <div class="ad-bottom-area" style="background-color:transparent;">
+                                                    @await Component.InvokeAsync("RaffleProgress", new { raffleId = item.Id })
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    }
+
+
+                                </div>
+                                <div class="clearfix"></div>
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+

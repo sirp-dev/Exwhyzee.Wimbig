@@ -1,0 +1,53 @@
+﻿
+@page "{id}"
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Sms.DetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Details";
+  
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>
+
+                    Message Details
+                </h2>
+
+               
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <dl class="dl-horizontal">
+                    <dt>Date</dt>
+                    <dd>@Model.Message.DateCreated</dd>
+
+                    <dt>Sender Id</dt>
+                    <dd>@Model.Message.SenderId</dd>
+
+                    <dt>Message</dt>
+                    <dd>@Model.Message.Message</dd>
+
+                    <dt>Recipients</dt>
+                    <dd style="word-break:break-all;">@Model.Message.Recipient</dd>
+
+                    <dt>Response</dt>
+                    <dd>@Model.Message.Response</dd>
+
+                    <dt>Status</dt>
+                    <dd>@Html.DisplayFor(model => Model.Message.Status)</dd>
+
+                </dl>
+
+            </div>
+        </div>
+    </div>
+</div>
+   

@@ -1,0 +1,136 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.Sms.PassiveUsersModel
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+               <h2>
+                   <span class="pull-left" style="color:#100e0e;font-weight:bold;"> Bulk SMS Manager</span>
+               </h2>
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                @if (ViewData["message"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["message"]
+                    </div>
+                }
+                @if (ViewData["error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["error"]
+                    </div>
+                }
+                @if (ViewData["error 2"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @ViewData["error 2"]
+                    </div>
+                }
+              
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable1">
+                    <thead>
+                        <tr>
+                            <th colspan="9" class="text-center">
+                                Send Message to Individuals
+                            </th>
+                        </tr>
+                        <tr class="headings">
+
+                            <th class="column-title">S/N</th>
+                            <th class="column-title">Last Date Played</th>
+                            <th class="column-title">Days</th>
+                            <th class="column-title">User Name </th>
+                            <th class="column-title">Fullname </th>
+                            <th class="column-title">Phone Number </th>
+                            <th class="column-title">city </th>
+                            <th class="column-title">Bal </th>
+
+                            @* <th class="column-title">Roles </th>*@
+
+                            <th class="column-title">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.userVM.Where(x => x.UserName != "mJinmcever"))
+                        {
+
+                        <tr class="even pointer">
+                            @{ sn++;}
+                            <td>@sn</td>
+                            <td>@user.Date</td>
+                            <td>@user.LastPlayed</td>
+                            <td>@user.UserName </td>
+                            <td>@user.Name</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>@user.city</td>
+
+                            <td>
+                                &#8358;@user.Bal
+                            </td>
+
+                            @*<td>
+            @await Component.InvokeAsync("Role", new { id = user.Id })
+
+        </td>*@
+
+
+                            <td>
+                                <a asp-page="./Compose" class="btn btn-warning btn-xs" asp-route-id="@user.Id">Send Message</a>
+
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0, 'asc']]
+                }
+            );
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable1").DataTable(
+                {
+                    "order": [[0, 'asc']]
+                }
+            );
+        });
+        $('.go-btn').click(function () {
+            window.location = window.location.href+"/Compose?id=Location"+$('#my-dropdown').val();
+        });
+
+      
+       
+    </script>
+}
+

@@ -1,0 +1,56 @@
+<!--Profile- Profile 1-->
+<ion-content>
+  <ion-grid *ngIf="data != null">
+    <ion-row>
+    <ion-col col-12>
+      <ion-card profile text-center>
+        <ion-item transparent>
+          <ion-avatar item-start>
+            <img [src]="data.image" alt="">
+          </ion-avatar>
+          <h1 ion-text color="secondary">{{data.title}}</h1>
+          <p text-wrap ion-text color="secondary">{{data.subtitle}}</p>
+        </ion-item>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button button-clear clear no-padding>
+              <span small-font font-bold ion-text color="secondary">{{data.valueFollowers}}</span>
+              <span ion-text text-capitalize color="secondary">{{data.followers}}</span>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button button-clear clear no-padding>
+              <span small-font font-bold ion-text color="secondary">{{data.valueFollowing}}</span>
+              <span ion-text text-capitalize color="secondary">{{data.following}}</span>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button button-clear clear no-padding>
+              <span small-font font-bold ion-text color="secondary">{{data.valuePosts}}</span>
+              <span text-capitalize ion-text color="secondary">{{data.posts}}</span>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+    <!-- <span text-center text-uppercase margin-top small-font font-bold ion-text color="accent">{{data.category}}</span> -->
+    <ion-col col-12 col-md-6 col-lg-4 text-center *ngFor="let item of data.items;let i = index" (click)="onEvent('onItemClick', item, $event)">
+      <ion-card padding>
+        <img [src]="item.backgroundCard" alt="">
+        <ion-card-content text-center>
+        <span text-uppercase font-bold card-subtitle>{{item.category}}</span>
+        <h1 card-title margin-top text-wrap>{{item.title}}</h1>
+        </ion-card-content>
+        <button transparent ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onLike', item, $event)">
+          <ion-icon ion-text color="accentLight" [ngClass]="{'active' : item.like.isActive}" [name]="item.like.icon"></ion-icon>
+           <p ion-text color="accentLight">{{item.like.text}}</p>
+        </button>
+        <button transparent ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onComment', item, $event)">
+          <ion-icon ion-text color="accentLight" [ngClass]="{'active' : item.comment.isActive}" [name]="item.comment.icon"></ion-icon>
+          <p ion-text color="accentLight">{{item.comment.number}} {{item.comment.text}}</p>
+        </button>
+      </ion-card>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

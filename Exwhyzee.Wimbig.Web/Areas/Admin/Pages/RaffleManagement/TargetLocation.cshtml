@@ -1,0 +1,135 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.RaffleManagement.TargetLocationModel
+@{
+    ViewData["Title"] = "Raffle Management";
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+
+}
+
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Raffle Management (Target Location) &nbsp; </h2>
+
+           
+                    <a class="btn btn-sm btn-primary" asp-page="/RaffleManagement/CreateRaffle"> Add a Raffle</a> @await Component.InvokeAsync("RaffleManager")
+
+             
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+
+                <table class="table dataTable table-striped jambo_table bulk_action" border="1" id="table">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">Sort Order </th>
+                            <th class="column-title">Id </th>
+                            <th class="column-title">Name </th>
+                            <th class="column-title">Date Added </th>
+                            <th class="column-title">Number of Tickets </th>
+                            <th class="column-title">Total Sold </th>
+                            <th class="column-title">Price Per Ticket </th>
+                            <th class="column-title">Cash Eq.</th>
+                            <th class="column-title">Percent</th>
+                            <th class="column-title">Paid Out </th>
+                            <th class="column-title">Archieved </th>
+                            <th class="column-title">Status </th>
+                            <th class="column-title">Location </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Raffles.Source)
+                        {
+                            <tr class="even pointer">
+                                <td>@user.SortOrder</td>
+                                <td>@user.Id</td>
+                                <td>@user.Name</td>
+                                <td>@user.DateCreated </td>
+                                <td>@user.NumberOfTickets</td>
+                                <td>@user.TotalSold</td>
+                                <td>@user.PricePerTicket</td>
+                                <td>
+                                    &#8358;@await Component.InvokeAsync("CashOfTicketsOfRaffle", new { raffleId = user.Id })
+                                </td>
+                                <td>
+                                    @await Component.InvokeAsync("RafflePercent", new { raffleId = user.Id })
+                                </td>
+                                <td>@Html.CheckBoxFor(model => user.PaidOut)</td>
+                                <td> @Html.CheckBoxFor(model => user.Archived)</td>
+                                <td> @Html.DisplayFor(model => user.Status)</td>
+                                <td> @Html.DisplayFor(model => user.Location)</td>
+
+                                <td>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                                            Action
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" style="max-width:none !important;">
+
+                                            <li>
+                                                <a asp-page="./EditRaffle" style="padding:3px 5px !important;" asp-route-id="@user.Id">Edit Raffle</a>
+                                            </li>
+                                            <li>
+                                                <a asp-page="./RaffleHistory" style="padding:3px 5px !important;" asp-route-id="@user.Id">Raffle History</a>
+                                            </li>
+                                            <li>
+                                                @if (user.Archived == true)
+                                                {
+                                                    <a asp-page="/RaffleManagement/UpdateArchieved" asp-area="Admin" style="padding:3px 5px !important;" asp-route-id="@user.Id">Remove to Archived</a>
+
+                                                }
+                                                else
+                                                {
+                                                    <a asp-area="Admin" asp-page="/RaffleManagement/UpdateArchieved" style="padding:3px 5px !important;" asp-route-id="@user.Id">Add to Archived</a>
+
+                                                }
+                                            </li>
+
+                                            <li>
+                                                @if (user.PaidOut == false)
+                                                {
+                                                    <a asp-page="/RaffleManagement/UpdatePaidOut" asp-area="Admin" style="padding:3px 5px !important;" asp-route-id="@user.Id">Paid Out</a>
+
+                                                }
+                                                else
+                                                {
+                                                    <a asp-page="/RaffleManagement/UpdatePaidOut" asp-area="Admin" style="padding:3px 5px !important;" asp-route-id="@user.Id">Not Paid Out</a>
+
+                                                }
+                                            </li>
+                                            @if (User.IsInRole("mSuperAdmin"))
+                                            {
+
+                                                <li>
+                                                    <a asp-page="/RaffleManagement/Invoke" asp-area="Admin" style="padding:3px 5px !important;" asp-route-id="@user.Id">Button</a>
+
+                                                </li>
+
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+@section scripts{
+    <script type="text/javascript">
+        $("table").DataTable();
+    </script>
+}

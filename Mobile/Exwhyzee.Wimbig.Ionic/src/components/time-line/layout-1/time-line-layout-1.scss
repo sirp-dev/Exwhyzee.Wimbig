@@ -1,0 +1,42 @@
+/*  # Style Time Line -- Timeline With Cards
+===========================================*/
+time-line-layout-1 {
+
+  .card {
+    border-radius: $border-radius !important;
+    overflow: visible;
+    position: relative;
+
+    [ion-text] {
+      line-height: 30px;
+    }
+
+    &:after {
+      content: "";
+      width: 2px;
+      background: theme-colors('mainColors', 'primary') !important;
+      top:0;
+      left: -30px;
+      bottom: -16px;
+      position: absolute;
+    }
+
+    &:before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: theme-colors('mainColors', 'secondary') !important;
+      top:0;
+      left: -37px;
+      position: absolute;
+      z-index: 999;
+    }
+  }
+
+  ion-list > ion-card:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}

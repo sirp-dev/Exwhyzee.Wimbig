@@ -1,0 +1,169 @@
+﻿@page
+@model IndexModel
+@{
+}
+
+
+<section class="light-blue ad-listing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-7 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                    <div class="filters clearfix">
+                        <div class="col-md-2 col-xs-12 col-sm-3 nopadding">
+                            <p>Sort By: </p>
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-3 nopadding">
+                            <div class="form-group">
+                                <select class="select-general form-control">
+                                    <option label="Select Option"></option>
+                                    <option value="0">Highest price</option>
+                                    <option value="1"> 	Date</option>
+                                    <option value="2"> Newest to oldest</option>
+                                    <option value="3"> Oldest To New</option>
+                                    <option value="4"> Alphabatically</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 col-sm-6 nopadding">
+                            <div class="pull-right"> <a href=""><i class="fa fa-th-large"></i></a><a href=""><i class="fa fa-list active"></i></a> <a href=""><i class="fa fa-location-arrow"></i></a> </div>
+                        </div>
+                    </div>
+                </div>
+
+                @foreach (var raffle in Model.Raffles.Source)
+                {
+                <div class="listing-post">
+                    <div class="col-md-4 col-sm-12 col-xs-12 nopadding">
+                        <div class="listing-image">
+                            <a href="">
+                                <img src="images/post-images/animals/1.jpg" class="img-responsive" alt="image" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        <div class="listing-desc">
+                            <h3 class="listing-desc-title">
+                                <a href="#">@raffle.Name - (@raffle.NumberOfTickets Tickets)</a>
+                            </h3>
+                            <div class="listing-desc-category">
+                                <ul>
+                                    <li><a href="#">Animals</a></li>
+                                    <li><a href="#">cats</a></li>
+                                </ul>
+                            </div>
+                            <p>@raffle.Description </p>
+                            <span class="listing-price">Per Ticket: <span>NGN @raffle.PricePerTicket</span></span> 
+                            <span class="listing-desc-date"> Start:
+                                <i class="fa fa-calendar"></i> @raffle.StartDate.ToShortDateString()
+                            </span>
+                        </div>
+                    </div>
+                   
+                </div>
+                }
+                <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                    <div class="pagination-box clearfix">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a>
+                            </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <aside>
+                    <div class="widget">
+                        <div class="widget-heading"><span class="title"> Search Product </span></div>
+                        <form class="form-inline">
+                            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="keyword" placeholder="Search Keyword" value=""> <i class="icon-magnifying-glass"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                <div class="form-group">
+                                    <select class="select-category form-control">
+                                        <option label="Select Option"></option>
+                                        <option value="0">Animal</option>
+                                        <option value="1">Designer</option>
+                                        <option value="2">Laptops</option>
+                                        <option value="3">Electronics</option>
+                                        <option value="4">Human Resource Jobs</option>
+                                        <option value="5">Real Estate</option>
+                                        <option value="6">Vehicles</option>
+                                        <option value="7">Others</option>
+                                        <option value="8">Sports</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                <div class="form-group">
+                                    <select class="select-location form-control">
+                                        <option value="">&nbsp;</option>
+                                        <option value="0">SriLanka</option>
+                                        <option value="1">Australia</option>
+                                        <option value="2">Bahrain</option>
+                                        <option value="3">Canada</option>
+                                        <option value="4">Denmark</option>
+                                        <option value="5">Germany</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                <div class="form-group range">
+                                    <div class="sliders" id="keyboard"></div>
+                                    <span class="keyboardspan" id="keyboardspan"> KM </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                <div class="form-group form-action">
+                                    <button type="button" class="btn btn-default btn-search-submit"><span class="fa fa-search"></span>Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-heading"><span class="title">Hot Categories</span></div>
+                        <ul class="categories-module">
+                            <li> <a href=""> Computer and IT <span>121</span> </a> </li>
+                            <li> <a href=""> Animal <span>54</span> </a> </li>
+                            <li> <a href=""> Electronics<span>313</span> </a> </li>
+                            <li> <a href=""> Real Estate<span>23</span> </a> </li>
+                            <li> <a href=""> Mobile / Laptop <span>142</span> </a> </li>
+                            <li> <a href=""> Car / Bike <span>120</span> </a> </li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-heading"><span class="title">Hot Categories</span></div>
+                        <ul class="tagcloud">
+                            <li><a href=""> clissified </a></li>
+                            <li><a href=""> sales </a></li>
+                            <li><a href=""> cars </a></li>
+                            <li><a href=""> bikes </a></li>
+                            <li><a href=""> buy </a></li>
+                            <li><a href=""> help </a></li>
+                            <li><a href=""> mobile </a></li>
+                            <li><a href=""> laptop </a></li>
+                            <li><a href=""> animals </a></li>
+                            <li><a href=""> clothings </a></li>
+                            <li><a href=""> buy car </a></li>
+                            <li><a href=""> sell car </a></li>
+                            <li><a href=""> sell laptop </a></li>
+                            <li><a href=""> buy cats </a></li>
+                            <li><a href=""> black puppy </a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>

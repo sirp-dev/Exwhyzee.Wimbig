@@ -1,0 +1,47 @@
+/*  #Style Payment - Payment
+================================================*/
+
+payment-layout-1 {
+  img {
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .datetime {
+    padding: 13px 8px;
+
+    .datetime-text {
+      color: theme-colors('textColors', 'primary');
+    }
+
+    &.ng-touched {
+      .datetime-text {
+        color: theme-colors('textColors', 'primary') !important;
+      }
+    }
+  }
+
+  .scroll-content {
+    padding-bottom: 0 !important;
+
+    ion-grid {
+      height: 100%;
+      padding: 0 !important;
+
+      ion-row {
+        height: 100%;
+      }
+    }
+  }
+ 
+  .item.item-input.item-input-has-focus .item-inner {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important
+  }
+  .item-md.item-input.ng-valid.item-input-has-value .item-inner {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important
+  }
+}
+

@@ -1,0 +1,92 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.SuperAdmin.Pages.Dashboard.StakesModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Total Ticket [@Model.Tickets.TotalCount] <small></small></h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table id="userDatable" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">Id </th>
+                            <th class="column-title">Date </th>
+                            <th class="column-title">User </th>
+                            <th class="column-title">Raffle Name </th>
+                            <th class="column-title">Raffle Id </th>
+                            <th class="column-title">Ticket Number </th>
+                            <th class="column-title">Transaction Id </th>
+                            <th class="column-title">Phone Number</th>
+                            <th class="column-title">Player</th>
+                            <th class="column-title">Location</th>
+                            <th class="column-title">Price </th>
+                            <th class="column-title">Status </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Tickets.Source)
+                        {
+                            <tr class="even pointer">
+                                <td>
+                                    @item.Id
+
+                                </td>
+                                <td>@item.Date</td>
+                                <td> @await Component.InvokeAsync("UserName", new { userid = item.UserId })</td>
+
+                                <td>@item.RaffleName</td>
+                                <td>@item.RaffleId</td>
+                                <td>@item.TicketNumber</td>
+                                <td>@item.TransactionId</td>
+                                <td>@item.PhoneNumber</td>
+                                <td>@item.PlayerName</td>
+                                <td>@item.CurrentLocation</td>
+                                <td>@item.Price</td>
+
+                                <td>
+                                    @if (item.Status == 1)
+                                    {
+                                        <span>Active</span>
+                                    }
+                                    else if (item.Status == 2)
+                                    {
+                                        <span>Drawn</span>
+                                    }
+
+                                    @if (item.IsWinner == true)
+                                    {
+                                        <span class="btn-success">Won</span>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+   
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0, 'desc']]
+                }
+            );
+        });
+
+    </script>
+}

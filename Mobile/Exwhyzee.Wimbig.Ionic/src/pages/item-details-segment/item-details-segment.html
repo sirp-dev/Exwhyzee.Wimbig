@@ -1,0 +1,13 @@
+<!--Segment Boxes component-->
+
+<!--PAGE SEGMENT-LIST-->
+<segment-layout-1 *ngIf="params.segmentLayout1" [data]="params.data | async" [events]="params.events">
+</segment-layout-1>
+
+<!--PAGE SEGMENT-CARD-->
+<segment-layout-2 *ngIf="params.segmentLayout2" [data]="params.data | async" [events]="params.events">
+</segment-layout-2>
+
+<!--PAGE SEGMENT-POST-->
+<segment-layout-3 *ngIf="params.segmentLayout3" [data]="params.data | async" [events]="params.events">
+</segment-layout-3>

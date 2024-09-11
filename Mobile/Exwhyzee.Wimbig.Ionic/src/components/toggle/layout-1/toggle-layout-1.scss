@@ -1,0 +1,20 @@
+/*  #Style Toggle - With avatars
+===========================================*/
+toggle-layout-1 {
+  .input-wrapper {
+    display: block;
+
+    ion-label {
+      margin: 0 !important;
+
+      &[padding-top] {
+        padding-top: 25px;
+      }
+    }
+  }
+  // Settings gradient image
+  ion-avatar img {
+    height: 72px !important;
+    width: 72px !important;
+  }
+}

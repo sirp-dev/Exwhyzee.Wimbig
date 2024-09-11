@@ -1,0 +1,126 @@
+@page
+@model Exwhyzee.Wimbig.Web.Areas.StakeHolders.Pages.UserData.PayoutHistoryModel
+@{
+    ViewData["Title"] = "Report";
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>PayOut Report</h2>
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                @if (TempData["msg"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @TempData["msg"]
+                    </div>
+                }
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @TempData["error"]
+                    </div>
+                }
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">S/N</th>
+                            <th class="column-title">Start Date</th>
+                            <th class="column-title">End Date</th>
+                            <th class="column-title">Amount </th>
+                            <th class="column-title">Percentage </th>
+                            <th class="column-title">Interest </th>
+
+                            <th class="column-title">Status </th>
+                            @if (User.IsInRole("Supervisors"))
+                            {
+                                <th class="column-title">Reference </th>
+                            }
+
+                            <th class="column-title">Action </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var user in Model.Reports.Source.OrderByDescending(x => x.StartDate))
+                        {
+                            
+                            <tr class="even pointer">
+                                @{ sn++;}
+                                <td>@sn</td>
+                                <td>@user.StartDate.Value.ToString("dddd dd MMM, yyyy")</td>
+                                <td>@user.EndDate.Value.ToString("dddd dd MMM, yyyy")</td>
+
+                                <td>@user.Amount</td>
+                                <td>%@user.Percentage</td>
+                                <td>@user.PercentageAmount</td>
+
+                                <td>@user.Status</td>
+
+                                @if (User.IsInRole("Supervisors"))
+                                {
+
+                                    <td>@user.Reference</td>
+                                }
+
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                                            More
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a asp-page="./UserTicketHistory" asp-route-id="@user.UserId" asp-route-startdate="@user.StartDate" asp-route-enddate="@user.EndDate">Ticket History</a>
+                                            </li>
+                                            @if (user.Status == Enums.PayoutEnum.Pending)
+                                            {
+                                                if (user.EndDate.Value.Date < DateTime.UtcNow.Date)
+                                                {
+                                                    <li>
+                                                        <a asp-page="./PayoutProcess" asp-route-id="@user.Id">Payout</a>
+                                                    </li>
+                                                }
+
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#userDatable').DataTable({
+                responsive: true,
+                "order": [[0, 'asc']]
+            });
+
+        });
+
+    </script>
+}

@@ -1,0 +1,54 @@
+<!-- Theme Segment - Segment List -->
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      <ion-title *ngIf="data != null">{{data.headerTitle}}</ion-title>
+  </ion-navbar>
+  <!--Segment Section -->
+  <ion-toolbar no-padding>
+    <div segment-block *ngIf="data != null">
+      <ion-segment has-header [(ngModel)]="selectedItem">
+        <ion-segment-button text-capitalize value="Page1">
+          {{data.segmentButton1}}
+        </ion-segment-button>
+        <ion-segment-button text-capitalize value="Page2">
+          {{data.segmentButton2}}
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<!-- Content-->
+<ion-content>
+  <ion-grid no-padding *ngIf="data != null">
+    <!--- SETTINGS PAGE1 SCREEN -->
+    <ion-row no-padding *ngIf="isEnabled('Page1')">
+      <ion-col col-12 no-padding>
+        <div background-size [ngStyle]="{'background-image': 'url(' + data.page1.background + ')'}"></div>
+        <ion-item no-padding *ngFor="let item of data.page1.items; let i= index" (click)="onEvent('onItemClick', item, $event)">
+          <ion-thumbnail item-start no-margin>
+            <img [src]="item.image" alt="">
+          </ion-thumbnail>
+          <h2 item-title padding-bottom>{{item.title}}</h2>
+          <h3 item-subtitle text-wrap>{{item.description}}</h3>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!--- SETTINGS PAGE2 SCREEN -->
+    <ion-row *ngIf="isEnabled('Page2')">
+      <ion-col col-12>
+        <div background-size [ngStyle]="{'background-image': 'url(' + data.page2.background + ')'}"></div>
+        <ion-item no-padding *ngFor="let item of data.page2.items; let i= index" (click)="onEvent('onItemClick', item, $event)">
+          <ion-thumbnail item-start no-margin>
+            <img [src]="item.image" alt="">
+          </ion-thumbnail>
+          <h2 item-title padding-bottom>{{item.title}}</h2>
+          <h3 item-subtitle text-wrap>{{item.description}}</h3>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

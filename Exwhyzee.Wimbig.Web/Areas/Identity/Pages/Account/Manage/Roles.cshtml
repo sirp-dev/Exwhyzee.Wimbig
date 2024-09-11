@@ -1,0 +1,60 @@
+﻿@page
+@model RolesModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Role Management";
+    Layout = "/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+}
+
+<!-- page content -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel table-responsive">
+                    <div class="x_title">
+
+                        <h2>List Of Role <a asp-page="/Account/Manage/NewUserRole" class="btn btn-success"> New Role</a></h2>
+                       
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table" id="">
+                                <thead>
+                                    <tr class="headings">
+
+                                        <th class="column-title">Name </th>
+                                    
+                                       @* <th class="column-title">Action</th>*@
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Roles)
+                                    {
+                                        <tr class="even pointer">
+
+                                            <td> @item.Name</td>
+                                           
+                                            @*<td>
+                                                <a asp-area="Identity" asp-page="Account/Manage/EditRole" asp-route-userId="@item.Id" class="btn btn-warning btn-xs">Edit Role</a>
+                                            </td>*@
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+@section scripts{
+    @*<script type="text/javascript">
+        $("table").DataTable();
+    </script>*@
+}

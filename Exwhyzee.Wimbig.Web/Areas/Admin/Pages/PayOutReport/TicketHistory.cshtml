@@ -1,0 +1,92 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.PayOutReport.TicketHistoryModel
+@{
+    ViewData["Title"] = "Refernce Ticket History";
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Ticket History for @TempData["user"] @TempData["date"] (@Model.Tickes.Count() tickets) </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a href="javascript: history.back()"><button class="btn btn-xs btn-warning">Cancel</button> </a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table class="table dataTable table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+                           
+                            <th class="column-title">S/N </th>
+                            <th class="column-title">Date </th>
+                            <th class="column-title">Raffle Name </th>
+                            <th class="column-title">Raffle Id </th>
+                            <th class="column-title">Ticket Number </th>
+                            <th class="column-title">Transaction Id </th>
+                            <th class="column-title">Phone Number</th>
+                            <th class="column-title">Player</th>
+                            <th class="column-title">Price </th>
+                            <th class="column-title">Status </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Tickes.OrderBy(x=>x.Price))
+                        {
+                        <tr class="even pointer">
+                            @{ sn++;}
+                           
+                            <td>
+                                @sn
+
+                            </td>
+                            <td>@item.Date.ToString("dddd dd MMM, yyyy HH:mm tt")</td>
+                            <td>@item.RaffleName</td>
+                            <td>@item.RaffleId</td>
+                            <td>@item.TicketNumber</td>
+                            <td>@item.TransactionId</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.PlayerName</td>
+                            <td>@item.Price</td>
+                            <td>
+                                @if (item.Status == 1)
+                                {
+                                    <span>Active</span>
+                                }
+                                else if (item.Status == 2)
+                                {
+                                    <span>Drawn</span>
+                                }
+
+                                @if (item.IsWinner == true)
+                                {
+                                    <span class="btn-success">Won</span>
+                                }
+
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+   
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#userDatable').DataTable({
+                responsive: true,
+                "order": [[0, 'asc']]
+            });
+            
+        });
+    </script>
+}

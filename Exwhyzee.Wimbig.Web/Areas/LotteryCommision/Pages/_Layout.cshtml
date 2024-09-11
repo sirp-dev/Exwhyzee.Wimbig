@@ -1,0 +1,11 @@
+﻿@using Exwhyzee.Wimbig.Core.Authorization.Users
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+  //  Layout = "/Views/Shared/_ThemeBackLayout.cshtml";
+}
+
+@RenderBody()
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

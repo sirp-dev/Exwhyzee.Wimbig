@@ -1,0 +1,147 @@
+﻿@page "{handler?}"
+
+
+@model Exwhyzee.Wimbig.Web.Areas.UserManagement.Pages.Users.IndexModel
+@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Users";
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>List Of Users &nbsp; &nbsp; <a asp-area="Identity" asp-page="/Account/Manage/WimRegistration" class="btn btn-xs btn-success"><i class="fa fa-plus"></i> Add Wimbig User</a></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+                <table border="1" class="table dataTable table-bordered table-striped jambo_table bulk_action" id="userDatable">
+                    <thead>
+                        <tr class="headings">
+
+                            <th class="column-title">Date</th>
+                            <th class="column-title">User Name </th>
+                            <th class="column-title">Fullname </th>
+                            <th class="column-title">Phone Number </th>
+                            <th class="column-title">Email </th>
+                            <th class="column-title">city </th>
+                            <th class="column-title">Area in city </th>
+                            <th class="column-title">Bal </th>
+                            @if (!User.IsInRole("SuperAdmin") || !User.IsInRole("mSuperAdmin"))
+                            {
+                                <th class="column-title">Roles </th>
+
+                            }
+                            <th class="column-title">Action </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var user in Model.UsersInRole.Source.Where(x => x.UserName != "mJinMcever").OrderByDescending(x => x.DateRegistered))
+                        {
+                            <tr class="even pointer">
+                                <td>@user.DateRegistered</td>
+                                <td>@user.UserName </td>
+                                <td>@user.FullName</td>
+                                <td>@user.PhoneNumber</td>
+                                <td>@user.Email</td>
+                                <td>@user.CurrentCity</td>
+                                <td>@user.AreaInCurrentCity</td>
+
+                                <td>
+                                    &#8358;@user.Balance
+                                </td>
+                                @if (!User.IsInRole("SuperAdmin") || !User.IsInRole("mSuperAdmin"))
+                                {
+                                    <td>
+                                        @* @await Component.InvokeAsync("Role", new { id = user.Id })*@
+                                        @user.RoleString
+                                    </td>
+
+                                }
+
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                                            Action
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" style="max-width:none !important;">
+
+                                            <li>
+                                                <a asp-page="./EditUser" style="padding:3px 5px !important;" asp-route-id="@user.Id">Edit</a>
+                                            </li> @if (User.IsInRole("mSuperAdmin"))
+                                            {
+                                                <li>
+                                                    <a asp-page="./UserRoleUpdate" style="padding:3px 5px !important;" asp-route-id="@user.Id">Update Role</a>
+                                                </li>
+                                            }
+
+                                            @if (User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+                                            {
+                                                <li>
+                                                    <a asp-page="/Preview/Index" asp-area="Admin" style="padding:3px 5px !important;" asp-route-id="@user.Id">Preview Dashboard</a>
+                                                </li>
+
+
+                                            }
+                                            <li>
+                                                <a asp-area="UserManagement" style="padding:3px 5px !important;" asp-page="/Users/Details" asp-route-userId="@user.Id">Details</a>
+                                            </li>
+                                            <li>
+                                                <a asp-page="/Preview/RaffleHistory" asp-area="Admin" style="padding:3px 5px !important;" asp-route-id="@user.Id">Raffle History</a>
+                                            </li>
+
+                                            <li>
+                                                <a asp-page="/Preview/Transactions" asp-area="Admin" style="padding:3px 5px !important;" asp-route-id="@user.Id">Transaction History</a>
+                                            </li>
+                                            @if (User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+                                            {
+                                                <li>
+
+
+                                                    <form asp-page-handler="UpdateRoles" method="post">
+                                                        <button class="btn btn-default">Update Roles</button>
+                                                    </form>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+
+
+
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userDatable").DataTable(
+                {
+                    "order": [[0]]
+                }
+            );
+        });
+
+    </script>
+}
+

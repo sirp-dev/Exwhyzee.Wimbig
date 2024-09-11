@@ -1,0 +1,140 @@
+﻿@page "{id:int?}"
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.WinnerReport.DetailsModel
+@{
+  
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+   
+}
+
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Winner ReportDetail <small></small></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                <dl class="dl-horizontal">
+                    <dt>
+
+                        @Html.DisplayNameFor(model => Model.ReportDto.Id)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.Id)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.WinnerName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.WinnerName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.WinnerPhoneNumber)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.WinnerPhoneNumber)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.WinnerEmail)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.WinnerEmail)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.WinnerLocation)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.WinnerLocation)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.AmountPlayed)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.AmountPlayed)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.RaffleName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.RaffleName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.RaffleId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.RaffleId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.TicketNumber)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.TicketNumber)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.ItemCost)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.ItemCost)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.DateCreated)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.DateCreated)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.DateWon)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.DateWon)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.DateDelivered)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.DateDelivered)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.DeliveredBy)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.DeliveredBy)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.DeliveredPhone)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.DeliveredPhone)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.DeliveryAddress)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.DeliveryAddress)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.TotalAmountPlayed)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.TotalAmountPlayed)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => Model.ReportDto.Status)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model.ReportDto.Status)
+                    </dd>
+                </dl>
+                <a asp-page="./EditReport" class="btn btn-warning btn-xs" asp-route-id="@Model.ReportDto.Id">Edit</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!-- /page content -->

@@ -1,0 +1,23 @@
+
+<!-- Content -->
+<ion-content>
+    <ion-grid *ngIf="data != null">
+      <ion-col col-12 padding-top>
+        <span font-bold span-small>{{data.allComments}}</span>
+      </ion-col>
+      <ion-col col-12>
+        <ion-list>
+          <ion-item margin-top no-lines *ngFor="let item of data.items; let i = index;" (click)="onEvent('onItemClick', item, $event)">
+            <ion-avatar item-start>
+              <img [src]="item.image">
+            </ion-avatar>
+            <h2 item-title>{{item.title}}</h2>
+            <p item-subtitle>{{item.time}}</p>
+            <h3 text-wrap item-subtitle margin-top>
+              {{item.description}}
+            </h3>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,18 @@
+<!-- Register component-->
+<ion-header>
+  <ion-navbar header-color>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-left text-uppercase>{{params.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<!--Content-->
+
+<!-- PAGE GOOGLE CARDS - Register + logo -->
+<register-layout-1 has-header *ngIf="params.registerLayout1" [data]="params.data | async" [events]="params.events">
+</register-layout-1>
+
+<!-- PAGE GOOGLE CARDS - Register + images -->
+<register-layout-2 has-header *ngIf="params.registerLayout2" [data]="params.data | async" [events]="params.events">
+</register-layout-2>

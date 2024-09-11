@@ -1,0 +1,135 @@
+﻿@page
+@model WalletModel
+@{
+    ViewData["Title"] = "Wallet and Transactions";
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("DGAs") || User.IsInRole("Supervisors") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+    {
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    }
+
+    else
+    {
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    }
+}
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("DGAs") || User.IsInRole("Supervisors") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+{
+
+}
+
+else
+
+{
+<partial name="/Areas/Identity/Pages/Account/Manage/_ManageUserNav.cshtml" />
+
+}
+
+<section class="dashboard" style="background-color:#FFF;color:#000000;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="dashboard-main-disc">
+
+
+                    <div class="row">
+
+                        <div class="col-md-6 col-sm-12">
+                            <h4>Wallet Transactions</h4>
+                        </div>
+                        <div class="col-md-6 col-sm-12 pull-right" style="border-radius:0px;">
+                            <div class="form-group">
+
+                                <div class="btn-group pull-right" style="width:100%;">
+                                    <a class="btn" style="background-color:#fead00 !important;color:#000000 !important;text-shadow:0px 0px 0 #000000;float:right; border-radius:0px;border:1px solid #FFF;">Balance: NGN @Model.Wallet?.Balance</a>
+                                    <a asp-page="./Wimpay" class="btn" style="background-color:#278526 !important;color:#FFF !important;float:right;border-radius:0px;vertical-align:middle !important;border:1px solid #FFF;">Transfer</a>
+                                    <a asp-page="./Funding" class="btn" style="background-color:#278526 !important;color:#FFF !important;float:right;border-radius:0px;vertical-align:middle !important;border:1px solid #FFF;">Fund Account</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+
+                    <div class="row table-responsive">
+                        @await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+                        <div class="col-md-12 table-responsive">
+                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr class="headings">
+
+                                        <th class="column-title">Id </th>
+                                        <th class="column-title">Transaction Type </th>
+                                        <th class="column-title">Amount </th>
+                                        <th class="column-title">Date of Transaction </th>
+                                        <th class="column-title">Description </th>
+                                        <th class="column-title">Status </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Transactions.Source)
+                                    {
+                                    <tr class="">
+                                        <td>@item.Id</td>
+                                        <td>
+                                            @if (item.TransactionType == Enums.TransactionTypeEnum.Credit)
+                                            {
+                                                <span class="bg-success" style="padding:3px;border-radius:4px;">@Html.DisplayFor(modelItem => item.TransactionType)</span>
+                                            }
+                                            else if (item.TransactionType == Enums.TransactionTypeEnum.Debit)
+                                            {
+                                                <span class="bg-danger" style="padding:3px;border-radius:4px;">@Html.DisplayFor(modelItem => item.TransactionType)</span>
+
+                                            }
+                                            else if (item.TransactionType == Enums.TransactionTypeEnum.TransferCredit)
+                                            {
+                                                <span class="bg-success" style="padding:3px;border-radius:4px;">Transfer (Credit)</span>
+
+                                            }
+                                            else if (item.TransactionType == Enums.TransactionTypeEnum.TransferDebit)
+                                            {
+                                                <span class="bg-danger" style="padding:3px;border-radius:4px;">Transfer (Debit)</span>
+
+                                            }
+                                            else
+                                            {
+                                                <span class="" style="padding:3px;border-radius:4px;">@Html.DisplayFor(modelItem => item.TransactionType)</span>
+
+                                            }
+                                        </td>
+                                        <td>@item.Amount </td>
+                                        <td>@item.DateOfTransaction</td>
+                                        <td>@item.Description</td>
+                                        <td>
+
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+
+
+                                    </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                responsive: true,
+                "order": [[0, 'desc']]
+            });
+        });
+    </script>
+}

@@ -1,0 +1,102 @@
+﻿@page
+@model PaymentModel
+@{
+    ViewData["Title"] = "Make Deposit";
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("DGAs") || User.IsInRole("Supervisors") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+    {
+        Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+    }
+
+    else
+    {
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    }
+}
+
+<link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css" />
+
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin") || User.IsInRole("DGAs") || User.IsInRole("Supervisors") || User.IsInRole("Agent") || User.IsInRole("Supervisors") || User.IsInRole("LotteryCommision"))
+{
+
+}
+else
+
+{
+    <partial name="/Areas/Identity/Pages/Account/Manage/_ManageUserNav.cshtml" />
+
+}
+
+@await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+
+<section class="dashboard" style="background-color:#FFF;color:#000000;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" style="padding:10px 20px !important;">
+                <div class="dashboard-main-disc" style="color:#000000 !important;padding:10px 20px !important;background-color:#f4f4f4;box-shadow:1px 1px 1px #f5f5f5;padding:20px;">
+
+                    <h3>Online Payment</h3>
+
+                    <div class="row" style="">
+                        <div class="col-sm-7">
+                            <form id="make-deposit-form" method="post">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Amount"></label>*
+                                    <input asp-for="Amount" class="form-control" id="amount" />
+                                    <span asp-validation-for="Amount" class="text-danger"></span>
+                                </div>
+
+                                <button id="continue" type="submit" class="btn btn-default">Continue</button>
+                            </form>
+                        </div>
+                        <div class="col-sm-5" style="padding:3px;">
+                            <img src="~/main/wimbig/pay.PNG"class="img-responsive" />
+                        </div>
+
+                    </div>
+                    <div id="confirm-dialog" title="Confirm Deposit" hidden>
+                        <p>You are about to make a deposit of <strong> NGN <span id="new-amount"></span></strong> . Click OK to continue. </p>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+        <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $('#continue').on('click', function (e) {
+                    e.preventDefault();
+                    var amount = $('#amount').val();
+                    $('#new-amount').text(amount);
+                    $('#confirm-dialog').dialog('open');
+                });
+
+                $("#confirm-dialog").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    resizable: false,
+                    buttons: {
+                        "Ok": function () {
+                            $("#make-deposit-form").submit();
+                            $(this).dialog("close");
+                        },
+                        "Cancel": function (e) {
+                            $(this).dialog("close");
+                        }
+                    }
+                })
+            });
+        </script>
+    }
+

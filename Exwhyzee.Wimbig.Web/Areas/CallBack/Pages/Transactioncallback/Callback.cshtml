@@ -1,0 +1,47 @@
+﻿@page
+@model Exwhyzee.Wimbig.Web.Areas.Callback.Pages.Transactioncallback.CallbackModel
+@{
+    ViewData["Title"] = "Complete";
+}
+<script type="text/javascript">
+    (function () {
+        setTimeout(function () {
+            window.location = "https://www.wimbig.com/Identity/Account/Manage";
+        }, 3000); /* 1000 = 1 second*/
+    })();
+</script>
+<section class="ad-breadcrumb parallex">
+    <div class="container page-banner">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <h1>Transaction Status</h1>
+            </div>
+            <div class="col-sm-6 col-md-6 hidden-sm hidden-xs">
+                <ol class="breadcrumb pull-right flip flip">
+                    <li><a href="#">Play Small... WinBig...</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="how-it-work" style="padding:10px;color:black;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                
+                @await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+
+                <br />
+                <strong>Redirecting in 5sec...</strong>
+                <br />
+
+                <a asp-page="./Index" class="btn btn-success">
+                    My Wallet <i class="fa fa-money"></i>
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+

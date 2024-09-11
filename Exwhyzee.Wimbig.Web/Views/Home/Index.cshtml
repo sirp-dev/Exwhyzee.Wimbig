@@ -1,0 +1,201 @@
+﻿@using Exwhyzee.Wimbig.Web.Views.Shared.ViewComponents
+@model IEnumerable<Exwhyzee.Wimbig.Application.Raffles.Dto.RaffleDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="~/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="~/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="~/nivo-slider/themes/light/light.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="~/nivo-slider/themes/dark/dark.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="~/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="~/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="~/nivo-slider/demo/style.css" type="text/css" media="screen" />
+
+<section class="slider-container">
+    <div class="slider-wrapper theme-default">
+
+        <div id="slider" class="nivoSlider">
+
+            @await Component.InvokeAsync("Slider")
+
+
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <script type="text/javascript" src="~/nivo-slider/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+        //$(window).load(function () {
+        //    $('#slider').nivoSlider();
+
+
+        //});
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+
+                animSpeed: 4000,                   // Slide transition speed
+                pauseTime: 9000,                  // How long each slide will show
+                controlNav: false,                // 1,2,3... navigation
+
+            });
+        });
+
+         function sends() {
+                       window.location.href = '@Url.Action("Sendsms", "Home")';
+                    }
+    </script>
+
+    @if (ViewBag.pop == "SHowPage")
+    {
+        <div>
+
+
+            <script>
+                $(function () {
+                    $('#myModal').modal('show');
+                });
+
+
+
+                /**/</script>
+
+        </div>
+    }
+}
+
+<section class="light-blue ad-listing" style="padding-top:40px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="Heading-title black">
+                    <h1>Latest Raffles</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-sm-2 col-xs-12 hidden-xs hidden-sm" id="sticky-ad">
+                @await Component.InvokeAsync("LeftBar")
+            </div>
+
+
+            <div class="col-md-8 col-sm-12 col-xs-12">
+
+
+                <div class="all-ads-list-box2">
+                    <div>
+
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="blog-post">
+                                    <div class="post-img">
+                                        <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+                                            @await Component.InvokeAsync("RaffleImage", new { raffleId = item.Id })
+                                        </a>
+                                    </div>
+
+                                    <div class="post-info" style="border-top:1px solid #aeabab;">
+                                        <div class="play-info">
+                                            <p>
+                                                <b>#@item.PricePerTicket</b><br /> per ticket
+                                            </p>
+                                            <p>
+                                                <b>Raffle Id</b><br /> @item.Id
+
+                                            </p>
+                                            <p>
+                                                <b>When</b><br /> Raffle Finish
+                                            </p>
+                                        </div>
+
+
+                                    </div>
+                                    <h3 class="post-title">
+                                        <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+                                            @item.Name
+                                        </a>
+                                    </h3>
+                                    <a asp-area="Raffles" asp-page="/Raffles/Details" asp-route-id="@item.Id">
+
+                                        <div class="ad-bottom-area">
+                                            <span class="btn btn-default flip">
+                                                Play Now<i class="fa fa-angle-double-right"></i>
+                                            </span>
+                                        </div>
+
+                                    </a>
+                                    @if (User.IsInRole("SuperAdmin") || User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+                                    {
+                                        <div class="ad-bottom-area" style="background-color:transparent;">
+                                            @await Component.InvokeAsync("RaffleProgress", new { raffleId = item.Id })
+
+                                        </div>
+                                    }
+
+                                </div>
+
+                            </div>
+
+
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12 hidden-xs hidden-sm" id="sticky-ad2">
+                @await Component.InvokeAsync("RightBar")
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="call-to-action-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                <div class="col-md-10 col-sm-12 col-xs-12">
+                    <div class="heading-detail">
+                        <h3>Transparent | Integrity | Reliable</h3>
+                        <p>PLAY SMALL... WIN BIG...</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12"> <a asp-controller="Raffles" asp-area="Raffles" asp-action="Index" class="btn btn-default btn-block">Play Now <i class="fa fa-angle-double-right"></i></a> </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <div id="myModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+
+      Modal content
+<div class="modal-content">
+
+    <div class="modal-body">
+        @* <div class="fb-post" data-href="https://web.facebook.com/photo.php?fbid=916926425320173&amp;set=pcb.916928611986621&amp;type=3&amp;theater" data-width="500" data-show-text="true"><blockquote cite="https://www.facebook.com/photo.php?fbid=916926425320173&amp;set=a.157451237934366&amp;type=3" class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/oluchi.onwuka.520">Oluchi Rita Onwuka</a> on&nbsp;<a href="https://www.facebook.com/photo.php?fbid=916926425320173&amp;set=a.157451237934366&amp;type=3">Monday, July 22, 2019</a></blockquote></div>*@
+
+        <iframe src="https://web.facebook.com/plugins/post.php?href=https%3A%2F%2Fweb.facebook.com%2Fwimbigstakes%2Fposts%2F1068253486713416&width=500" width="500" height="658" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+    </div>
+    <div class="modal-footer">
+        <h5>
+            In the comment box, comment your username and phone number
+        </h5><h5>
+            Like and share the page....
+
+        </h5><h5>
+            That's all it takes to win...
+        </h5>
+        <button type="button" onClick="sends()" class="btn btn-default" data-dismiss="modal">Confirm</button>
+    </div>
+</div>
+
+    </div>
+</div>-->

@@ -1,0 +1,26 @@
+<!--DRAG AND DROP components-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title text-left text-uppercase>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!---Content-->
+
+<!-- PAGE DRAG AND DROP -Small item + header -->
+<drag-and-drop-layout-1 has-header *ngIf="params.dragAndDropLayout1" [data]="params.data | async" [events]="params.events">
+</drag-and-drop-layout-1>
+
+<!-- PAGE DRAG AND DROP -Products + CTA header -->
+<drag-and-drop-layout-2 has-header *ngIf="params.dragAndDropLayout2" [data]="params.data | async" [events]="params.events">
+</drag-and-drop-layout-2>
+
+<!-- PAGE DRAG AND DROP -Medium item with avatar -->
+<drag-and-drop-layout-3 has-header *ngIf="params.dragAndDropLayout3" [data]="params.data | async" [events]="params.events">
+</drag-and-drop-layout-3>
+
+<!-- PAGE DRAG AND DROP -Medium item with image -->
+<drag-and-drop-layout-4 has-header *ngIf="params.dragAndDropLayout4" [data]="params.data | async" [events]="params.events">
+</drag-and-drop-layout-4>

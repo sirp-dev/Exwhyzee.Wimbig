@@ -1,0 +1,43 @@
+/*  #Style Small item + header
+================================================*/
+drag-and-drop-layout-1 {
+  ion-list-header {
+    height: 80px;
+
+    [icon-medium] {
+      color: theme-colors('mainColors', 'primary') !important;
+      font-size: icon-size('icon-medium') !important;
+    }
+
+    [span-medium] {
+      color: theme-colors('mainColors', 'primary') !important;
+      font-size: $h1-font-size;
+    }
+
+    [header-title] {
+      text-transform: uppercase;
+      margin-bottom: 0;
+      margin-top: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    [header-subtitle] {
+      font-size: 14px !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item-inner {
+      padding-right: 0 !important;
+    }
+
+    ion-label {
+      margin: 0 !important;
+    }
+  }
+
+  .item-inner {
+    margin-left: 0 !important;
+  }
+}

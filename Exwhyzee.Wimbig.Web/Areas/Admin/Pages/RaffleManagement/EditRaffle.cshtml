@@ -1,0 +1,195 @@
+﻿@page "{id:int?}"
+@model Exwhyzee.Wimbig.Web.Areas.Admin.Pages.RaffleManagement.EditRaffleModel
+@{
+    var user = Model.LoggedInUser;
+
+    Layout = "~/Views/Shared/_SuperThemeBackLayout.cshtml";
+
+
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <p>@TempData["error"]</p>
+    </div>
+}
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel table-responsive">
+            <div class="x_title">
+                <h2>Edit Raffle <small></small></h2>
+
+                <ul class="nav navbar-right panel_toolbox"></ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                <form class="form-horizontal form-label-left" method="post" novalidate>
+
+
+                    <input asp-for="Raffle.HostedBy" value="@Model.LoggedInUser" type="hidden" id="HostedBy">
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="name" class="form-control col-md-7 col-xs-12" asp-for="Raffle.Name" placeholder="Enter name of Raffle" autofocus required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                            Start Date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="startDate" asp-for="Raffle.StartDate" name="Raffle.StartDate" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                            End Date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="date" id="endDate" required="required" asp-for="Raffle.EndDate" name="Raffle.EndDate" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pricePerTicket">
+                            Price Per Ticket <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="pricePerTicket" asp-for="Raffle.PricePerTicket" name="Raffle.PricePerTicket" placeholder="Enter Price per ticket" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label for="numberOfTickets" class="control-label col-md-3">Number Of Ticket to Sell</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="numberOfTickets" type="number" asp-for="Raffle.NumberOfTickets" name="Raffle.NumberOfTickets" placeholder="Number of Tickets to Sell" class="form-control col-md-7 col-xs-12" required="required">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label for="sortOrder" class="control-label col-md-3">Sort Order</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="sortOrder" type="number" asp-for="Raffle.SortOrder" name="Raffle.SortOrder" placeholder="sort order" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">
+                            Delivery Type <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.DropDownListFor(model => model.Raffle.DeliveryType, new SelectList(Enum.GetValues(typeof(Exwhyzee.Enums.DeliveryTypeEnum))))
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">
+                            Description <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <textarea id="description" placeholder="Provide a description about this raffle" asp-for="Raffle.Description" required="required" class="form-control col-md-7 col-xs-12"></textarea>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label for="paidOut" class="control-label col-md-3">Paid Out</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="paidOut" type="checkbox" asp-for="Raffle.PaidOut" name="Raffle.PaidOut" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label for="Archived" class="control-label col-md-3">Archived</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="Archived" type="checkbox" asp-for="Raffle.Archived" name="Raffle.Archived" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group item">
+                        <label asp-for="CityInfo" class="col-form-label col-md-3"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                            <select name="CityInfo" asp-items="Model.CityDtoList" id="CityOfOrigin" class="form-control col-md-7 col-xs-12" required="required">
+                                <option>Select City</option>
+
+                            </select>
+
+
+                            <span asp-validation-for="CityInfo" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group item">
+                        <label asp-for="AreaInCity" class="col-form-label col-md-3"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                            <select name="AreaInCity" id="AreaCity" class="form-control col-md-7 col-xs-12" required="required"></select>
+
+
+                            <span asp-validation-for="AreaInCity" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                            Previous Image
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @await Component.InvokeAsync("RaffleImage", new { raffleId = Model.Raffle.Id })
+
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <a asp-page="./ChangeImage" style="padding:3px 5px !important;" asp-route-id="@Model.Raffle.Id">Change Image</a>
+
+                            <button type="button" class="btn btn-primary" asp-route="/RaffleManagement/Index">Cancel</button>
+                            <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script type="text/jscript">
+        $(function () {
+            $('#CityOfOrigin').change(function () {
+
+                var fruits = ["apple", "orange", "cherry"];
+                fruits.forEach(myFunction);
+                var res = "";
+                function myFunction(item, index) {
+                    res += index + ":" + item + "<br>";
+                }
+                console.log(res);
+                $.getJSON('/Home/AreaCityList/' + $('#CityOfOrigin').val(), function (data) {
+
+                    var items = '<option>Choose Area in the city</option>';
+                    $.each(jQuery.map(data, function (i, local) {
+                        items += "<option value='" + i.value + "'>" + i.text + "</option>";
+
+                    }));
+
+
+                    console.log(data);
+                    console.log("jd");
+                    console.log(data.data);
+
+                    console.log(items);
+                    $('#AreaCity').html(items);
+                });
+            });
+        });
+    </script>
+}
