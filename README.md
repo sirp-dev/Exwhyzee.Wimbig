@@ -1,8 +1,7 @@
 # Wimbig Services Ltd
 
 Wimbig Services Ltd is a digital raffle platform that offers Nigerians the chance to win various prizes such as household wares, beauty products, electronics, real estate, cash, and vacations. With the slogan "Play Small, Win Big," Wimbig aims to provide users with a simple way to participate in raffles. After registering and funding their accounts, users can take part in these raffles. The winning process is automated and ensures fairness, making it impossible to manipulate.
-
-<img src="https://link-to-your-image" alt="Project Logo" width="200"/>
+ 
 
 ## Frameworks and Technologies
 
@@ -29,7 +28,7 @@ This project is built with the following technologies:
 
 ## Demo
 
-<img src="https://private-user-images.githubusercontent.com/167396899/366427938-f9952586-e7a3-4a3e-b96c-a559a0d2e6a5.jpg" alt="Demo Screenshot" width="500"/>
+<img src="https://private-user-images.githubusercontent.com/167396899/366427938-f9952586-e7a3-4a3e-b96c-a559a0d2e6a5.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjYwNTUwODksIm5iZiI6MTcyNjA1NDc4OSwicGF0aCI6Ii8xNjczOTY4OTkvMzY2NDI3OTM4LWY5OTUyNTg2LWU3YTMtNGEzZS1iOTZjLWE1NTlhMGQyZTZhNS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkxMVQxMTM5NDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01YzgxY2FmMDI1MjNiZDQ4ZTc3NmMzYzEyNTBkYmZjODhjMjhmNDY2MWZmNDM2MjkwM2U2ODNmYThkOGQ2MDIxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.d4w9kqx-wWP77v3xg4qHs9y3oGpoMu6wnNCJoPycQXY" alt="Demo Screenshot" width="500"/>
 
 ## Installation
 
@@ -43,7 +42,7 @@ This project is built with the following technologies:
 
 <ol>
   <li>Clone the repository:
-    <pre><code>git clone https://github.com/yourusername/your-repo-name.git</code></pre>
+    
   </li>
   <li>Configure the necessary settings in the <code>appsettings.json</code> file.</li>
   <li>Build and run the project in Visual Studio or VS Code.</li>
@@ -56,23 +55,7 @@ This project is built with the following technologies:
   <li>Navigate to the landing page to explore the raffle system.</li>
 </ol>
 
-## Contributing
-
-Contributions are welcome! To contribute:
-
-<ol>
-  <li>Fork the project.</li>
-  <li>Create a new branch:
-    <pre><code>git checkout -b feature-branch</code></pre>
-  </li>
-  <li>Commit your changes:
-    <pre><code>git commit -m 'Add a new feature'</code></pre>
-  </li>
-  <li>Push to the branch:
-    <pre><code>git push origin feature-branch</code></pre>
-  </li>
-  <li>Open a pull request.</li>
-</ol>
+ 
 
 ## License
 
